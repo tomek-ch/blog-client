@@ -1,8 +1,18 @@
 import React from 'react';
+import { Switch, Route } from 'react-router-dom';
+import LogIn from './pages/LogIn';
+import Register from './pages/Register';
 
 function App() {
     return (
-        <h1>Hello world</h1>
+        <Switch>
+            <Route path="/sign-in">
+                <LogIn />
+            </Route>
+            <Route path="/sign-up">
+                <Register />
+            </Route>
+        </Switch>
     );
 }
 

@@ -1,3 +1,12 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+
+form {
+    margin: 2em auto;
+    max-width: 350px;
+}
+
+input {
+    display: block;
+}
