@@ -34,6 +34,10 @@ function LogIn() {
                     onChange={handleChange(setPassword)}
                 />
             </label>
+            <button
+                type="submit"
+                disabled={!username || !password}
+            >Sign up</button>
         </form>
     );
 }
