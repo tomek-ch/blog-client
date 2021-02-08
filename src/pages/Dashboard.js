@@ -3,10 +3,10 @@ import { Context } from '../Context';
 
 function Dashboard() {
 
-    const currentUser = useContext(Context);
+    const { currentUser } = useContext(Context);
 
     return (
-        <h1>Hello {currentUser.name}</h1>
+        <h1>Hello {currentUser.username}</h1>
     );
 }
 

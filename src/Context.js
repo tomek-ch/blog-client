@@ -8,7 +8,8 @@ function ContextProvider({ children }) {
 
     return (
         <Context.Provider value={{
-            currentUser
+            currentUser,
+            setCurrentUser,
         }}>
             {children}
         </Context.Provider>
