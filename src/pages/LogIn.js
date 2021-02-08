@@ -38,7 +38,7 @@ function LogIn() {
             <label>
                 Password:
                 <input
-                    type="text"
+                    type="password"
                     value={password}
                     onChange={handleChange(setPassword)}
                 />
