@@ -12,10 +12,10 @@ function App() {
     return (
         <Switch >
             <Route path="/sign-in">
-                {currentUser ? <Dashboard /> : <LogIn />}
+                {currentUser ? <Redirect to="/" /> : <LogIn />}
             </Route>
             <Route path="/sign-up">
-                {currentUser ? <Dashboard /> : <Register />}
+                {currentUser ? <Redirect to="/" /> : <Register />}
             </Route>
             <Route path="/">
                 {currentUser ? <Dashboard /> : <Redirect to="/sign-in" />}
