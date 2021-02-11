@@ -6,6 +6,8 @@ function LogIn() {
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
     const { setCurrentUser } = useContext(Context);
 
     const handleChange = cb => e => {
@@ -36,6 +38,22 @@ function LogIn() {
                 />
             </label>
             <label>
+                First name:
+                <input
+                    type="text"
+                    value={username}
+                    onChange={handleChange(setFirstName)}
+                />
+            </label>
+            <label>
+                Last name:
+                <input
+                    type="text"
+                    value={username}
+                    onChange={handleChange(setLastName)}
+                />
+            </label>
+            <label>
                 Password:
                 <input
                     type="password"
@@ -45,7 +63,7 @@ function LogIn() {
             </label>
             <button
                 type="submit"
-                disabled={!username || !password}
+                disabled={!username || !password || !firstName}
             >Sign up</button>
         </form>
     );
