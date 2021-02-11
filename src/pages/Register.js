@@ -4,22 +4,22 @@ import { Context } from '../Context';
 
 function LogIn() {
 
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
-    const [firstName, setFirstName] = useState('');
-    const [lastName, setLastName] = useState('');
+    const [userData, setUserData] = useState({
+        username: '',
+        password: '',
+        firstName: '',
+        lastName: '',
+    });
     const { setCurrentUser } = useContext(Context);
 
-    const handleChange = cb => e => {
-        const { value } = e.target;
-        cb(value);
+    const handleChange = e => {
+        const { value, name } = e.target;
+        setUserData(prev => ({ ...prev, [name]: value }));
     };
 
     const handleSubmit = e => {
         e.preventDefault();
-        setCurrentUser({
-            username,
-        });
+        setCurrentUser(userData);
     };
 
     return (
@@ -33,37 +33,41 @@ function LogIn() {
                 Username:
                 <input
                     type="text"
-                    value={username}
-                    onChange={handleChange(setUsername)}
+                    name="username"
+                    value={userData.username}
+                    onChange={handleChange}
                 />
             </label>
             <label>
                 First name:
                 <input
                     type="text"
-                    value={username}
-                    onChange={handleChange(setFirstName)}
+                    name="firstName"
+                    value={userData.firstName}
+                    onChange={handleChange}
                 />
             </label>
             <label>
                 Last name:
                 <input
                     type="text"
-                    value={username}
-                    onChange={handleChange(setLastName)}
+                    name="lastName"
+                    value={userData.lastName}
+                    onChange={handleChange}
                 />
             </label>
             <label>
                 Password:
                 <input
                     type="password"
-                    value={password}
-                    onChange={handleChange(setPassword)}
+                    name="password"
+                    value={userData.password}
+                    onChange={handleChange}
                 />
             </label>
             <button
                 type="submit"
-                disabled={!username || !password || !firstName}
+                disabled={!userData.username || !userData.password || !userData.firstName}
             >Sign up</button>
         </form>
     );
