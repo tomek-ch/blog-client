@@ -6,6 +6,7 @@ function LogIn() {
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [errors, setErrors] = useState([]);
     const { setCurrentUser } = useContext(Context);
 
     const handleChange = cb => e => {
@@ -13,11 +14,23 @@ function LogIn() {
         cb(value);
     };
 
-    const handleSubmit = e => {
+    const handleSubmit = async e => {
         e.preventDefault();
-        setCurrentUser({
-            username,
-        });
+        try {
+            const response = await fetch('http://localhost:3000/login', {
+                method: 'post',
+                body: JSON.stringify({ username, password }),
+                headers: { 'Content-Type': 'application/json' },
+            });
+
+            if (response.status === 200)
+                setCurrentUser(await response.json());
+            else if (response.status === 400)
+                setErrors((await response.json()).map(err => <li key={err}>{err}</li>));
+
+        } catch (e) {
+            setError(e.toString());
+        }
     };
 
     return (
@@ -47,6 +60,7 @@ function LogIn() {
                 type="submit"
                 disabled={!username || !password}
             >Sign up</button>
+            <ul>{errors}</ul>
         </form>
     );
 }
