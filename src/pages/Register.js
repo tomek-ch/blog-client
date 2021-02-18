@@ -10,6 +10,8 @@ function LogIn() {
         firstName: '',
         lastName: '',
     });
+
+    const [errors, setErrors] = useState([]);
     const { setCurrentUser } = useContext(Context);
 
     const handleChange = e => {
@@ -17,9 +19,23 @@ function LogIn() {
         setUserData(prev => ({ ...prev, [name]: value }));
     };
 
-    const handleSubmit = e => {
+    const handleSubmit = async e => {
         e.preventDefault();
-        setCurrentUser(userData);
+        try {
+            const response = await fetch('http://localhost:3000/authors', {
+                method: 'post',
+                body: JSON.stringify(userData),
+                headers: { 'Content-Type': 'application/json' },
+            });
+
+            if (response.status === 200)
+                setCurrentUser(await response.json());
+            else if (response.status === 400)
+                setErrors((await response.json()).map(err => <li key={err}>{err}</li>));
+
+        } catch (e) {
+            setError(e.toString());
+        }
     };
 
     return (
@@ -69,6 +85,7 @@ function LogIn() {
                 type="submit"
                 disabled={!userData.username || !userData.password || !userData.firstName}
             >Sign up</button>
+            <ul>{errors}</ul>
         </form>
     );
 }
