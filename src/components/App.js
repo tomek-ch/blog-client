@@ -10,7 +10,7 @@ function App() {
     const { currentUser } = useContext(Context);
 
     return (
-        <Switch >
+        <Switch>
             <Route path="/sign-in">
                 {currentUser ? <Redirect to="/" /> : <LogIn />}
             </Route>
@@ -20,7 +20,7 @@ function App() {
             <Route path="/">
                 {currentUser ? <Dashboard /> : <Redirect to="/sign-in" />}
             </Route>
-        </Switch >
+        </Switch>
     );
 }
 
