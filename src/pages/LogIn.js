@@ -28,8 +28,8 @@ function LogIn() {
             else if (response.status === 400)
                 setErrors((await response.json()).map(err => <li key={err}>{err}</li>));
 
-        } catch (e) {
-            setError(e.toString());
+        } catch {
+            setErrors(['There was a network error']);
         }
     };
 

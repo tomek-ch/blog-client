@@ -1,13 +1,13 @@
 import React, { useContext, useEffect, useState } from 'react';
 import Nav from '../components/Nav';
-import PostThumbnail from '../components/PostThumbnail';
+import PostSnippet from '../components/PostSnippet';
 import { Context } from '../Context';
 
 function Dashboard() {
 
     const { currentUser } = useContext(Context);
     const [posts, setPosts] = useState([]);
-    const postElements = posts.map(post => <PostThumbnail key={post._id} post={post} />);
+    const postElements = posts.map(post => <PostSnippet key={post._id} post={post} />);
 
     useEffect(() => {
         fetch(`http://localhost:3000/posts?author=${currentUser._id}`)
