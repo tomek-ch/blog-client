@@ -1,19 +1,27 @@
-import React from 'react';
-import { Switch, Route } from 'react-router-dom';
-import Dashboard from './Dashboard';
-import Post from './Post';
+import React, { useEffect, useState } from 'react';
+import Header from '../components/Header';
+import PostSnippet from '../components/PostSnippet';
 
-function MainPage() {
+function Dashboard() {
+
+    const [posts, setPosts] = useState([]);
+    const postElements = posts.map(post => <PostSnippet key={post._id} post={post} />);
+
+    useEffect(() => {
+        fetch(`http://localhost:3000/posts`)
+            .then(res => res.json())
+            .then(data => setPosts(data))
+            .catch(console.log);
+    }, []);
+
     return (
-        <Switch>
-            <Route exact path="/">
-                <Dashboard />
-            </Route>
-            <Route path="/posts/:postId">
-                <Post />
-            </Route>
-        </Switch>
-    )
+        <>
+            <Header />
+            <div>
+                {postElements}
+            </div>
+        </>
+    );
 }
 
-export default MainPage;
+export default Dashboard;

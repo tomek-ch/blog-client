@@ -4,6 +4,7 @@ import LogIn from '../pages/LogIn';
 import Register from '../pages/Register';
 import { Context } from '../Context';
 import MainPage from '../pages/MainPage';
+import Post from '../pages/Post';
 
 function App() {
 
@@ -11,14 +12,17 @@ function App() {
 
     return (
         <Switch>
-            <Route path="/sign-in">
-                {currentUser ? <Redirect to="/" /> : <LogIn />}
+            <Route path="/log-in">
+                <LogIn />
             </Route>
-            <Route path="/sign-up">
-                {currentUser ? <Redirect to="/" /> : <Register />}
+            <Route path="/register">
+                <Register />
             </Route>
-            <Route path="/">
-                {currentUser ? <MainPage /> : <Redirect to="/sign-in" />}
+            <Route exact path="/">
+                <MainPage />
+            </Route>
+            <Route path="/posts/:postId">
+                <Post />
             </Route>
         </Switch>
     );
