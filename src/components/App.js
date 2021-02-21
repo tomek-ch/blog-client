@@ -1,15 +1,11 @@
-import React, { useContext } from 'react';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import React from 'react';
+import { Switch, Route } from 'react-router-dom';
 import LogIn from '../pages/LogIn';
 import Register from '../pages/Register';
-import { Context } from '../Context';
 import MainPage from '../pages/MainPage';
 import Post from '../pages/Post';
 
 function App() {
-
-    const { currentUser } = useContext(Context);
-
     return (
         <Switch>
             <Route path="/log-in">
