@@ -58,6 +58,7 @@ function LogIn() {
             </label>
             <button
                 type="submit"
+                className="btn"
                 disabled={!username || !password}
             >Sign up</button>
             <ul>{errors}</ul>
