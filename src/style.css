@@ -8,6 +8,11 @@ body {
     line-height: 1.5;
 }
 
+.container {
+    max-width: 1200px;
+    margin: auto;
+}
+
 form {
     margin: 2em auto;
     max-width: 350px;

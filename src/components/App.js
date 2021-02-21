@@ -7,20 +7,22 @@ import Post from '../pages/Post';
 
 function App() {
     return (
-        <Switch>
-            <Route path="/log-in">
-                <LogIn />
-            </Route>
-            <Route path="/register">
-                <Register />
-            </Route>
-            <Route exact path="/">
-                <MainPage />
-            </Route>
-            <Route path="/posts/:postId">
-                <Post />
-            </Route>
-        </Switch>
+        <div className="container">
+            <Switch>
+                <Route path="/log-in">
+                    <LogIn />
+                </Route>
+                <Route path="/register">
+                    <Register />
+                </Route>
+                <Route exact path="/">
+                    <MainPage />
+                </Route>
+                <Route path="/posts/:postId">
+                    <Post />
+                </Route>
+            </Switch>
+        </div>
     );
 }
 
