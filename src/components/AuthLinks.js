@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 
 function AuthLinks() {
     return (
-        <nav>
-            <Link to="/log-in">Log in</Link>
-            <Link to="/register">Register</Link>
+        <nav class="auth-links">
+            <Link to="/log-in" className="btn">Log in</Link>
+            <Link to="/register" className="btn">Register</Link>
         </nav>
     );
 }

@@ -9,7 +9,7 @@ function Header() {
     const { currentUser } = useContext(Context);
 
     return (
-        <header>
+        <header class="header">
             <Link to="/">
                 <h1>Blogg</h1>
             </Link>
