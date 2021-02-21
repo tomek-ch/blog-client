@@ -3,7 +3,7 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import LogIn from '../pages/LogIn';
 import Register from '../pages/Register';
 import { Context } from '../Context';
-import Dashboard from '../pages/Dashboard';
+import MainPage from '../pages/MainPage';
 
 function App() {
 
@@ -18,7 +18,7 @@ function App() {
                 {currentUser ? <Redirect to="/" /> : <Register />}
             </Route>
             <Route path="/">
-                {currentUser ? <Dashboard /> : <Redirect to="/sign-in" />}
+                {currentUser ? <MainPage /> : <Redirect to="/sign-in" />}
             </Route>
         </Switch>
     );
