@@ -4,26 +4,31 @@ import { useParams } from 'react-router-dom';
 function Post() {
 
     const { postId } = useParams();
-    const [post, setPost] = useState({});
-    const { title, paragraphs, tags } = post;
+    const [post, setPost] = useState(null);
+    const [error, setError] = useState('');
 
     useEffect(() => {
         fetch(`http://localhost:3000/posts/${postId}`)
             .then(res => res.json())
-            .then(setPost);
+            .then(setPost)
+            .catch(() => setError('A network error occured'));
     }, []);
 
     return (
+        error ?
+        error :
+        post ?
         <article>
-            <h1>{title}</h1>
-            {paragraphs?.map(p => (
+            <h1>{post.title}</h1>
+            {post.paragraphs.map(p => (
                 <div key={p._id}>
                     <h2>{p.heading}</h2>
                     <p>{p.body}</p>
                 </div>
             ))}
-            {tags?.map(tag => <div key={tag}>{tag}</div>)}
+            {post.tags.map(tag => <div key={tag}>{tag}</div>)}
         </article>
+        : 'Loading...'
     );
 }
 
