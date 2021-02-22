@@ -1,22 +1,22 @@
 import React, { useEffect, useState } from 'react';
-import Header from '../components/Header';
 import PostSnippet from '../components/PostSnippet';
 
 function Dashboard() {
 
     const [posts, setPosts] = useState([]);
+    const [error, setError] = useState('');
     const postElements = posts.map(post => <PostSnippet key={post._id} post={post} />);
 
     useEffect(() => {
         fetch(`http://localhost:3000/posts`)
             .then(res => res.json())
             .then(data => setPosts(data))
-            .catch(console.log);
+            .catch(() => setError('Network error occured'));
     }, []);
 
     return (
         <div>
-            {postElements}
+            {posts.length ? postElements : error ? error : 'Loading...'}
         </div>
     );
 }
