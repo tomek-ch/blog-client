@@ -15,12 +15,9 @@ function Dashboard() {
     }, []);
 
     return (
-        <>
-            <Header />
-            <div>
-                {postElements}
-            </div>
-        </>
+        <div>
+            {postElements}
+        </div>
     );
 }
 
