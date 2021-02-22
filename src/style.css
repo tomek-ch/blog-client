@@ -19,12 +19,6 @@ body {
     line-height: 1.5;
 }
 
-.container {
-    max-width: 1200px;
-    margin: auto;
-    padding: 1em;
-}
-
 form {
     margin: 2em auto;
     max-width: 350px;
@@ -52,6 +46,7 @@ input {
     padding: 0.5em;
     border: 1px solid black;
     border-radius: 5px;
+    width: fit-content;
 }
 
 .btn:disabled {
@@ -68,4 +63,17 @@ input {
 .auth-links {
     display: flex;
     gap: 0.5em;
+}
+
+.cta-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    padding: 2em 1em;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+}
+
+.posts {
+    padding: 1em;
 }

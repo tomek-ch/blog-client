@@ -10,22 +10,20 @@ function App() {
     return (
         <>
             <Header />
-            <div className="container">
-                <Switch>
-                    <Route path="/log-in">
-                        <LogIn />
-                    </Route>
-                    <Route path="/register">
-                        <Register />
-                    </Route>
-                    <Route exact path="/">
-                        <MainPage />
-                    </Route>
-                    <Route path="/posts/:postId">
-                        <Post />
-                    </Route>
-                </Switch>
-            </div>
+            <Switch>
+                <Route path="/log-in">
+                    <LogIn />
+                </Route>
+                <Route path="/register">
+                    <Register />
+                </Route>
+                <Route exact path="/">
+                    <MainPage />
+                </Route>
+                <Route path="/posts/:postId">
+                    <Post />
+                </Route>
+            </Switch>
         </>
     );
 }

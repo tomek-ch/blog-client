@@ -1,10 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import CtaSection from '../components/CtaSection';
 import PostSnippet from '../components/PostSnippet';
+import { Context } from '../Context';
 
 function Dashboard() {
 
     const [posts, setPosts] = useState([]);
     const [error, setError] = useState('');
+    const { currentUser } = useContext(Context);
     const postElements = posts.map(post => <PostSnippet key={post._id} post={post} />);
 
     useEffect(() => {
@@ -15,9 +18,12 @@ function Dashboard() {
     }, []);
 
     return (
-        <div>
-            {posts.length ? postElements : error ? error : 'Loading...'}
-        </div>
+        <>
+            {!currentUser ? <CtaSection /> : ''}
+            <div className="posts">
+                {posts.length ? postElements : error ? error : 'Loading...'}
+            </div>
+        </>
     );
 }
 
