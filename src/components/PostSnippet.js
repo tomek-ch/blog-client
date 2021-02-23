@@ -6,7 +6,7 @@ function PostThumbnail({ post: { _id, title, paragraphs } }) {
     const heading = paragraphs[0].heading ? <h3>{paragraphs[0].heading}</h3> : '';
 
     return (
-        <Link to={`/posts/${_id}`}>
+        <Link to={`/posts/${_id}`} className="post-snippet">
             <h2>{title}</h2>
             {heading}
             <p>{paragraphs[0].body}</p>

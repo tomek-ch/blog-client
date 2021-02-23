@@ -72,8 +72,22 @@ input {
     padding: 2em 1em;
     border-top: 1px solid black;
     border-bottom: 1px solid black;
+    justify-content: center;
 }
 
 .posts {
     padding: 1em;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+}
+
+.post-snippet {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 1em;
+    flex-grow: 1;
 }
