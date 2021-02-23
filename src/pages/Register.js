@@ -41,7 +41,6 @@ function LogIn() {
     return (
         <form onSubmit={handleSubmit}>
             <h2>Sign up</h2>
-            <p>Already have an account? <Link to="/sign-in">Sign in</Link></p>
             <label>
                 Username:
                 <input
@@ -84,6 +83,7 @@ function LogIn() {
                 disabled={!userData.username || !userData.password || !userData.firstName}
             >Sign up</button>
             <ul>{errors}</ul>
+            <p>Already have an account? <Link to="/sign-in">Sign in</Link></p>
         </form>
     );
 }
