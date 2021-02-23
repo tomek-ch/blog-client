@@ -20,7 +20,7 @@ function Dashboard() {
     return (
         <>
             {!currentUser ? <CtaSection /> : ''}
-            <div className="posts">
+            <div className="posts container">
                 {posts.length ? postElements : error ? error : 'Loading...'}
             </div>
         </>

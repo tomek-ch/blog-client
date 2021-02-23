@@ -10,10 +10,12 @@ function Header() {
 
     return (
         <header className="header">
-            <Link to="/">
-                <h1>Blogg</h1>
-            </Link>
-            {currentUser ? <Nav /> : <AuthLinks />}
+            <div className="container">
+                <Link to="/">
+                    <h1>Blogg</h1>
+                </Link>
+                {currentUser ? <Nav /> : <AuthLinks />}
+            </div>
         </header>
     );
 }
