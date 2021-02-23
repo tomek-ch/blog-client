@@ -40,11 +40,8 @@ function LogIn() {
 
     return (
         <form onSubmit={handleSubmit}>
-            <p>
-                Sign up to manage blog's content.
-                <br />
-                Already have an account? <Link to="/sign-in">Sign in</Link>
-            </p>
+            <h2>Sign up</h2>
+            <p>Already have an account? <Link to="/sign-in">Sign in</Link></p>
             <label>
                 Username:
                 <input
