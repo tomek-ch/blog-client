@@ -1,11 +1,16 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { Context } from '../Context';
 
 function UserOptions({ toggle }) {
 
     const { setCurrentUser } = useContext(Context);
-    const signOut = () => setCurrentUser(null);
+    const history = useHistory();
+
+    const signOut = () => {
+        setCurrentUser(null);
+        history.replace('/');
+    };
 
     return (
         <div className="options">

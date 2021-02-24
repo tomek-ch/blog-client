@@ -22,7 +22,7 @@ function LogIn() {
     const handleSubmit = async e => {
         e.preventDefault();
         try {
-            const response = await fetch('http://localhost:3000/authors', {
+            const response = await fetch('http://localhost:3000/users', {
                 method: 'post',
                 body: JSON.stringify(userData),
                 headers: { 'Content-Type': 'application/json' },
@@ -32,7 +32,7 @@ function LogIn() {
                 setCurrentUser(await response.json());
             else if (response.status === 400)
                 setErrors((await response.json()).map(err => <li key={err}>{err}</li>));
-
+            
         } catch {
             setErrors(['There was a network error']);
         }

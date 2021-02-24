@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import UserOptions from './UserOptions';
 
-function Nav({user: { username }}) {
+function Nav({ username }) {
 
     const [optionsOpen, setOptionsOpen] = useState(false);
     const toggleOptions = () => setOptionsOpen(prev => !prev);
