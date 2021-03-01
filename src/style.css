@@ -22,10 +22,17 @@ body {
 form {
     margin: 2em auto;
     max-width: 350px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
 }
 
 input {
     display: block;
+    padding: 0.5em;
+    border-radius: 5px;
+    border: none;
+    background-color: lightgray;
 }
 
 .container {
