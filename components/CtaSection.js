@@ -1,5 +1,4 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 
 function CtaSection() {
     return (
@@ -7,7 +6,9 @@ function CtaSection() {
             <div className="container">
                 <h2>Think big</h2>
                 <p>Whether you're a reader or a writer</p>
-                <Link to="/register" className="btn">Get started</Link>
+                <Link href="/register">
+                    <a className="btn">Get started</a>
+                </Link>
             </div>
         </section>
     );

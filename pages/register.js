@@ -1,6 +1,6 @@
-import React, { useState, useContext } from 'react';
-import { Link } from 'react-router-dom';
-import { Context } from '../Context';
+import { useState, useContext } from 'react';
+import Link from 'next/link';
+import { Context } from '../components/Context';
 
 function LogIn() {
 
@@ -22,7 +22,7 @@ function LogIn() {
     const handleSubmit = async e => {
         e.preventDefault();
         try {
-            const response = await fetch('http://localhost:3000/users', {
+            const response = await fetch('http://localhost:5000/users', {
                 method: 'post',
                 body: JSON.stringify(userData),
                 headers: { 'Content-Type': 'application/json' },
@@ -83,7 +83,7 @@ function LogIn() {
                 disabled={!userData.username || !userData.password || !userData.firstName}
             >Sign up</button>
             <ul>{errors}</ul>
-            <p>Already have an account? <Link to="/sign-in">Sign in</Link></p>
+            <p>Already have an account? <Link href="/log-in">Sign in</Link></p>
         </form>
     );
 }
