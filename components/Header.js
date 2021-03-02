@@ -12,7 +12,7 @@ function Header() {
         <header className="header">
             <div className="container">
                 <Link href="/">
-                    <h1>Blogg</h1>
+                    <a><h1>Blogg</h1></a>
                 </Link>
                 {currentUser ? <Nav username={currentUser.username} /> : <AuthLinks />}
             </div>
