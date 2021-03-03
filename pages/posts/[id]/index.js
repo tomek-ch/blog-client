@@ -1,38 +1,32 @@
-import { useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
-
-function Post() {
-
-    const { query: { id } } = useRouter();
-    const [post, setPost] = useState(null);
-    const [errors, setErrors] = useState([]);
-
-    useEffect(() => {
-        fetch(`http://localhost:5000/posts/${id}`)
-            .then(res => Promise.all([res.json(), res.status]))
-            .then(([ data, status ]) => {
-                if (status === 200) setPost(data);
-                else setErrors(data);
-            })
-            .catch(() => setErrors(['A network error occured']));
-    }, []);
-
+function Post({ post, error }) {
     return (
-        errors.length ?
-            <ul>{errors.map(err => <li key={err}>{err}</li>)}</ul> :
-            post ?
-                <article>
-                    <h1>{post.title}</h1>
-                    {post.paragraphs.map(p => (
-                        <div key={p._id}>
-                            <h2>{p.heading}</h2>
-                            <p>{p.body}</p>
-                        </div>
-                    ))}
-                    {post.tags.map(tag => <div key={tag}>{tag}</div>)}
-                </article>
-                : 'Loading...'
+        post ?
+            <article>
+                <h1>{post.title}</h1>
+                {post.paragraphs.map(p => (
+                    <div key={p._id}>
+                        <h2>{p.heading}</h2>
+                        <p>{p.body}</p>
+                    </div>
+                ))}
+                {post.tags.map(tag => <div key={tag}>{tag}</div>)}
+            </article>
+            : error
     );
+}
+
+export async function getServerSideProps({ params: { id } }) {
+    try {
+        
+        const res = await fetch(`http://localhost:5000/posts/${id}`);
+        const data = await res.json();
+
+        if (res.status === 200) return { props: { post: data }, };
+        else throw data[0];
+
+    } catch (error) {
+        return { props: { error } };
+    }
 }
 
 export default Post;
