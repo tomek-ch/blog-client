@@ -7,14 +7,14 @@ import Meta from '../components/Meta';
 function MainPage({ posts, error }) {
 
     const { currentUser } = useAppContext();
-    const postElements = posts.map(post => <PostSnippet key={post._id} post={post} />);
+    const postElements = posts?.map(post => <PostSnippet key={post._id} post={post} />);
 
     return (
         <>
             <Meta title="Blogg" />
             {!currentUser ? <CtaSection /> : ''}
             <div className={postsGrid}>
-                {posts.length ? postElements : error}
+                {posts ? postElements : error}
             </div>
         </>
     );
@@ -22,18 +22,14 @@ function MainPage({ posts, error }) {
 
 export async function getServerSideProps() {
     try {
-        return {
-            props: {
-                posts: await (await fetch('http://localhost:5000/posts')).json(),
-            }
-        }
+        const res = await fetch('http://localhost:5000/posts/');
+        const data = await res.json();
+
+        if (res.status === 200) return { props: { posts: data }, };
+        else return { props: { error: data[0] } };
+
     } catch (error) {
-        return {
-            props: {
-                posts: [],
-                error: await error.json(),
-            },
-        };
+        return { props: { error: 'Failed to connect to the server' } };
     }
 }
 

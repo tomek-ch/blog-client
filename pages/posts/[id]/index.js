@@ -20,15 +20,14 @@ function Post({ post, error }) {
 
 export async function getServerSideProps({ params: { id } }) {
     try {
-        
         const res = await fetch(`http://localhost:5000/posts/${id}`);
         const data = await res.json();
 
         if (res.status === 200) return { props: { post: data }, };
-        else throw data[0];
+        else return { props: { error: data[0] } };
 
     } catch (error) {
-        return { props: { error } };
+        return { props: { error: 'Failed to connect to the server' } };
     }
 }
 
