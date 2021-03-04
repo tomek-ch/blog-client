@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { useAppContext } from '../components/Context';
 import { btn } from '../styles/Btn.module.css';
 import { form, input } from '../styles/Form.module.css';
+import Meta from '../components/Meta';
 
 function LogIn() {
 
@@ -37,6 +38,7 @@ function LogIn() {
 
     return (
         <form onSubmit={handleSubmit} className={form}>
+            <Meta title="Sign in to blogg" />
             <h2>Sign in</h2>
             <label>
                 Username:

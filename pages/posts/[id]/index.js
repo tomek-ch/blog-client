@@ -1,7 +1,10 @@
+import Meta from '../../../components/Meta';
+
 function Post({ post, error }) {
     return (
         post ?
             <article>
+                <Meta title={post.title} />
                 <h1>{post.title}</h1>
                 {post.paragraphs.map(p => (
                     <div key={p._id}>
