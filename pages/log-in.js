@@ -1,6 +1,6 @@
-import { useState, useContext } from 'react';
+import { useState } from 'react';
 import Link from 'next/link';
-import { Context } from '../components/Context';
+import { useAppContext } from '../components/Context';
 import { btn } from '../styles/Btn.module.css';
 import { form, input } from '../styles/Form.module.css';
 
@@ -9,7 +9,7 @@ function LogIn() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [errors, setErrors] = useState([]);
-    const { setCurrentUser } = useContext(Context);
+    const { setCurrentUser } = useAppContext();
 
     const handleChange = cb => e => {
         const { value } = e.target;

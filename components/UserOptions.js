@@ -1,12 +1,11 @@
-import { useContext } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { Context } from './Context';
+import { useAppContext } from './Context';
 import { options, option } from '../styles/UserOptions.module.css';
 
 function UserOptions({ toggle }) {
 
-    const { setCurrentUser } = useContext(Context);
+    const { setCurrentUser } = useAppContext();
     const router = useRouter()
 
     const signOut = () => {

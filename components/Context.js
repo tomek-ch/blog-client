@@ -1,4 +1,4 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useState, useContext } from 'react';
 
 const Context = createContext();
 
@@ -16,4 +16,8 @@ function ContextProvider({ children }) {
     );
 }
 
-export { Context, ContextProvider };
+function useAppContext() {
+    return useContext(Context);
+}
+
+export { useAppContext, ContextProvider };

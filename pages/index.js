@@ -1,12 +1,11 @@
-import { useContext } from 'react';
 import CtaSection from '../components/CtaSection';
 import PostSnippet from '../components/PostSnippet';
-import { Context } from '../components/Context';
+import { useAppContext } from '../components/Context';
 import { postsGrid } from '../styles/Posts.module.css';
 
 function MainPage({ posts, error }) {
 
-    const { currentUser } = useContext(Context);
+    const { currentUser } = useAppContext();
     const postElements = posts.map(post => <PostSnippet key={post._id} post={post} />);
 
     return (

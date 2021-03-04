@@ -1,5 +1,4 @@
-import { useContext } from 'react';
-import { Context } from './Context';
+import { useAppContext } from './Context';
 import Nav from './Nav';
 import AuthLinks from './AuthLinks';
 import Link from 'next/link';
@@ -7,7 +6,7 @@ import { container } from '../styles/Header.module.css';
 
 function Header() {
 
-    const { currentUser } = useContext(Context);
+    const { currentUser } = useAppContext();
 
     return (
         <header>
