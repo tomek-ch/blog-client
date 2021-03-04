@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { postSnippet } from '../styles/PostSnippet.module.css';
 
 function PostThumbnail({ post: { _id, title, paragraphs } }) {
 
@@ -6,7 +7,7 @@ function PostThumbnail({ post: { _id, title, paragraphs } }) {
 
     return (
         <Link href={`/posts/${_id}`}>
-            <a className="post-snippet">
+            <a className={postSnippet}>
                 <h2>{title}</h2>
                 {heading}
                 <p>{paragraphs[0].body}</p>

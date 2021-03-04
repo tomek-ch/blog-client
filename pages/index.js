@@ -2,6 +2,7 @@ import { useContext } from 'react';
 import CtaSection from '../components/CtaSection';
 import PostSnippet from '../components/PostSnippet';
 import { Context } from '../components/Context';
+import { postsGrid } from '../styles/Posts.module.css';
 
 function MainPage({ posts, error }) {
 
@@ -11,7 +12,7 @@ function MainPage({ posts, error }) {
     return (
         <>
             {!currentUser ? <CtaSection /> : ''}
-            <div className="posts container">
+            <div className={postsGrid}>
                 {posts.length ? postElements : error}
             </div>
         </>
@@ -29,7 +30,7 @@ export async function getServerSideProps() {
         return {
             props: {
                 posts: [],
-                error,
+                error: await error.json(),
             },
         };
     }

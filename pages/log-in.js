@@ -1,6 +1,8 @@
 import { useState, useContext } from 'react';
 import Link from 'next/link';
 import { Context } from '../components/Context';
+import { btn } from '../styles/Btn.module.css';
+import { form, input } from '../styles/Form.module.css';
 
 function LogIn() {
 
@@ -34,7 +36,7 @@ function LogIn() {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className={form}>
             <h2>Sign in</h2>
             <label>
                 Username:
@@ -42,6 +44,7 @@ function LogIn() {
                     type="text"
                     value={username}
                     onChange={handleChange(setUsername)}
+                    className={input}
                 />
             </label>
             <label>
@@ -50,11 +53,12 @@ function LogIn() {
                     type="password"
                     value={password}
                     onChange={handleChange(setPassword)}
+                    className={input}
                 />
             </label>
             <button
                 type="submit"
-                className="btn"
+                className={btn}
                 disabled={!username || !password}
             >Sign up</button>
             <ul>{errors}</ul>

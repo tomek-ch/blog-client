@@ -1,0 +1,9 @@
+.postSnippet {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 1em;
+  flex-grow: 1;
+}

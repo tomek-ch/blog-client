@@ -2,6 +2,7 @@ import { useContext } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { Context } from './Context';
+import { options, option } from '../styles/UserOptions.module.css';
 
 function UserOptions({ toggle }) {
 
@@ -14,14 +15,14 @@ function UserOptions({ toggle }) {
     };
 
     return (
-        <div className="options">
+        <div className={options}>
             <Link href="/profile">
-                <a onClick={toggle} className="option">Profile</a>
+                <a onClick={toggle} className={option}>Profile</a>
             </Link>
             <Link href="/settings">
-                <a onClick={toggle} className="option">Settings</a>
+                <a onClick={toggle} className={option}>Settings</a>
             </Link>
-            <div onClick={signOut} className="option">Sign out</div>
+            <div onClick={signOut} className={option}>Sign out</div>
         </div>
     );
 }
