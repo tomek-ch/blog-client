@@ -23,7 +23,7 @@ export async function getServerSideProps({ params: { id } }) {
         const res = await fetch(`http://localhost:5000/posts/${id}`);
         const data = await res.json();
 
-        if (res.status === 200) return { props: { post: data }, };
+        if (res.status === 200) return { props: { post: data } };
         else return { props: { error: data[0] } };
 
     } catch (error) {

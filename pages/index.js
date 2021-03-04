@@ -22,10 +22,10 @@ function MainPage({ posts, error }) {
 
 export async function getServerSideProps() {
     try {
-        const res = await fetch('http://localhost:5000/posts/');
+        const res = await fetch('http://localhost:5000/posts');
         const data = await res.json();
 
-        if (res.status === 200) return { props: { posts: data }, };
+        if (res.status === 200) return { props: { posts: data } };
         else return { props: { error: data[0] } };
 
     } catch (error) {
