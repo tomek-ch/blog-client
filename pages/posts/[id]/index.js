@@ -6,6 +6,7 @@ function Post({ post, error }) {
             <article>
                 <Meta title={post.title} />
                 <h1>{post.title}</h1>
+                <div>{post.time}</div>
                 {post.paragraphs.map(p => (
                     <div key={p._id}>
                         <h2>{p.heading}</h2>
