@@ -18,7 +18,7 @@ function Post({ post, error }) {
                     {post.tags.map(tag => <div key={tag} className={style.tag}>{tag}</div>)}
                 </div>
             </article>
-            : error
+            : <div classsName={style.post}>{error}</div>
     );
 }
 
