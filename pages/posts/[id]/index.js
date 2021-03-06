@@ -1,19 +1,22 @@
 import Meta from '../../../components/Meta';
+import style from '../../../styles/Post.module.css';
 
 function Post({ post, error }) {
     return (
         post ?
-            <article>
+            <article className={style.post}>
                 <Meta title={post.title} />
-                <h1>{post.title}</h1>
-                <div>{post.time}</div>
+                <h1 className={style.title}>{post.title}</h1>
+                <div className={style.details}>{post.time}</div>
                 {post.paragraphs.map(p => (
-                    <div key={p._id}>
-                        <h2>{p.heading}</h2>
+                    <div key={p._id} className={style.paragraph}>
+                        <h2 className={style.heading}>{p.heading}</h2>
                         <p>{p.body}</p>
                     </div>
                 ))}
-                {post.tags.map(tag => <div key={tag}>{tag}</div>)}
+                <div className={style.tags}>
+                    {post.tags.map(tag => <div key={tag} className={style.tag}>{tag}</div>)}
+                </div>
             </article>
             : error
     );
