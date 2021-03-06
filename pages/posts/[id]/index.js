@@ -7,7 +7,7 @@ function Post({ post, error }) {
             <article className={style.post}>
                 <Meta title={post.title} />
                 <h1 className={style.title}>{post.title}</h1>
-                <div className={style.details}>{post.time}</div>
+                <div className={style.details}>{post.time} • {post.author.firstName} {post.author.lastName}</div>
                 {post.paragraphs.map(p => (
                     <div key={p._id} className={style.paragraph}>
                         <h2 className={style.heading}>{p.heading}</h2>
