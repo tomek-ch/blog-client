@@ -9,7 +9,7 @@
 }
 
 .heading {
-  font-size: 2em;
+  font-size: 1.7em;
 }
 
 .tags {
@@ -20,6 +20,7 @@
 
 .paragraph {
   margin-bottom: 1em;
+  font-size: 1.1em;
 }
 
 .tag {
@@ -29,6 +30,6 @@
 }
 
 .details {
-  font-size: 0.8em;
+  font-size: 0.9em;
   margin: 1em 0;
 }
