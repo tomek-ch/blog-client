@@ -19,12 +19,11 @@ function ContextProvider({ children }) {
     }, []);
 
     useEffect(() => {
-        if (token) {
+        if (token)
             fetch('http://localhost:5000/verify-user', { headers: { 'Authorization': `Bearer ${token}` } })
-            .then(user => user.json())
-            .then(setCurrentUser)
-            .catch(signOut);
-        }
+                .then(user => user.json())
+                .then(setCurrentUser)
+                .catch(signOut);
     }, [token]);
 
     const signIn = ({ user, token }) => {
