@@ -9,8 +9,8 @@ function LogIn() {
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const [errors, setErrors] = useState([]);
-    const { setCurrentUser } = useAppContext();
+    const [error, setError] = useState('');
+    const { signIn } = useAppContext();
 
     const handleChange = cb => e => {
         const { value } = e.target;
@@ -20,19 +20,19 @@ function LogIn() {
     const handleSubmit = async e => {
         e.preventDefault();
         try {
-            const response = await fetch('http://localhost:5000/login', {
+            const response = await fetch('http://localhost:5000/log-in', {
                 method: 'post',
                 body: JSON.stringify({ username, password }),
                 headers: { 'Content-Type': 'application/json' },
             });
 
             if (response.status === 200)
-                setCurrentUser(await response.json());
+                signIn(await response.json());
             else if (response.status === 400)
-                setErrors((await response.json()).map(err => <li key={err}>{err}</li>));
+                setError((await response.json()).message);
 
         } catch {
-            setErrors(['There was a network error']);
+            setError('There was a network error');
         }
     };
 
@@ -63,7 +63,7 @@ function LogIn() {
                 className={btn}
                 disabled={!username || !password}
             >Sign up</button>
-            <ul>{errors}</ul>
+            <div>{error}</div>
             <p>Don't have an account? <Link href="/register">Sign up</Link></p>
         </form>
     );

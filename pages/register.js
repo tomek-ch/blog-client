@@ -15,7 +15,7 @@ function LogIn() {
     });
 
     const [errors, setErrors] = useState([]);
-    const { setCurrentUser } = useAppContext();
+    const { signIn } = useAppContext();
 
     const handleChange = e => {
         const { value, name } = e.target;
@@ -32,10 +32,10 @@ function LogIn() {
             });
 
             if (response.status === 200)
-                setCurrentUser(await response.json());
+                signIn(await response.json());
             else if (response.status === 400)
                 setErrors((await response.json()).map(err => <li key={err}>{err}</li>));
-            
+
         } catch {
             setErrors(['There was a network error']);
         }

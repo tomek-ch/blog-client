@@ -5,11 +5,11 @@ import { options, option } from '../styles/UserOptions.module.css';
 
 function UserOptions({ toggle }) {
 
-    const { setCurrentUser } = useAppContext();
+    const { signOut } = useAppContext();
     const router = useRouter()
 
-    const signOut = () => {
-        setCurrentUser(null);
+    const handleClick = () => {
+        signOut();
         router.push('/');
     };
 
@@ -21,7 +21,7 @@ function UserOptions({ toggle }) {
             <Link href="/settings">
                 <a onClick={toggle} className={option}>Settings</a>
             </Link>
-            <div onClick={signOut} className={option}>Sign out</div>
+            <div onClick={handleClick} className={option}>Sign out</div>
         </div>
     );
 }
