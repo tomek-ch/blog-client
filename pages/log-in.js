@@ -62,7 +62,7 @@ function LogIn() {
                 type="submit"
                 className={btn}
                 disabled={!username || !password}
-            >Sign up</button>
+            >Sign in</button>
             <div>{error}</div>
             <p>Don't have an account? <Link href="/register">Sign up</Link></p>
         </form>
