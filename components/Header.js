@@ -14,7 +14,7 @@ function Header() {
                 <Link href="/">
                     <a><h1>Blogg</h1></a>
                 </Link>
-                {currentUser ? <Nav username={currentUser.username} /> : <AuthLinks />}
+                {currentUser ? <Nav user={currentUser} /> : <AuthLinks />}
             </div>
         </header>
     );

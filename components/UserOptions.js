@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import { useAppContext } from './Context';
 import { options, option } from '../styles/UserOptions.module.css';
 
-function UserOptions({ toggle }) {
+function UserOptions({ toggle, uid }) {
 
     const { signOut } = useAppContext();
     const router = useRouter()
@@ -15,13 +15,13 @@ function UserOptions({ toggle }) {
 
     return (
         <div className={options}>
-            <Link href="/profile">
-                <a onClick={toggle} className={option}>Profile</a>
+            <Link href={`/users/${uid}`}>
+                <a onClick={toggle} className={option} data-link>Profile</a>
             </Link>
             <Link href="/settings">
-                <a onClick={toggle} className={option}>Settings</a>
+                <a onClick={toggle} className={option} data-link>Settings</a>
             </Link>
-            <div onClick={handleClick} className={option}>Sign out</div>
+            <button onClick={handleClick} className={option} data-link>Sign out</button>
         </div>
     );
 }
