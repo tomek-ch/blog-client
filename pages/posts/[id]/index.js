@@ -1,4 +1,5 @@
 import Meta from '../../../components/Meta';
+import Tags from '../../../components/Tags';
 import style from '../../../styles/Post.module.css';
 
 function Post({ post, error }) {
@@ -24,9 +25,7 @@ function Post({ post, error }) {
                         <p>{p.body}</p>
                     </div>
                 ))}
-                <div className={style.tags}>
-                    {post.tags.map(tag => <div key={tag} className={style.tag}>{tag}</div>)}
-                </div>
+                <Tags tags={post.tags} />
             </article>
             : <div classsName={style.post}>{error}</div>
     );

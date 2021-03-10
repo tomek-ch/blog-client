@@ -12,21 +12,9 @@
   font-size: 1.7em;
 }
 
-.tags {
-  margin-top: 2em;
-  display: flex;
-  gap: 0.5em;
-}
-
 .paragraph {
   margin-bottom: 1em;
   font-size: 1.1em;
-}
-
-.tag {
-  padding: 0.2em 0.5em;
-  background-color: lightgray;
-  border-radius: 5px;
 }
 
 .details {

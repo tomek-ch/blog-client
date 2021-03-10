@@ -1,0 +1,11 @@
+.tags {
+  margin-top: 2em;
+  display: flex;
+  gap: 0.5em;
+}
+
+.tag {
+  padding: 0.2em 0.5em;
+  background-color: lightgray;
+  border-radius: 5px;
+}
