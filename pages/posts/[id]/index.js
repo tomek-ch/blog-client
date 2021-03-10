@@ -5,21 +5,27 @@ import style from '../../../styles/Post.module.css';
 
 function Post({ post, error }) {
 
+    if (error)
+        return (
+            <div classsName={style.post}>
+                <Meta title={`${error} - Blogg`} />
+                {error}
+            </div>
+        );
+
     return (
-        post ?
-            <article className={style.post}>
-                <Meta title={post.title} />
-                <h1 className={style.title}>{post.title}</h1>
-                <Details post={post} />
-                {post.paragraphs.map(p => (
-                    <div key={p._id} className={style.paragraph}>
-                        <h2 className={style.heading}>{p.heading}</h2>
-                        <p>{p.body}</p>
-                    </div>
-                ))}
-                <Tags tags={post.tags} />
-            </article>
-            : <div classsName={style.post}>{error}</div>
+        <article className={style.post}>
+            <Meta title={post.title} />
+            <h1 className={style.title}>{post.title}</h1>
+            <Details post={post} />
+            {post.paragraphs.map(p => (
+                <div key={p._id} className={style.paragraph}>
+                    <h2 className={style.heading}>{p.heading}</h2>
+                    <p>{p.body}</p>
+                </div>
+            ))}
+            <Tags tags={post.tags} />
+        </article>
     );
 }
 
