@@ -9,9 +9,11 @@ function Details({ post }) {
             ? '1 minute read'
             : `${readTime} minutes read`;
 
+    const authorName = post.author.firstName && `${post.author.firstName} ${post.author.lastName} • `;
+
     return (
         <div className={details}>
-            {post.time} • {post.author.firstName} {post.author.lastName} • {timeToRead}
+            {post.time} • {authorName}{timeToRead}
         </div>
     );
 }
