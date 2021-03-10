@@ -1,24 +1,16 @@
+import Details from '../../../components/Details';
 import Meta from '../../../components/Meta';
 import Tags from '../../../components/Tags';
 import style from '../../../styles/Post.module.css';
 
 function Post({ post, error }) {
 
-    const { readTime } = post;
-    const timeToRead = readTime === 0
-        ? 'Less than a minute to read'
-        : readTime === 1
-            ? '1 minute read'
-            : `${readTime} minutes read`;
-
     return (
         post ?
             <article className={style.post}>
                 <Meta title={post.title} />
                 <h1 className={style.title}>{post.title}</h1>
-                <div className={style.details}>
-                    {post.time} • {post.author.firstName} {post.author.lastName} • {timeToRead}
-                </div>
+                <Details post={post} />
                 {post.paragraphs.map(p => (
                     <div key={p._id} className={style.paragraph}>
                         <h2 className={style.heading}>{p.heading}</h2>
