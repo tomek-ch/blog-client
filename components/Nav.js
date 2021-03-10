@@ -1,16 +1,23 @@
 import { useState } from 'react';
 import UserOptions from './UserOptions';
-import { nav } from '../styles/Nav.module.css';
+import { nav, usernameBtn } from '../styles/Nav.module.css';
 
 function Nav({ username }) {
 
     const [optionsOpen, setOptionsOpen] = useState(false);
     const toggleOptions = () => setOptionsOpen(prev => !prev);
+    const hideOptions = () => setOptionsOpen(false);
 
     return (
         <nav className={nav}>
-            <div onClick={toggleOptions}>{username}</div>
-            {optionsOpen ? <UserOptions toggle={toggleOptions}/> : ''}
+            <button
+                className={usernameBtn}
+                onClick={toggleOptions}
+                onBlur={hideOptions}
+            >
+                {username}
+            </button>
+            {optionsOpen ? <UserOptions toggle={toggleOptions} /> : ''}
         </nav>
     );
 }

@@ -12,6 +12,7 @@ a {
 button {
   background-color: inherit;
   font-size: inherit;
+  border: none;
 }
 
 body {
