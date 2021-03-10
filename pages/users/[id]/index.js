@@ -4,11 +4,18 @@ import Meta from '../../../components/Meta';
 function Post({ user, error }) {
 
     if (error) return (
-        <div>{error}</div>
+        <div>
+            <Meta title={error} />
+            {error}
+        </div>
     );
 
     return (
-        <h1>{user.firstName}</h1>
+        <div>
+            <Meta title={`${user.firstName} - Blogg`} />
+            <h1>{user.firstName}</h1>
+
+        </div>
     );
 }
 
