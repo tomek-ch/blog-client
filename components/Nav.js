@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import UserOptions from './UserOptions';
+import { nav } from '../styles/Nav.module.css';
 
 function Nav({ username }) {
 
@@ -7,7 +8,7 @@ function Nav({ username }) {
     const toggleOptions = () => setOptionsOpen(prev => !prev);
 
     return (
-        <nav>
+        <nav className={nav}>
             <div onClick={toggleOptions}>{username}</div>
             {optionsOpen ? <UserOptions toggle={toggleOptions}/> : ''}
         </nav>

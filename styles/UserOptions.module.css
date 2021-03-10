@@ -6,6 +6,8 @@
   border-radius: 5px;
   box-shadow: 0 0 10px lightgray;
   width: fit-content;
+  position: absolute;
+  right: 0em;
 }
 
 .option {
