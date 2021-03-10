@@ -1,17 +1,17 @@
 import Meta from '../../../components/Meta';
-// import style from '../../../styles/Post.module.css';
+import { container } from '../../../styles/Profile.module.css';
 
 function Post({ user, error }) {
 
     if (error) return (
-        <div>
+        <div className={container}>
             <Meta title={error} />
             {error}
         </div>
     );
 
     return (
-        <div>
+        <div className={container}>
             <Meta title={`${user.firstName} - Blogg`} />
             <h1>{user.firstName}</h1>
 
