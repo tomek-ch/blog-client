@@ -7,7 +7,7 @@ function Post({ post, error }) {
 
     if (error)
         return (
-            <div classsName={style.post}>
+            <div className={style.post}>
                 <Meta title={`${error} - Blogg`} />
                 {error}
             </div>
