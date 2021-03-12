@@ -27,10 +27,13 @@ function PostEditor() {
     )).filter((p, idx) => p.body || idx === paragraphs.length - 1));
 
     const submitPost = () => {
-        // Filter removes trailing empty paragraph
+        // Remove trailing empty paragraph and trim text
         const post = {
             title,
-            paragraphs: paragraphs.filter(p => p.body),
+            paragraphs: paragraphs.flatMap(p => p.body ? [{
+                heading: p.heading.trim(),
+                body: p.body.trim(),
+            }] : []),
         };
         console.log(post);
     };
