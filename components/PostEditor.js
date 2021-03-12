@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { editor } from '../styles/PostEditor.module.css';
 
 function PostEditor() {
     const [title, setTitle] = useState('');
@@ -34,14 +35,14 @@ function PostEditor() {
     };
 
     return (
-        <>
+        <div className={editor}>
             <input
                 value={title}
                 onChange={e => setTitle(e.target.value)}
                 placeholder="Your post's title"
             />
             {paragraphs.map((p, i) => (
-                <div key={`paragraph-${i}`} >
+                <div key={`paragraph-${i}`} className={editor} >
                     <input
                         value={p.heading}
                         onChange={editParagraph('heading', i)}
@@ -66,7 +67,7 @@ function PostEditor() {
             >
                 Submit post
             </button>
-        </>
+        </div>
     );
 }
 
