@@ -1,8 +1,5 @@
 import Meta from '../../../components/Meta';
-import Tags from '../../../components/Tags';
-import Details from '../../../components/Details';
 import { container } from '../../../styles/Post.module.css';
-import Link from 'next/link';
 import PostExcerpt from '../../../components/PostExcerpt';
 
 function Post({ user, posts, error }) {
