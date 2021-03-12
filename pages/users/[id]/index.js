@@ -3,6 +3,7 @@ import Tags from '../../../components/Tags';
 import Details from '../../../components/Details';
 import { container } from '../../../styles/Profile.module.css';
 import Link from 'next/link';
+import PostExcerpt from '../../../components/PostExcerpt';
 
 function Post({ user, posts, error }) {
 
@@ -17,18 +18,7 @@ function Post({ user, posts, error }) {
         <div className={container}>
             <Meta title={`${user.firstName} - Blogg`} />
             <h1>{user.firstName} {user.lastName}</h1>
-            {posts.map(post => (
-                <div key={post.id}>
-                    <Link href={`/posts/${post._id}`}>
-                        <a>
-                            <h2>{post.title}</h2>
-                        </a>
-                    </Link>
-                    <Details post={post} />
-                    <p>{post.paragraphs[0].body}</p>
-                    <Tags tags={post.tags} />
-                </div>
-            ))}
+            {posts.map(post => <PostExcerpt key={post._id} post={post} />)}
         </div>
     );
 }
