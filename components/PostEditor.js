@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { editor, titleInput, headingInput, textBox } from '../styles/PostEditor.module.css';
+import TextBox from './TextBox';
 
 function PostEditor() {
     const [title, setTitle] = useState('');
@@ -50,7 +51,7 @@ function PostEditor() {
                         placeholder="Heading"
                         className={headingInput}
                     />
-                    <textarea
+                    <TextBox
                         value={p.body}
                         onChange={editParagraph('body', i)}
                         placeholder="Body"
