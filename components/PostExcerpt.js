@@ -5,7 +5,7 @@ import style from '../styles/Post.module.css';
 
 function PostExcerpt({ post }) {
     return (
-        <div key={post._id} className={style.post}>
+        <div key={post._id} className={style.container}>
             <Link href={`/posts/${post._id}`}>
                 <a><h2>{post.title}</h2></a>
             </Link>

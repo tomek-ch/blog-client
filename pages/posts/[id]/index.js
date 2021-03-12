@@ -7,14 +7,14 @@ function Post({ post, error }) {
 
     if (error)
         return (
-            <div className={style.post}>
+            <div className={style.container}>
                 <Meta title={`${error} - Blogg`} />
                 {error}
             </div>
         );
 
     return (
-        <article className={style.post}>
+        <article className={style.container}>
             <Meta title={post.title} />
             <h1 className={style.title}>{post.title}</h1>
             <Details post={post} />

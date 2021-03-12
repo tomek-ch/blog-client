@@ -6,7 +6,7 @@ function PostsTagged({ posts, tag, error }) {
 
     if (error)
         return (
-            <div className={style.post}>
+            <div className={style.container}>
                 <Meta title={`${error} - Blogg`} />
                 {error}
             </div>
