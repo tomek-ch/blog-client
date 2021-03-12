@@ -1,8 +1,12 @@
+import Meta from "../components/Meta";
 import PostEditor from "../components/PostEditor";
 
 function NewPost() {
     return (
-        <PostEditor />
+        <>
+            <Meta title="New post - Blogg" />
+            <PostEditor />
+        </>
     );
 }
 
