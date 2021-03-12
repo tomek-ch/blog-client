@@ -1,5 +1,20 @@
 .editor {
-    display: flex;
-    flex-direction: column;
-    gap: 1em;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.headingInput {
+  outline: none;
+  font-size: 1.5em;
+}
+
+.titleInput {
+  outline: none;
+  font-size: 2em;
+}
+
+.textBox {
+  outline: none;
+  font-size: 1.1em;
 }
