@@ -9,6 +9,16 @@ a {
   text-decoration: none;
 }
 
+input, textarea {
+  border: none;
+  font-family: inherit;
+  font-size: inherit;
+}
+
+textarea {
+  resize: none;
+}
+
 button {
   background-color: inherit;
   font-size: inherit;
