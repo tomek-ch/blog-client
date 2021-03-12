@@ -2,7 +2,7 @@ import Meta from '../../../components/Meta';
 import style from '../../../styles/Post.module.css';
 import PostExcerpt from '../../../components/PostExcerpt';
 
-function PostsTagged({ posts, error }) {
+function PostsTagged({ posts, tag, error }) {
 
     if (error)
         return (
@@ -12,7 +12,12 @@ function PostsTagged({ posts, error }) {
             </div>
         );
 
-    return posts.map(post => <PostExcerpt key={post._id} post={post} />);
+    return (
+        <>
+            <Meta title={`Posts tagged ${tag} - Blogg`} />
+            {posts.map(post => <PostExcerpt key={post._id} post={post} />)}
+        </>
+    );
 }
 
 export async function getServerSideProps({ params: { id } }) {
@@ -20,7 +25,7 @@ export async function getServerSideProps({ params: { id } }) {
         const res = await fetch(`http://localhost:5000/posts?tags=${encodeURI(id)}`);
         const data = await res.json();
 
-        if (res.status === 200) return { props: { posts: data } };
+        if (res.status === 200) return { props: { posts: data, tag: id } };
         else return { props: { error: data[0] } };
 
     } catch (error) {
