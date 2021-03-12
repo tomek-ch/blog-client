@@ -1,23 +1,23 @@
 import Meta from '../../../components/Meta';
-import style from '../../../styles/Post.module.css';
+import { container } from '../../../styles/Post.module.css';
 import PostExcerpt from '../../../components/PostExcerpt';
 
 function PostsTagged({ posts, tag, error }) {
 
     if (error)
         return (
-            <div className={style.container}>
+            <div className={container}>
                 <Meta title={`${error} - Blogg`} />
                 {error}
             </div>
         );
 
     return (
-        <>
+        <div className={container}>
             <Meta title={`Posts tagged ${tag} - Blogg`} />
             <h1>Posts tagged {tag}</h1>
             {posts.map(post => <PostExcerpt key={post._id} post={post} />)}
-        </>
+        </div>
     );
 }
 
