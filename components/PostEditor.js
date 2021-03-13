@@ -4,7 +4,7 @@ import TextBox from './TextBox';
 import PostSubmitSummary from './PostSubmitSummary';
 
 function PostEditor() {
-    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isSummaryOpen, setIsSummaryOpen] = useState(false);
     const [title, setTitle] = useState('');
     const [paragraphs, setParagraphs] = useState([{ heading: '', body: '' }]);
 
@@ -41,13 +41,13 @@ function PostEditor() {
             }] : []),
         };
         setPostPreview(post);
-        setIsModalOpen(true);
+        setIsSummaryOpen(true);
     };
 
-    if (isModalOpen) return (
+    if (isSummaryOpen) return (
         <PostSubmitSummary
             post={postPreview}
-            closeModal={() => setIsModalOpen(false)}
+            goBack={() => setIsSummaryOpen(false)}
             {...{ tags, setTags }}
         />
     );
