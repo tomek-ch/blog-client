@@ -5,8 +5,10 @@ function TagEditor({ tags, setTags }) {
 
     const handleSubmit = e => {
         e.preventDefault();
-        if (!tags.includes(tag))
+        if (!tags.includes(tag)) {
             setTags(prev => [...prev, tag]);
+            setTag('');
+        }
     };
 
     const removeTag = toRemove => {
