@@ -5,9 +5,11 @@ import SubmitPostModal from './SubmitPostModal';
 
 function PostEditor() {
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const [postPreview, setPostPreview] = useState({});
     const [title, setTitle] = useState('');
     const [paragraphs, setParagraphs] = useState([{ heading: '', body: '' }]);
+    
+    const [postPreview, setPostPreview] = useState({});
+    const [tags, setTags] = useState([]);
 
     const canAddParagraph = paragraphs[paragraphs.length - 1].body;
     // Post must have a title and at least one valid paragraph
@@ -81,6 +83,7 @@ function PostEditor() {
             {isModalOpen && <SubmitPostModal
                 post={postPreview}
                 closeModal={() => setIsModalOpen(false)}
+                {...{ tags, setTags }}
             />}
         </div>
     );
