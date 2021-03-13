@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 function TextBox(props) {
 
@@ -10,6 +10,7 @@ function TextBox(props) {
         setStyle({ height: textBox.current.scrollHeight });
     };
 
+    useEffect(() => setStyle({ height: textBox.current.scrollHeight }), []);
 
     return (
         <textarea

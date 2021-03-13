@@ -7,7 +7,7 @@ function PostEditor() {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [title, setTitle] = useState('');
     const [paragraphs, setParagraphs] = useState([{ heading: '', body: '' }]);
-    
+
     const [postPreview, setPostPreview] = useState({});
     const [tags, setTags] = useState([]);
 
@@ -43,6 +43,14 @@ function PostEditor() {
         setPostPreview(post);
         setIsModalOpen(true);
     };
+
+    if (isModalOpen) return (
+        <SubmitPostModal
+            post={postPreview}
+            closeModal={() => setIsModalOpen(false)}
+            {...{ tags, setTags }}
+        />
+    );
 
     return (
         <div className={editor}>
@@ -80,11 +88,6 @@ function PostEditor() {
             >
                 Submit post
             </button>
-            {isModalOpen && <SubmitPostModal
-                post={postPreview}
-                closeModal={() => setIsModalOpen(false)}
-                {...{ tags, setTags }}
-            />}
         </div>
     );
 }
