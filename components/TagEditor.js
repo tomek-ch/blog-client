@@ -17,6 +17,7 @@ function TagEditor({ tags, setTags }) {
         <div>
             <form onSubmit={handleSubmit}>
                 <input
+                    placeholder="Add a tag"
                     value={tag}
                     onChange={e => setTag(e.target.value)}
                 />
