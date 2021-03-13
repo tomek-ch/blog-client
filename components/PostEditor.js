@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import { editor, titleInput, headingInput, textBox } from '../styles/PostEditor.module.css';
 import TextBox from './TextBox';
+import SubmitPostModal from './SubmitPostModal';
 
 function PostEditor() {
+    const [modal, setModal] = useState(null);
     const [title, setTitle] = useState('');
     const [paragraphs, setParagraphs] = useState([{ heading: '', body: '' }]);
 
@@ -35,7 +37,8 @@ function PostEditor() {
                 body: p.body.trim(),
             }] : []),
         };
-        console.log(post);
+
+        setModal(<SubmitPostModal post={post} closeModal={() => setModal(null)} />);
     };
 
     return (
@@ -74,6 +77,7 @@ function PostEditor() {
             >
                 Submit post
             </button>
+            {modal}
         </div>
     );
 }
