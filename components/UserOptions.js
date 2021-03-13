@@ -15,7 +15,7 @@ function UserOptions({ toggle, uid }) {
 
     return (
         <div className={options}>
-            <Link href="new">
+            <Link href="/new">
                 <a onClick={toggle} className={option} data-link>New post</a>
             </Link>
             <Link href={`/users/${uid}`}>
