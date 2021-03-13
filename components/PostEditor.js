@@ -4,7 +4,8 @@ import TextBox from './TextBox';
 import SubmitPostModal from './SubmitPostModal';
 
 function PostEditor() {
-    const [modal, setModal] = useState(null);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [postPreview, setPostPreview] = useState({});
     const [title, setTitle] = useState('');
     const [paragraphs, setParagraphs] = useState([{ heading: '', body: '' }]);
 
@@ -37,8 +38,8 @@ function PostEditor() {
                 body: p.body.trim(),
             }] : []),
         };
-
-        setModal(<SubmitPostModal post={post} closeModal={() => setModal(null)} />);
+        setPostPreview(post);
+        setIsModalOpen(true);
     };
 
     return (
@@ -77,7 +78,10 @@ function PostEditor() {
             >
                 Submit post
             </button>
-            {modal}
+            {isModalOpen && <SubmitPostModal
+                post={postPreview}
+                closeModal={() => setIsModalOpen(false)}
+            />}
         </div>
     );
 }
