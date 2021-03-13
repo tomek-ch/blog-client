@@ -10,6 +10,7 @@ function PostEditor() {
 
     const [postPreview, setPostPreview] = useState({});
     const [tags, setTags] = useState([]);
+    const [excerpt, setExcerpt] = useState('');
 
     const canAddParagraph = paragraphs[paragraphs.length - 1].body;
     // Post must have a title and at least one valid paragraph
@@ -40,6 +41,12 @@ function PostEditor() {
                 body: p.body.trim(),
             }] : []),
         };
+
+        if (!excerpt) {
+            const limitLength = (str, max) => str.length > max ? `${str.substring(0, max - 3)}...` : str;
+            setExcerpt(limitLength(post.paragraphs[0].body, 200));
+        }
+        
         setPostPreview(post);
         setIsSummaryOpen(true);
     };
@@ -48,7 +55,7 @@ function PostEditor() {
         <PostSubmitSummary
             post={postPreview}
             goBack={() => setIsSummaryOpen(false)}
-            {...{ tags, setTags }}
+            {...{ tags, setTags, excerpt, setExcerpt }}
         />
     );
 
