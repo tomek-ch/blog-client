@@ -9,6 +9,10 @@ function TagEditor({ tags, setTags }) {
             setTags(prev => [...prev, tag]);
     };
 
+    const removeTag = toRemove => {
+        setTags(prev => prev.filter(tag => tag !== toRemove));
+    };
+
     return (
         <div>
             <form onSubmit={handleSubmit}>
@@ -18,7 +22,12 @@ function TagEditor({ tags, setTags }) {
                 />
             </form>
             <div>
-                {tags.map(tag => <div key={tag}>{tag}</div>)}
+                {tags.map(tag => (
+                    <div key={tag}>
+                        <div>{tag}</div>
+                        <button onClick={() => removeTag(tag)}>x</button>
+                    </div>
+                ))}
             </div>
         </div>
     );
