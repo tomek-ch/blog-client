@@ -1,6 +1,6 @@
 import TagEditor from './TagEditor';
 
-function SubmitPostModal({ post, closeModal, tags, setTags }) {
+function PostSubmitSummary({ post, closeModal, tags, setTags }) {
 
     const limitLength = (str, max) => str.length > max ? `${str.substring(0, max - 3)}...` : str;
     const postExcerpt = limitLength(post.paragraphs[0].body, 200);
@@ -15,4 +15,4 @@ function SubmitPostModal({ post, closeModal, tags, setTags }) {
     );
 }
 
-export default SubmitPostModal;
+export default PostSubmitSummary;

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { editor, titleInput, headingInput, textBox } from '../styles/PostEditor.module.css';
 import TextBox from './TextBox';
-import SubmitPostModal from './SubmitPostModal';
+import PostSubmitSummary from './PostSubmitSummary';
 
 function PostEditor() {
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -45,7 +45,7 @@ function PostEditor() {
     };
 
     if (isModalOpen) return (
-        <SubmitPostModal
+        <PostSubmitSummary
             post={postPreview}
             closeModal={() => setIsModalOpen(false)}
             {...{ tags, setTags }}
