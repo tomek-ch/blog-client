@@ -11,6 +11,7 @@ function PostEditor() {
     const [postPreview, setPostPreview] = useState({});
     const [tags, setTags] = useState([]);
     const [excerpt, setExcerpt] = useState('');
+    const [isVisible, setIsVisible] = useState(true);
 
     const canAddParagraph = paragraphs[paragraphs.length - 1].body;
     // Post must have a title and at least one valid paragraph
@@ -55,7 +56,7 @@ function PostEditor() {
         <PostSubmitSummary
             post={postPreview}
             goBack={() => setIsSummaryOpen(false)}
-            {...{ tags, setTags, excerpt, setExcerpt }}
+            {...{ tags, setTags, excerpt, setExcerpt, isVisible, setIsVisible }}
         />
     );
 
