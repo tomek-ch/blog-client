@@ -1,4 +1,5 @@
 import { details } from '.././styles/Details.module.css';
+import Link from 'next/link';
 
 function Details({ post }) {
 
@@ -9,7 +10,11 @@ function Details({ post }) {
             ? '1 minute read'
             : `${readTime} minutes read`;
 
-    const authorName = post.author.firstName && `${post.author.firstName} ${post.author.lastName} • `;
+    const authorName = post.author.firstName && (
+        <><Link href={`/users/${post.author._id}`}>
+            <a>{post.author.firstName} {post.author.lastName}</a>
+        </Link> • </>
+    );
 
     return (
         <div className={details}>
