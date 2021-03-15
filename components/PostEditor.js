@@ -3,7 +3,7 @@ import { editor, titleInput, headingInput, textBox } from '../styles/PostEditor.
 import TextBox from './TextBox';
 import PostSubmitSummary from './PostSubmitSummary';
 
-function PostEditor() {
+function PostEditor({ submitCb }) {
     const [isSummaryOpen, setIsSummaryOpen] = useState(false);
     const [title, setTitle] = useState('');
     const [paragraphs, setParagraphs] = useState([{ heading: '', body: '' }]);
@@ -56,7 +56,7 @@ function PostEditor() {
         <PostSubmitSummary
             post={postPreview}
             goBack={() => setIsSummaryOpen(false)}
-            {...{ tags, setTags, excerpt, setExcerpt, isVisible, setIsVisible }}
+            {...{ tags, setTags, excerpt, setExcerpt, isVisible, setIsVisible, submitCb }}
         />
     );
 
