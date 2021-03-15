@@ -9,7 +9,7 @@ function PostExcerpt({ post }) {
                 <a><h2>{post.title}</h2></a>
             </Link>
             <Details post={post} />
-            <p>{post.paragraphs[0].body}</p>
+            <p>{post.excerpt}</p>
             <Tags tags={post.tags} />
         </div>
     );
