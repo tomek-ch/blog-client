@@ -37,6 +37,7 @@ function ContextProvider({ children }) {
             currentUser,
             signIn,
             signOut,
+            token,
         }}>
             {children}
         </Context.Provider>

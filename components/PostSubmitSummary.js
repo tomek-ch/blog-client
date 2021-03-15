@@ -1,10 +1,7 @@
 import TagEditor from './TagEditor';
 import TextBox from './TextBox';
-import { useAppContext } from './Context';
 
 function PostSubmitSummary({ post, goBack, tags, setTags, excerpt, setExcerpt, isVisible, setIsVisible, submitCb }) {
-
-    const{ currentUser: { _id } } = useAppContext();
 
     const handleClick = async () => {
         const data = {
@@ -12,7 +9,6 @@ function PostSubmitSummary({ post, goBack, tags, setTags, excerpt, setExcerpt, i
             tags,
             isPublished: isVisible,
             excerpt,
-            author: _id,
         };
         await submitCb(data);
     };

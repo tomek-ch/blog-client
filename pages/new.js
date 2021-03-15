@@ -2,10 +2,12 @@ import Meta from '../components/Meta';
 import PostEditor from '../components/PostEditor';
 import { container } from '../styles/Post.module.css';
 import { useRouter } from 'next/router';
+import { useAppContext } from '../components/Context';
 
 function NewPost() {
 
     const router = useRouter();
+    const { token } = useAppContext();
 
     const submitCb = async post => {
         console.log(JSON.stringify(post))
@@ -13,7 +15,10 @@ function NewPost() {
             const res = await fetch('http://localhost:5000/posts', {
                 method: 'post',
                 body: JSON.stringify(post),
-                headers: { 'Content-Type': 'application/json' },
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`,
+                },
             });
             if (res.status === 200) {
                 const { _id } = await res.json();
