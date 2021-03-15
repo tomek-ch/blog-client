@@ -13,7 +13,7 @@ function PostSubmitSummary({ post, goBack, tags, setTags, excerpt, setExcerpt, i
             <TagEditor {...{ tags, setTags }} />
             <label>
                 Publish post after saving
-            <input
+                <input
                     type="checkbox"
                     value={isVisible}
                     onChange={() => setIsVisible(prev => !prev)}
