@@ -1,13 +1,13 @@
 import TagEditor from './TagEditor';
 import TextBox from './TextBox';
 
-function PostSubmitSummary({ post, goBack, tags, setTags, excerpt, setExcerpt, isVisible, setIsVisible, submitCb }) {
+function PostSubmitSummary({ post, goBack, tags, setTags, excerpt, setExcerpt, isPublished, setIsPublished, submitCb }) {
 
     const handleClick = async () => {
         const data = {
             ...post,
             tags,
-            isPublished: isVisible,
+            isPublished,
             excerpt,
         };
         await submitCb(data);
@@ -26,8 +26,8 @@ function PostSubmitSummary({ post, goBack, tags, setTags, excerpt, setExcerpt, i
                 Publish post after saving
                 <input
                     type="checkbox"
-                    value={isVisible}
-                    onChange={() => setIsVisible(prev => !prev)}
+                    value={isPublished}
+                    onChange={() => setIsPublished(prev => !prev)}
                 />
             </label>
             <button onClick={handleClick}>Save</button>
