@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useRouter } from 'next/router'
 import Link from 'next/link';
 import { useAppContext } from '../components/Context';
 import { btn } from '../styles/Btn.module.css';
@@ -10,7 +11,10 @@ function LogIn() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
-    const { signIn } = useAppContext();
+    const { signIn, currentUser } = useAppContext();
+
+    const router = useRouter();
+    if (currentUser) router.push('/');
 
     const handleChange = cb => e => {
         const { value } = e.target;

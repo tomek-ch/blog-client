@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { useAppContext } from '../components/Context';
 import { btn } from '../styles/Btn.module.css';
 import { form, input } from '../styles/Form.module.css';
@@ -15,7 +16,10 @@ function LogIn() {
     });
 
     const [errors, setErrors] = useState([]);
-    const { signIn } = useAppContext();
+    const { signIn, currentUser } = useAppContext();
+
+    const router = useRouter();
+    if (currentUser) router.push('/');
 
     const handleChange = e => {
         const { value, name } = e.target;
