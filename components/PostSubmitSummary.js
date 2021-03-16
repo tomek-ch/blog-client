@@ -1,5 +1,6 @@
 import TagEditor from './TagEditor';
 import TextBox from './TextBox';
+import { editor } from '../styles/PostEditor.module.css';
 
 function PostSubmitSummary({ post, goBack, tags, setTags, excerpt, setExcerpt, isPublished, setIsPublished, submitCb }) {
 
@@ -14,7 +15,7 @@ function PostSubmitSummary({ post, goBack, tags, setTags, excerpt, setExcerpt, i
     };
 
     return (
-        <div>
+        <div className={editor}>
             <h1>{post.title}</h1>
             <TextBox
                 value={excerpt}
@@ -23,12 +24,12 @@ function PostSubmitSummary({ post, goBack, tags, setTags, excerpt, setExcerpt, i
             />
             <TagEditor {...{ tags, setTags }} />
             <label>
-                Publish post after saving
                 <input
                     type="checkbox"
                     value={isPublished}
                     onChange={() => setIsPublished(prev => !prev)}
                 />
+                Publish post after saving
             </label>
             <button onClick={handleClick}>Save</button>
             <button onClick={goBack}>Cancel</button>
