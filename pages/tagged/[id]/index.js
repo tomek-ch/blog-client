@@ -14,7 +14,10 @@ function PostsTagged({ posts, tag, error }) {
 
     return (
         <div className={container}>
-            <Meta title={`Posts tagged ${tag} - Blogg`} />
+            <Meta
+                title={`Posts tagged ${tag} - Blogg`}
+                description={`Discover internet's best articles about ${tag} on Blogg.`}
+            />
             <h1>Posts tagged {tag}</h1>
             {posts.map(post => <PostExcerpt key={post._id} post={post} />)}
         </div>

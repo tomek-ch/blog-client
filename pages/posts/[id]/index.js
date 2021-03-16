@@ -15,7 +15,7 @@ function Post({ post, error }) {
 
     return (
         <article className={style.container}>
-            <Meta title={post.title} />
+            <Meta title={post.title} description={post.excerpt} />
             <h1 className={style.title}>{post.title}</h1>
             <Details post={post} />
             {post.paragraphs.map(p => (

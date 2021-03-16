@@ -13,7 +13,7 @@ function Post({ user, posts, error }) {
 
     return (
         <div className={container}>
-            <Meta title={`${user.firstName} - Blogg`} />
+            <Meta title={`${user.firstName} - Blogg`} description={user.description} />
             <h1>{user.firstName} {user.lastName}</h1>
             {posts.map(post => <PostExcerpt key={post._id} post={post} />)}
         </div>
