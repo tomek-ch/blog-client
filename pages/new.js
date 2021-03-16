@@ -9,7 +9,7 @@ function NewPost() {
     const router = useRouter();
     const { token } = useAppContext();
 
-    const submitCb = async post => {
+    const submitCb = async (post, handleError) => {
         console.log(JSON.stringify(post))
         try {
             const res = await fetch('http://localhost:5000/posts', {
@@ -20,14 +20,16 @@ function NewPost() {
                     'Authorization': `Bearer ${token}`,
                 },
             });
+            const data = await res.json()
+
             if (res.status === 200) {
-                const { _id } = await res.json();
+                const { _id } = data;
                 router.push(`/posts/${_id}`);
             } else {
-                console.log(await res.json());
+                handleError(data[0]);
             }
         } catch (e) {
-            console.log(e);
+            handleError('Error trying to submit');
         }
     };
 

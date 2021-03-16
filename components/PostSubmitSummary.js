@@ -1,8 +1,10 @@
+import { useState } from 'react';
 import TagEditor from './TagEditor';
 import TextBox from './TextBox';
 import { editor } from '../styles/PostEditor.module.css';
 
 function PostSubmitSummary({ post, goBack, tags, setTags, excerpt, setExcerpt, isPublished, setIsPublished, submitCb }) {
+    const [error, setError] = useState('');
 
     const handleClick = async () => {
         const data = {
@@ -11,7 +13,7 @@ function PostSubmitSummary({ post, goBack, tags, setTags, excerpt, setExcerpt, i
             isPublished,
             excerpt,
         };
-        await submitCb(data);
+        await submitCb(data, setError);
     };
 
     return (
@@ -31,6 +33,7 @@ function PostSubmitSummary({ post, goBack, tags, setTags, excerpt, setExcerpt, i
                 />
                 Publish post after saving
             </label>
+            <div>{error}</div>
             <button onClick={handleClick}>Save</button>
             <button onClick={goBack}>Cancel</button>
         </div>
