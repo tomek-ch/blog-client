@@ -28,7 +28,7 @@ function PostSubmitSummary({ post, goBack, tags, setTags, excerpt, setExcerpt, i
             <label>
                 <input
                     type="checkbox"
-                    value={isPublished}
+                    checked={isPublished}
                     onChange={() => setIsPublished(prev => !prev)}
                 />
                 Publish post after saving
