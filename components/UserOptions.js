@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useAppContext } from './Context';
-import { options, option } from '../styles/UserOptions.module.css';
+import { options, option } from '../styles/Options.module.css';
 
 function UserOptions({ toggle, uid }) {
 

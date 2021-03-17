@@ -1,7 +1,11 @@
 import { details } from '.././styles/Details.module.css';
 import Link from 'next/link';
+import { useAppContext } from './Context';
+import PostOptions from './PostOptions';
 
 function Details({ post }) {
+
+    const { currentUser } = useAppContext();
 
     const { readTime } = post;
     const timeToRead = readTime === 0
@@ -18,7 +22,11 @@ function Details({ post }) {
 
     return (
         <div className={details}>
-            {post.time} • {authorName}{timeToRead}
+            <div>{post.time} • {authorName}{timeToRead}</div>
+            {
+                currentUser?._id === post.author._id &&
+                <PostOptions id={post._id} />
+            }
         </div>
     );
 }

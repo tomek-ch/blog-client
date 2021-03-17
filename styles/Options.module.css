@@ -16,3 +16,7 @@
   cursor: pointer;
   text-align: left;
 }
+
+.toggle {
+  font-weight: bold;
+}
