@@ -3,15 +3,15 @@ import { editor, titleInput, headingInput, textBox } from '../styles/PostEditor.
 import TextBox from './TextBox';
 import PostSubmitSummary from './PostSubmitSummary';
 
-function PostEditor({ submitCb }) {
+function PostEditor({ submitCb, post }) {
     const [isSummaryOpen, setIsSummaryOpen] = useState(false);
-    const [title, setTitle] = useState('');
-    const [paragraphs, setParagraphs] = useState([{ heading: '', body: '' }]);
+    const [title, setTitle] = useState(post?.title || '');
+    const [paragraphs, setParagraphs] = useState(post?.paragraphs || [{ heading: '', body: '' }]);
 
     const [postPreview, setPostPreview] = useState({});
-    const [tags, setTags] = useState([]);
-    const [excerpt, setExcerpt] = useState('');
-    const [isPublished, setIsPublished] = useState(true);
+    const [tags, setTags] = useState(post?.tags || []);
+    const [excerpt, setExcerpt] = useState(post?.excerpt || '');
+    const [isPublished, setIsPublished] = useState(post ? post.isPublished : true);
 
     const canAddParagraph = paragraphs[paragraphs.length - 1].body;
     // Post must have a title and at least one valid paragraph
