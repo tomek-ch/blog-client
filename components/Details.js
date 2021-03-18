@@ -24,7 +24,7 @@ function Details({ post }) {
         <div className={details}>
             <div>{post.time} • {authorName}{timeToRead}</div>
             {
-                currentUser?._id === post.author._id &&
+                currentUser && currentUser._id === post.author._id &&
                 <PostOptions id={post._id} />
             }
         </div>
