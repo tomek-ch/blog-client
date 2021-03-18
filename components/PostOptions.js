@@ -16,7 +16,7 @@ function PostOptions({ id }) {
             headers: {
                 Authorization: `Bearer ${token}`,
             },
-    });
+        });
         router.replace('/');
     };
 
