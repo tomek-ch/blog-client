@@ -2,14 +2,21 @@ import { useState } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { option, options, toggle } from '../styles/Options.module.css';
+import { useAppContext } from './Context';
 
 function PostOptions({ id }) {
 
     const [isOpen, setIsOpen] = useState(false);
     const router = useRouter();
+    const { token } = useAppContext();
 
     const deletePost = async () => {
-        await fetch(`http://localhost:5000/posts/${id}`, { method: 'delete' });
+        await fetch(`http://localhost:5000/posts/${id}`, {
+            method: 'delete',
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+    });
         router.replace('/');
     };
 
