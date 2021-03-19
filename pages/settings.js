@@ -93,7 +93,7 @@ function Settings() {
     return (
         <>
             <form onSubmit={handleSubmit} className={form}>
-                <Meta title="Sign up to blogg" />
+                <Meta title="Edit your profile - Blogg" />
                 <h2>Edit profile</h2>
                 <label>
                     Username:
