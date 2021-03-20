@@ -3,6 +3,7 @@ import { useAppContext } from '../components/Context';
 import { btn } from '../styles/Btn.module.css';
 import { form, input } from '../styles/Form.module.css';
 import Meta from '../components/Meta';
+import { useRouter } from 'next/router';
 
 function Settings() {
 
@@ -17,6 +18,9 @@ function Settings() {
     const [oldPassword, setOldPassword] = useState('');
     const [passMsgs, setPassMsgs] = useState([]);
     const [newPassword, setNewPassword] = useState('');
+
+    const [deletePassword, setDeletePassword] = useState('');
+    const [delMsgs, setDelMsgs] = useState([]);
 
     useEffect(() => {
         if (currentUser) {
@@ -80,6 +84,29 @@ function Settings() {
 
             if (response.status === 200)
                 setPassMsgs(['Password updated successfully']);
+            else if (response.status === 400)
+                setPassMsgs((await response.json()));
+            else
+                setPassMsgs(['There was a network error']);
+
+        } catch {
+            setPassMsgs(['There was a network error']);
+        }
+    };
+
+    const router = useRouter();
+    const deleteAccount = async e => {
+        e.preventDefault();
+        try {
+            const response = await fetch(`http://localhost:5000/users/${currentUser._id}`, {
+                method: 'delete',
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            });
+
+            if (response.status === 200)
+                router.replace('/');
             else if (response.status === 400)
                 setPassMsgs((await response.json()));
             else
@@ -163,6 +190,25 @@ function Settings() {
                 >Save password</button>
                 <ul>
                     {passMsgs.map(msg => <li key={msg}>{msg}</li>)}
+                </ul>
+            </form>
+            <form onSubmit={deleteAccount} className={form}>
+                <h2>Delete account</h2>
+                <label>
+                    Your password:
+                    <input
+                        type="password"
+                        value={deletePassword}
+                        onChange={e => setDeletePassword(e.target.value)}
+                        className={input}
+                    />
+                </label>
+                <button
+                    className={btn}
+                    disabled={!deletePassword}
+                >Delete account</button>
+                <ul>
+                    {delMsgs.map(msg => <li key={msg}>{msg}</li>)}
                 </ul>
             </form>
         </>
