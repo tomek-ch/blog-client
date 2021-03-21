@@ -110,12 +110,12 @@ function Settings() {
                 signOut();
             }
             else if (response.status === 400)
-                setPassMsgs((await response.json()));
+                setDelMsgs((await response.json()));
             else
-                setPassMsgs(['There was a network error']);
+                setDelMsgs(['There was a network error']);
 
         } catch {
-            setPassMsgs(['There was a network error']);
+            setDelMsgs(['There was a network error']);
         }
     };
 
