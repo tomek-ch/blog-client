@@ -33,7 +33,6 @@ export async function getServerSideProps({ params: { id } }) {
         else return { props: { error: data[0] } };
 
     } catch (error) {
-        console.log(error)
         return { props: { error: 'Failed to connect to the server' } };
     }
 }

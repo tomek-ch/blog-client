@@ -10,7 +10,6 @@ function NewPost() {
     const { token } = useAppContext();
 
     const submitCb = async (post, handleError) => {
-        console.log(JSON.stringify(post))
         try {
             const res = await fetch('http://localhost:5000/posts', {
                 method: 'post',
