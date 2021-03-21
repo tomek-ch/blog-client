@@ -9,10 +9,10 @@ function Details({ post }) {
 
     const { readTime } = post;
     const timeToRead = readTime === 0
-        ? 'Less than a minute to read'
+        ? 'Less than a min'
         : readTime === 1
-            ? '1 minute read'
-            : `${readTime} minutes read`;
+            ? '1 min read'
+            : `${readTime} min read`;
 
     const authorName = post.author.firstName && (
         <><Link href={`/users/${post.author._id}`}>
