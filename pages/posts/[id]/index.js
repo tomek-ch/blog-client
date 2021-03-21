@@ -21,7 +21,7 @@ function Post({ post, error }) {
             {post.paragraphs.map(p => (
                 <div key={p._id} className={style.paragraph}>
                     <h2 className={style.heading}>{p.heading}</h2>
-                    <p>{p.body}</p>
+                    <p className={style.paragraphBody}>{p.body}</p>
                 </div>
             ))}
             <Tags tags={post.tags} />
