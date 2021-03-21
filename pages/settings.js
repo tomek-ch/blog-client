@@ -7,7 +7,7 @@ import { useRouter } from 'next/router';
 
 function Settings() {
 
-    const { currentUser, token, setCurrentUser } = useAppContext();
+    const { currentUser, token, setCurrentUser, signOut } = useAppContext();
 
     const [userData, setUserData] = useState({
         username: '',
@@ -105,8 +105,10 @@ function Settings() {
                 },
             });
 
-            if (response.status === 200)
+            if (response.status === 200) {
                 router.replace('/');
+                signOut();
+            }
             else if (response.status === 400)
                 setPassMsgs((await response.json()));
             else
