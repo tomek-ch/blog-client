@@ -2,8 +2,6 @@ import { useEffect, useState } from 'react';
 
 function SearchBar() {
 
-    const data = ['apple', 'pineapple', 'banana', 'mango'];
-
     const [query, setQuery] = useState('');
     const [results, setResults] = useState([]);
     const [cancelId, setCancelId] = useState(null);
@@ -12,17 +10,22 @@ function SearchBar() {
         if (cancelId !== null)
             clearTimeout(cancelId);
 
-        const timeoutId = setTimeout(() => {
-            const sanitizedQuery = query.split('').filter(char => /\w/.test(char)).join('');
-            if (sanitizedQuery) {
-                const regex = new RegExp(sanitizedQuery, 'i');
-                setResults(data.filter(item => regex.test(item)));
-            } else {
-                setResults([]);
-            }
-        }, 400);
+        if (query) {
+            const timeoutId = setTimeout(async () => {
+                try {
+                    const res = await fetch(`http://localhost:5000/users?username=${query}`);
+                    if (res.status === 200)
+                        setResults(await res.json());
+                } catch {
+                    console.log('error');
+                }
+            }, 400);
+            
+            setCancelId(timeoutId);
+        } else {
+            setResults([]);
+        }
 
-        setCancelId(timeoutId);
         return () => clearTimeout(cancelId);
     }, [query]);
 
@@ -34,7 +37,7 @@ function SearchBar() {
                 onChange={e => setQuery(e.target.value)}
             />
             <div>
-                {results.map(item => <div key={item}>{item}</div>)}
+                {results.map(user => <div key={user._id}>{user.username}</div>)}
             </div>
         </form>
     );
