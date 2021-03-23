@@ -2,12 +2,12 @@ import CtaSection from '../components/CtaSection';
 import { useAppContext } from '../components/Context';
 import { postsGrid } from '../styles/Posts.module.css';
 import Meta from '../components/Meta';
-import PostExcerpt from '../components/PostExcerpt';
+import PostTile from '../components/PostTile';
 
 function MainPage({ posts, error }) {
 
     const { currentUser } = useAppContext();
-    const postElements = posts?.map(post => <PostExcerpt key={post._id} post={post} />);
+    const postElements = posts?.map(post => <PostTile key={post._id} post={post} />);
 
     return (
         <>
