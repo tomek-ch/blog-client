@@ -2,8 +2,9 @@
     padding: 1em;
     border-radius: 5px;
     border: 1px solid lightgray;
-    width: 20%;
-    flex-grow: 1;
+    /* width: 20%; */
+    /* flex-grow: 1; */
+    display: block;
 }
 
 .details {
