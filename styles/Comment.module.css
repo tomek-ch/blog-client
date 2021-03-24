@@ -1,0 +1,9 @@
+.comment {
+    border-bottom: 1px solid lightgray;
+    margin: 1em 0;
+    padding: 1em 0;
+}
+
+.details {
+    font-size: 0.9em;
+}

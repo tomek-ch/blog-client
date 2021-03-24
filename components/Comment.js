@@ -1,9 +1,11 @@
+import { comment, details } from '../styles/Comment.module.css';
+
 function Comment({ text, time, author }) {
     return (
-        <div>
-            <div>{author.firstName} {author.lastName}</div>
+        <div className={comment}>
+            <div className={details}>{author.firstName} {author.lastName}</div>
             <div>{text}</div>
-            <div>{time}</div>
+            <div className={details}>{time}</div>
         </div>
     );
 }
