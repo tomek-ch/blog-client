@@ -6,6 +6,7 @@ import Tags from '../../../components/Tags';
 import style from '../../../styles/Post.module.css';
 import Link from 'next/link';
 import { useState } from 'react';
+import Comment from '../../../components/Comment';
 
 function Post({ post, comments, error }) {
 
@@ -71,9 +72,7 @@ function Post({ post, comments, error }) {
                         <a>Sign in to comment</a>
                     </Link>
             }
-            {currentComments.map(comment => (
-                <div key={comment._id}>{comment.text}</div>
-            ))}
+            {currentComments.map(comment => <Comment key={comment._id} {...comment} />)}
         </div>
     );
 }
