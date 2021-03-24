@@ -36,7 +36,7 @@ function Post({ post, comments, error }) {
             const data = await res.json()
 
             if (res.status === 200) {
-                console.log(data);
+                setCurrentComments(prev => [data, ...prev]);
                 handleSuccess();
             } else {
                 handleError(data[0]);
@@ -91,7 +91,7 @@ export async function getServerSideProps({ params: { id } }) {
                 comments,
             },
         };
-        
+
     } catch {
         return { props: { error: 'Failed to connect to the server' } };
     }
