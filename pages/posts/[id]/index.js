@@ -5,8 +5,9 @@ import Meta from '../../../components/Meta';
 import Tags from '../../../components/Tags';
 import style from '../../../styles/Post.module.css';
 import Link from 'next/link';
+import { useState } from 'react';
 
-function Post({ post, error }) {
+function Post({ post, comments, error }) {
 
     if (error)
         return (
@@ -16,7 +17,9 @@ function Post({ post, error }) {
             </div>
         );
 
+    const [currentComments, setCurrentComments] = useState(comments);
     const { currentUser, token } = useAppContext();
+
     const addComment = async (text, handleError, handleSuccess) => {
         try {
             const res = await fetch('http://localhost:5000/comments', {
@@ -68,21 +71,30 @@ function Post({ post, error }) {
                         <a>Sign in to comment</a>
                     </Link>
             }
+            {currentComments.map(comment => (
+                <div key={comment._id}>{comment.text}</div>
+            ))}
         </div>
     );
 }
 
 export async function getServerSideProps({ params: { id } }) {
     try {
-        const res = await fetch(`http://localhost:5000/posts/${id}`);
-        const data = await res.json();
+        const [post, comments] = await Promise.all([
+            fetch(`http://localhost:5000/posts/${id}`).then(res => res.json()),
+            fetch(`http://localhost:5000/comments?post=${id}`).then(res => res.json()),
+        ]);
 
-        if (res.status === 200) return { props: { post: data } };
-        else return { props: { error: data[0] } };
-
-    } catch (error) {
+        return {
+            props: {
+                post,
+                comments,
+            },
+        };
+        
+    } catch {
         return { props: { error: 'Failed to connect to the server' } };
     }
-}
+};
 
 export default Post;
