@@ -72,7 +72,11 @@ function Post({ post, comments, error }) {
                         <a>Sign in to comment</a>
                     </Link>
             }
-            {currentComments.map(comment => <Comment key={comment._id} {...comment} />)}
+            {currentComments.map(comment => <Comment
+                key={comment._id}
+                {...comment}
+                editable={currentUser?._id.toString() === comment.author._id}
+            />)}
         </div>
     );
 }
