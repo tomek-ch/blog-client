@@ -22,7 +22,7 @@ function CommentForm({ handleSubmit }) {
                     value={comment}
                     className={input}
                 />
-                <button className={btn}>
+                <button className={btn} disabled={!comment}>
                     Add
                 </button>
             </form>
