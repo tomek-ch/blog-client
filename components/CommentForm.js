@@ -8,13 +8,18 @@ function CommentForm({ handleSubmit }) {
     const [comment, setComment] = useState('');
     const [error, setError] = useState('');
 
+    const successCb = () => {
+        setComment('');
+        setError('');
+    };
+
     return (
         <>
             <form
                 className={form}
                 onSubmit={e => {
                     e.preventDefault();
-                    handleSubmit(comment, setError, () => setComment(''));
+                    handleSubmit(comment, setError, successCb);
                 }}>
                 <input
                     placeholder="Write a comment"
