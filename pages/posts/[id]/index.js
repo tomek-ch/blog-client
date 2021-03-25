@@ -37,7 +37,7 @@ function Post({ post, comments, error }) {
             const data = await res.json()
 
             if (res.status === 200) {
-                setCurrentComments(prev => [data, ...prev]);
+                setCurrentComments(prev => [{ ...data, author: currentUser }, ...prev]);
                 handleSuccess();
             } else {
                 handleError(data[0]);
