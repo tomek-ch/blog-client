@@ -11,13 +11,13 @@ function Header() {
 
     return (
         <header className={header}>
-            <div className={container}>
+            <nav className={container}>
                 <Link href="/">
                     <a><h1>Blogg</h1></a>
                 </Link>
                 <SearchBar />
-                {currentUser ? <UserOptions {...{ currentUser, signOut }} /> : <AuthLinks />}
-            </div>
+                    {currentUser ? <UserOptions {...{ currentUser, signOut }} /> : <AuthLinks />}
+            </nav>
         </header>
     );
 }
