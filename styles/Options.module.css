@@ -15,6 +15,7 @@
 .option {
   cursor: pointer;
   text-align: left;
+  color: black;
 }
 
 .toggle {
