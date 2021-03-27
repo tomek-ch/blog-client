@@ -1,12 +1,11 @@
-import { useState } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
-import { option, options, toggle } from '../styles/Options.module.css';
+import { option, options } from '../styles/Options.module.css';
 import { useAppContext } from './Context';
+import Options from './Options';
 
 function PostOptions({ id }) {
 
-    const [isOpen, setIsOpen] = useState(false);
     const router = useRouter();
     const { token } = useAppContext();
 
@@ -20,31 +19,21 @@ function PostOptions({ id }) {
         router.replace('/');
     };
 
-    const handleBlur = e => {
-        if (!e.relatedTarget?.dataset.option)
-            setIsOpen(false);
-    }
-
     return (
-        <div>
-            <button
-                onClick={() => setIsOpen(prev => !prev)}
-                onBlur={handleBlur}
-                className={toggle}
-            >...</button>
-            {
-                isOpen && (
-                    <div className={options}>
-                        <Link href={`/posts/${id}/edit`}>
-                            <a className={option} data-option>Edit</a>
-                        </Link>
-                        <button onClick={deletePost} className={option} data-option>
-                            Delete post
-                        </button>
-                    </div>
-                )
-            }
-        </div>
+        <Options
+            toggleText="..."
+            optionId="post"
+            renderOptions={() => (
+                <div className={options}>
+                    <Link href={`/posts/${id}/edit`}>
+                        <a className={option} data-post>Edit</a>
+                    </Link>
+                    <button onClick={deletePost} className={option} data-post>
+                        Delete post
+                </button>
+                </div>
+            )}
+        />
     );
 }
 
