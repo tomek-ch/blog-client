@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { form, input } from '../styles/Form.module.css';
 import { btn } from '../styles/Btn.module.css';
 
-function UserInfoForm({ currentUser, setCurrentUser }) {
+function UserInfoForm({ currentUser, setCurrentUser, token }) {
 
     const [userData, setUserData] = useState({
         username: '',
@@ -54,7 +54,8 @@ function UserInfoForm({ currentUser, setCurrentUser }) {
             else if (response.status === 400)
                 setMessages((await response.json()));
 
-        } catch {
+        } catch(e) {
+            console.log(e);
             setMessages(['There was a network error']);
         }
     };
