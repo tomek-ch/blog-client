@@ -1,16 +1,22 @@
 import Options from './Options';
 import { options, option } from '../styles/Options.module.css';
 
-function CommentOptions() {
+function CommentOptions({ _id, token, setComments }) {
 
-    const edit = toggle => {
-        console.log('edit!');
-        toggle();
+    const edit = async toggle => {
     };
 
-    const remove = toggle => {
-        console.log('delete!');
-        toggle();
+    const remove = async () => {
+        const id = _id.toString();
+
+        await fetch(`http://localhost:5000/comments/${id}`, {
+            method: 'delete',
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+        });
+
+        setComments(prev => prev.filter(com => com._id.toString() !== id));
     };
 
     return (
@@ -28,7 +34,7 @@ function CommentOptions() {
                     </button>
                     <button
                         className={option}
-                        onClick={() => remove(toggle)}
+                        onClick={remove}
                         data-comment
                     >
                         Delete
