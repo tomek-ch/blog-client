@@ -1,7 +1,7 @@
 import Options from './Options';
 import { options, option } from '../styles/Options.module.css';
 
-function CommentOptions({ _id, token, setComments, setIsEdited }) {
+function CommentOptions({ _id, token, setComments, setIsEdited, setError }) {
 
     const edit = toggle => {
         setIsEdited(true);
@@ -9,16 +9,24 @@ function CommentOptions({ _id, token, setComments, setIsEdited }) {
     };
 
     const remove = async () => {
-        const id = _id.toString();
+        try {
+            const id = _id.toString();
+    
+            const res = await fetch(`http://localhost:5000/comments/${id}`, {
+                method: 'delete',
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            });
 
-        await fetch(`http://localhost:5000/comments/${id}`, {
-            method: 'delete',
-            headers: {
-                Authorization: `Bearer ${token}`,
-            },
-        });
-
-        setComments(prev => prev.filter(com => com._id.toString() !== id));
+            if (res.status === 200) {
+                setComments(prev => prev.filter(com => com._id.toString() !== id));
+            } else {
+                setError('Error trying to delete comment');
+            }
+        } catch {
+            setError('Error trying to delete comment');
+        }
     };
 
     return (

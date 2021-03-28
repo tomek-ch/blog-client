@@ -53,7 +53,7 @@ function Comment({ _id, text, time, author, editable, setComments, token }) {
                 <Link href={`/users/${author._id}`}>
                     <a className={details}>{author.firstName} {author.lastName}</a>
                 </Link> • {time} {editable
-                    && <CommentOptions {...{ setComments, token, _id, setIsEdited }} />}
+                    && <CommentOptions {...{ setComments, token, _id, setIsEdited, setError }} />}
             </div>
             {isEdited
                 ? <div>
