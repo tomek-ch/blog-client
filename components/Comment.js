@@ -68,6 +68,7 @@ function Comment({ _id, text, time, author, editable, setComments, token }) {
                     <button className={btn} onClick={cancelEdit}>Cancel</button>
                 </div>
                 : <div className={body}>{text}</div>}
+            <button>Reply</button>
             <div>{error}</div>
         </div>
     );

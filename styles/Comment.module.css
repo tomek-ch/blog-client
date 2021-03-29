@@ -13,6 +13,7 @@
 
 .details > div > a {
     display: inline;
+    font-size: inherit;
 }
 
 .body {
