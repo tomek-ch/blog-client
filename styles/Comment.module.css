@@ -7,6 +7,12 @@
 .details {
     font-size: 0.9em;
     color: #666;
+    display: flex;
+    justify-content: space-between;
+}
+
+.details > div > a {
+    display: inline;
 }
 
 .body {

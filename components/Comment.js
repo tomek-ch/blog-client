@@ -35,7 +35,7 @@ function Comment({ _id, text, time, author, editable, setComments, token }) {
                     ...updatedComment,
                     author,
                 } : com));
-                
+
                 setError('');
                 setIsEdited(false);
             } else {
@@ -50,10 +50,12 @@ function Comment({ _id, text, time, author, editable, setComments, token }) {
     return (
         <div className={comment}>
             <div className={details}>
-                <Link href={`/users/${author._id}`}>
-                    <a className={details}>{author.firstName} {author.lastName}</a>
-                </Link> • {time} {editable
-                    && <CommentOptions {...{ setComments, token, _id, setIsEdited, setError }} />}
+                <div>
+                    <Link href={`/users/${author._id}`}>
+                        <a className={details}>{author.firstName} {author.lastName}</a>
+                    </Link> • {time}
+                </div>
+                {editable && <CommentOptions {...{ setComments, token, _id, setIsEdited, setError }} />}
             </div>
             {isEdited
                 ? <div>
