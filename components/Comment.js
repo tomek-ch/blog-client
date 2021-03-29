@@ -6,11 +6,14 @@ import CommentOptions from './CommentOptions';
 import { useState } from 'react';
 import TextBox from './TextBox';
 
-function Comment({ _id, text, time, author, editable, setComments, token }) {
+function Comment({ replies, _id, text, time, author, editable, setComments, token }) {
 
     const [isEdited, setIsEdited] = useState(false);
     const [editedText, setEditedText] = useState(text);
     const [error, setError] = useState('');
+
+    const [isReplyOpen, setIsReplyOpen] = useState(false);
+    const [replyText, setReplyText] = useState('');
 
     const cancelEdit = () => {
         setIsEdited(false);
@@ -47,6 +50,36 @@ function Comment({ _id, text, time, author, editable, setComments, token }) {
         }
     };
 
+    const addReply = async () => {
+        try {
+            const res = await fetch('http://localhost:5000/replies', {
+                method: 'post',
+                body: JSON.stringify({ text: replyText, comment: _id }),
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`,
+                },
+            });
+
+            if (res.status === 200) {
+                const reply = await res.json();
+                setComments(prev => prev.map(com => com._id === _id ? {
+                    ...com,
+                    replies: [...com.replies, reply],
+                } : com));
+
+                setError('');
+                setIsReplyOpen(false);
+                setReplyText('');
+            } else {
+                const data = await res.json();
+                setError(data[0]);
+            }
+        } catch (e) {
+            setError('Error trying to submit');
+        }
+    };
+
     return (
         <div className={comment}>
             <div className={details}>
@@ -68,8 +101,17 @@ function Comment({ _id, text, time, author, editable, setComments, token }) {
                     <button className={btn} onClick={cancelEdit}>Cancel</button>
                 </div>
                 : <div className={body}>{text}</div>}
-            <button>Reply</button>
+            <button onClick={() => setIsReplyOpen(prev => !prev)}>Reply</button>
+            {isReplyOpen && <div>
+                <TextBox
+                    className={input}
+                    value={replyText}
+                    onChange={e => setReplyText(e.target.value)}
+                />
+                <button className={btn} onClick={addReply}>Add</button>
+            </div>}
             <div>{error}</div>
+            {replies.map(rep => <div key={rep._id}>{rep.text}</div>)}
         </div>
     );
 }
