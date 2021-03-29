@@ -9,10 +9,8 @@ function CommentOptions({ _id, token, setComments, setIsEdited, setError }) {
     };
 
     const remove = async () => {
-        try {
-            const id = _id.toString();
-    
-            const res = await fetch(`http://localhost:5000/comments/${id}`, {
+        try {    
+            const res = await fetch(`http://localhost:5000/comments/${_id}`, {
                 method: 'delete',
                 headers: {
                     Authorization: `Bearer ${token}`,
@@ -20,7 +18,7 @@ function CommentOptions({ _id, token, setComments, setIsEdited, setError }) {
             });
 
             if (res.status === 200) {
-                setComments(prev => prev.filter(com => com._id.toString() !== id));
+                setComments(prev => prev.filter(com => com._id !== id));
             } else {
                 setError('Error trying to delete comment');
             }
