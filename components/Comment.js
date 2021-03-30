@@ -108,7 +108,7 @@ function Comment({ replies, _id, text, time, author, editable, setComments, toke
                     value={replyText}
                     onChange={e => setReplyText(e.target.value)}
                 />
-                <button className={btn} onClick={addReply}>Add</button>
+                <button className={btn} onClick={addReply} disabled={!replyText}>Add</button>
             </div>}
             <div>{error}</div>
             {replies.map(rep => <div key={rep._id}>{rep.text}</div>)}
