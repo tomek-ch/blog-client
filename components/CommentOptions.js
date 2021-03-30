@@ -18,7 +18,7 @@ function CommentOptions({ _id, token, setComments, setIsEdited, setError }) {
             });
 
             if (res.status === 200) {
-                setComments(prev => prev.filter(com => com._id !== id));
+                setComments(prev => prev.filter(com => com._id !== _id));
             } else {
                 setError('Error trying to delete comment');
             }
