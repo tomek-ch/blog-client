@@ -1,10 +1,9 @@
-import { comment, details, body } from '../styles/Comment.module.css';
+import { comment, body } from '../styles/Comment.module.css';
 import { input } from '../styles/Form.module.css';
 import { btn } from '../styles/Btn.module.css';
-import Link from 'next/link';
-import CommentOptions from './CommentOptions';
 import { useState } from 'react';
 import TextBox from './TextBox';
+import CommentDetails from './CommentDetails';
 
 function Comment({ replies, _id, text, time, author, editable, setComments, token }) {
 
@@ -82,14 +81,7 @@ function Comment({ replies, _id, text, time, author, editable, setComments, toke
 
     return (
         <div className={comment}>
-            <div className={details}>
-                <div>
-                    <Link href={`/users/${author._id}`}>
-                        <a className={details}>{author.firstName} {author.lastName}</a>
-                    </Link> • {time}
-                </div>
-                {editable && <CommentOptions {...{ setComments, token, _id, setIsEdited, setError }} />}
-            </div>
+            <CommentDetails {...{ editable, author, time, setComments, token, _id, setIsEdited, setError }} />
             {isEdited
                 ? <div>
                     <TextBox
