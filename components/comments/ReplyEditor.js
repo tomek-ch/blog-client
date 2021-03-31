@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import TextBox from './TextBox';
-import { input } from '../styles/Form.module.css';
-import { btn } from '../styles/Btn.module.css';
+import TextBox from '../TextBox';
+import { input } from '../../styles/Form.module.css';
+import { btn } from '../../styles/Btn.module.css';
 
 function ReplyEditor({ _id, token, setComments, setError }) {
 

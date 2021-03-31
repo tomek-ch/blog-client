@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { input } from '../styles/Form.module.css';
-import { btn } from '../styles/Btn.module.css';
-import { form } from '../styles/CommentForm.module.css';
+import { input } from '../../styles/Form.module.css';
+import { btn } from '../../styles/Btn.module.css';
+import { form } from '../../styles/CommentForm.module.css';
 
 function CommentForm({ handleSubmit }) {
 

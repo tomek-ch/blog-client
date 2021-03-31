@@ -1,7 +1,7 @@
-import { input } from '../styles/Form.module.css';
-import { btn } from '../styles/Btn.module.css';
+import { input } from '../../styles/Form.module.css';
+import { btn } from '../../styles/Btn.module.css';
 import { useState } from 'react';
-import TextBox from './TextBox';
+import TextBox from '../TextBox';
 
 function CommentEditor({ _id, author, token, setComments, text, setError, setIsEdited }) {
 

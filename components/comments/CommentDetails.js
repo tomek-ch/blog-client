@@ -1,4 +1,4 @@
-import { details } from '../styles/Comment.module.css';
+import { details } from '../../styles/Comment.module.css';
 import CommentOptions from './CommentOptions';
 import Link from 'next/link';
 

@@ -1,4 +1,4 @@
-import { comment, body } from '../styles/Comment.module.css';
+import { comment, body } from '../../styles/Comment.module.css';
 import { useState } from 'react';
 import CommentDetails from './CommentDetails';
 import CommentEditor from './CommentEditor';
