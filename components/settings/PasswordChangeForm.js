@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { form, input } from '../styles/Form.module.css';
-import { btn } from '../styles/Btn.module.css';
+import { form, input } from '../../styles/Form.module.css';
+import { btn } from '../../styles/Btn.module.css';
 
 function PasswordChangeForm({ token, currentUser }) {
 
