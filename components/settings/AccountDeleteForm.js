@@ -14,6 +14,7 @@ function AccountDeleteForm({currentUser, token, signOut}) {
         try {
             const response = await fetch(`http://localhost:5000/users/${currentUser._id}`, {
                 method: 'delete',
+                body: JSON.stringify({ password: deletePassword }),
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },
