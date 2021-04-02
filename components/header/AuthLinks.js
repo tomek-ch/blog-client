@@ -1,6 +1,6 @@
 import Link from 'next/link';
-import { btn } from '../styles/Btn.module.css';
-import { authLinks } from '../styles/AuthLinks.module.css';
+import { btn } from '../../styles/Btn.module.css';
+import { authLinks } from '../../styles/AuthLinks.module.css';
 
 function AuthLinks() {
     return (

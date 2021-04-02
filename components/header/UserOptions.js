@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { options, option } from '../styles/Options.module.css';
-import Options from './Options';
+import { options, option } from '../../styles/Options.module.css';
+import Options from '../Options';
 
 function UserOptions({ signOut, currentUser }) {
 

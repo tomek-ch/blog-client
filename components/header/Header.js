@@ -1,7 +1,7 @@
-import { useAppContext } from './Context';
+import { useAppContext } from '../Context';
 import AuthLinks from './AuthLinks';
 import Link from 'next/link';
-import { container, header } from '../styles/Header.module.css';
+import { container, header } from '../../styles/Header.module.css';
 import SearchBar from './SearchBar';
 import UserOptions from './UserOptions';
 
