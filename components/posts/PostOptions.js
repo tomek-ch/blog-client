@@ -1,8 +1,8 @@
 import { useRouter } from 'next/router';
 import Link from 'next/link';
-import { option, options } from '../styles/Options.module.css';
-import { useAppContext } from './Context';
-import Options from './Options';
+import { option, options } from '../../styles/Options.module.css';
+import { useAppContext } from '../Context';
+import Options from '../Options';
 
 function PostOptions({ id }) {
 

@@ -1,6 +1,6 @@
 import PostTile from './PostTile';
 import PostExcerpt from './PostExcerpt';
-import { grid } from '../styles/PostGrid.module.css';
+import { grid } from '../../styles/PostGrid.module.css';
 
 function PostGrid({ posts }) {
 

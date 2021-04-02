@@ -1,6 +1,6 @@
 import Meta from '../../../components/Meta';
 import { container } from '../../../styles/Post.module.css';
-import PostExcerpt from '../../../components/PostExcerpt';
+import PostExcerpt from '../../../components/posts/PostExcerpt';
 
 function Post({ user, posts, error }) {
 

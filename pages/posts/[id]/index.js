@@ -1,8 +1,8 @@
 import CommentForm from '../../../components/comments/CommentForm';
 import { useAppContext } from '../../../components/Context';
-import Details from '../../../components/Details';
+import Details from '../../../components/posts/Details';
 import Meta from '../../../components/Meta';
-import Tags from '../../../components/Tags';
+import Tags from '../../../components/posts/Tags';
 import style from '../../../styles/Post.module.css';
 import Link from 'next/link';
 import { useState } from 'react';

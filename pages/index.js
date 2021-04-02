@@ -1,7 +1,7 @@
 import CtaSection from '../components/CtaSection';
 import { useAppContext } from '../components/Context';
 import Meta from '../components/Meta';
-import PostGrid from '../components/PostGrid';
+import PostGrid from '../components/posts/PostGrid';
 
 function MainPage({ posts, error }) {
 

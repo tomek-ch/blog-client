@@ -1,4 +1,4 @@
-import { tile, details } from '../styles/PostTile.module.css';
+import { tile, details } from '../../styles/PostTile.module.css';
 import Link from 'next/link';
 
 function PostTile({ post: { _id, title, author, excerpt, readTime } }) {

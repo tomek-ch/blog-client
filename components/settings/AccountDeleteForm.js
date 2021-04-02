@@ -16,6 +16,7 @@ function AccountDeleteForm({currentUser, token, signOut}) {
                 method: 'delete',
                 body: JSON.stringify({ password: deletePassword }),
                 headers: {
+                    'Content-Type': 'application/json',
                     Authorization: `Bearer ${token}`,
                 },
             });

@@ -1,6 +1,6 @@
-import { details } from '.././styles/Details.module.css';
+import { details } from '../../styles/Details.module.css';
 import Link from 'next/link';
-import { useAppContext } from './Context';
+import { useAppContext } from '../Context';
 import PostOptions from './PostOptions';
 
 function Details({ post }) {

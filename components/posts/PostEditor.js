@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { editor, titleInput, headingInput, textBox } from '../styles/PostEditor.module.css';
-import TextBox from './TextBox';
+import { editor, titleInput, headingInput, textBox } from '../../styles/PostEditor.module.css';
+import TextBox from '../TextBox';
 import PostSubmitSummary from './PostSubmitSummary';
 
 function PostEditor({ submitCb, post }) {

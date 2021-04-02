@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import TagEditor from './TagEditor';
-import TextBox from './TextBox';
-import { editor } from '../styles/PostEditor.module.css';
+import TextBox from '../TextBox';
+import { editor } from '../../styles/PostEditor.module.css';
 
 function PostSubmitSummary({ post, goBack, tags, setTags, excerpt, setExcerpt, isPublished, setIsPublished, submitCb }) {
     const [error, setError] = useState('');

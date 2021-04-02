@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import style from '../styles/TagInput.module.css';
+import style from '../../styles/TagInput.module.css';
 
 function TagEditor({ tags, setTags }) {
     const [tag, setTag] = useState('');

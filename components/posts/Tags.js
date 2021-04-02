@@ -1,4 +1,4 @@
-import style from '../styles/Tags.module.css';
+import style from '../../styles/Tags.module.css';
 import Link from 'next/link';
 
 function Tags({ tags }) {
