@@ -2,9 +2,8 @@ import { input } from '../../styles/Form.module.css';
 import { btn } from '../../styles/Btn.module.css';
 import { useState } from 'react';
 import TextBox from '../TextBox';
-import updateComment from './api/commentUpdate';
 
-function CommentEditor({ comment, token, setComments, setError, setIsEdited }) {
+function CommentEditor({ comment, token, setComments, setError, setIsEdited, updateComment }) {
 
     const [editedText, setEditedText] = useState(comment.text);
 

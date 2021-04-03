@@ -3,6 +3,8 @@ import { useState } from 'react';
 import CommentDetails from './CommentDetails';
 import CommentEditor from './CommentEditor';
 import ReplyEditor from './ReplyEditor';
+import updateComment from './api/commentUpdate';
+import deleteComment from './api/commentDelete';
 
 function Comment({ comment, currentUser, setComments, token }) {
 
@@ -13,11 +15,11 @@ function Comment({ comment, currentUser, setComments, token }) {
         <div className={style.comment}>
             <CommentDetails
                 editable={currentUser?._id === comment.author._id}
-                {...{ comment, setComments, token, setIsEdited, setError }}
+                {...{ comment, setComments, token, setIsEdited, setError, deleteComment }}
             />
             {
                 isEdited
-                    ? <CommentEditor {...{ comment, token, setComments, setError, setIsEdited }} />
+                    ? <CommentEditor {...{ comment, token, setComments, setError, setIsEdited, updateComment }} />
                     : <div className={style.body}>{comment.text}</div>
             }
             <ReplyEditor {...{ _id: comment._id, token, setComments, setError, currentUser }} />

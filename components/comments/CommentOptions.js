@@ -1,8 +1,7 @@
 import Options from '../Options';
 import { options, option } from '../../styles/Options.module.css';
-import deleteComment from './api/commentDelete';
 
-function CommentOptions({ _id, token, setComments, setIsEdited, setError }) {
+function CommentOptions({ _id, token, setComments, setIsEdited, setError, deleteComment }) {
 
     const edit = toggle => {
         setIsEdited(true);
