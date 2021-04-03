@@ -87,9 +87,8 @@ export async function getServerSideProps({ params: { id } }) {
         const res = await fetch(`http://localhost:5000/posts/${id}`);
         
         if (res.status === 200) {
-            const data = await res.json();
             return {
-                props: { ...data },
+                props: await res.json(),
             };
         } else if (res.status === 404) {
             return { props: { error: 'Post not found' } };
