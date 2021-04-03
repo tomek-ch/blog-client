@@ -2,11 +2,20 @@ import { useState } from 'react';
 import TextBox from '../TextBox';
 import { input } from '../../styles/Form.module.css';
 import { btn } from '../../styles/Btn.module.css';
+import { useRouter } from 'next/router';
 
-function ReplyEditor({ _id, token, setComments, setError }) {
+function ReplyEditor({ _id, token, setComments, setError, currentUser }) {
 
     const [isReplyOpen, setIsReplyOpen] = useState(false);
     const [replyText, setReplyText] = useState('');
+    const router = useRouter();
+
+    const handleClick = () => {
+        if (currentUser)
+            setIsReplyOpen(prev => !prev);
+        else
+            router.push('/log-in');
+    };
 
     const addReply = async () => {
         try {
@@ -40,7 +49,7 @@ function ReplyEditor({ _id, token, setComments, setError }) {
 
     return (
         <>
-            <button onClick={() => setIsReplyOpen(prev => !prev)}>Reply</button>
+            <button onClick={handleClick}>Reply</button>
             {
                 isReplyOpen && <div>
                     <TextBox

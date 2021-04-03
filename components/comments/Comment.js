@@ -20,7 +20,7 @@ function Comment({ comment, currentUser, setComments, token }) {
                     ? <CommentEditor {...{ comment, token, setComments, setError, setIsEdited }} />
                     : <div className={style.body}>{comment.text}</div>
             }
-            <ReplyEditor {...{ _id: comment._id, token, setComments, setError }} />
+            <ReplyEditor {...{ _id: comment._id, token, setComments, setError, currentUser }} />
             <div>{error}</div>
             {comment.replies.map(rep => <div key={rep._id}>{rep.text}</div>)}
         </div>
