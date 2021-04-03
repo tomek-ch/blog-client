@@ -2,7 +2,11 @@ import { details } from '../../styles/Comment.module.css';
 import CommentOptions from './CommentOptions';
 import Link from 'next/link';
 
-function CommentDetails({ editable, author, time, setComments, token, _id, setIsEdited, setError }) {
+function CommentDetails({ comment: {
+    _id,
+    author,
+    time
+}, editable, setComments, token, setIsEdited, setError }) {
     return (
         <div className={details}>
             <div>
