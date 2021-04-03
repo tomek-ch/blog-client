@@ -74,7 +74,7 @@ function Post({ post, comments, error }) {
             }
             {currentComments.map(comment => <Comment
                 key={comment._id}
-                {...{ comment, token }}
+                {...{ comment, token, currentUser }}
                 setComments={setCurrentComments}
                 editable={currentUser?._id.toString() === comment.author._id}
             />)}
