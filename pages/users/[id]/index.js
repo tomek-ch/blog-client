@@ -24,10 +24,16 @@ function Post({ user, posts, error }) {
 export async function getServerSideProps({ params: { id } }) {
     try {
         const res = await fetch(`http://localhost:5000/users/${id}`);
-        const data = await res.json();
-
-        if (res.status === 200) return { props: data };
-        else return { props: { error: data[0] } };
+        
+        if (res.status === 200) {
+            return {
+                props: await res.json(),
+            };
+        } else if (res.status === 404) {
+            return { props: { error: 'User not found' } };
+        } else {
+            return { props: { error: 'Failed to connect to the server' } };
+        }
 
     } catch (error) {
         return { props: { error: 'Failed to connect to the server' } };
