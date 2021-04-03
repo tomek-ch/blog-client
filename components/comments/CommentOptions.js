@@ -1,5 +1,6 @@
 import Options from '../Options';
 import { options, option } from '../../styles/Options.module.css';
+import deleteComment from './api/commentDelete';
 
 function CommentOptions({ _id, token, setComments, setIsEdited, setError }) {
 
@@ -8,24 +9,7 @@ function CommentOptions({ _id, token, setComments, setIsEdited, setError }) {
         toggle();
     };
 
-    const remove = async () => {
-        try {    
-            const res = await fetch(`http://localhost:5000/comments/${_id}`, {
-                method: 'delete',
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                },
-            });
-
-            if (res.status === 200) {
-                setComments(prev => prev.filter(com => com._id !== _id));
-            } else {
-                setError('Error trying to delete comment');
-            }
-        } catch {
-            setError('Error trying to delete comment');
-        }
-    };
+    const handleRemove = () => deleteComment(_id, token, setComments, setError);
 
     return (
         <Options
@@ -42,7 +26,7 @@ function CommentOptions({ _id, token, setComments, setIsEdited, setError }) {
                     </button>
                     <button
                         className={option}
-                        onClick={remove}
+                        onClick={handleRemove}
                         data-comment
                     >
                         Delete
