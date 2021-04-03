@@ -84,17 +84,18 @@ function Post({ post, comments, error }) {
 
 export async function getServerSideProps({ params: { id } }) {
     try {
-        const [post, comments] = await Promise.all([
-            fetch(`http://localhost:5000/posts/${id}`).then(res => res.json()),
-            fetch(`http://localhost:5000/comments?post=${id}`).then(res => res.json()),
-        ]);
-
-        return {
-            props: {
-                post,
-                comments,
-            },
-        };
+        const res = await fetch(`http://localhost:5000/posts/${id}`);
+        
+        if (res.status === 200) {
+            const data = await res.json();
+            return {
+                props: { ...data },
+            };
+        } else if (res.status === 404) {
+            return { props: { error: 'Post not found' } };
+        } else {
+            return { props: { error: 'Failed to connect to the server' } };
+        }
 
     } catch {
         return { props: { error: 'Failed to connect to the server' } };
