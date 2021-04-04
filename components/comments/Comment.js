@@ -5,6 +5,7 @@ import CommentEditor from './CommentEditor';
 import ReplyEditor from './ReplyEditor';
 import updateComment from './api/commentUpdate';
 import deleteComment from './api/commentDelete';
+import Reply from './Reply';
 
 function Comment({ comment, currentUser, setComments, token }) {
 
@@ -24,7 +25,9 @@ function Comment({ comment, currentUser, setComments, token }) {
             }
             <ReplyEditor {...{ _id: comment._id, token, setComments, setError, currentUser }} />
             <div>{error}</div>
-            {comment.replies.map(rep => <div key={rep._id}>{rep.text}</div>)}
+            {comment.replies.map(rep => (
+                <Reply key={rep._id} {...{ comment: rep, currentUser, setComments, token, setError }} />
+            ))}
         </div>
     );
 }

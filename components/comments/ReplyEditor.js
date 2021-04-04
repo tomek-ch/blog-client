@@ -32,7 +32,7 @@ function ReplyEditor({ _id, token, setComments, setError, currentUser }) {
                 const reply = await res.json();
                 setComments(prev => prev.map(com => com._id === _id ? {
                     ...com,
-                    replies: [...com.replies, reply],
+                    replies: [...com.replies, { ...reply, author: currentUser }],
                 } : com));
 
                 setError('');
