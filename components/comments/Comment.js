@@ -9,6 +9,7 @@ import Reply from './Reply';
 
 function Comment({ comment, currentUser, setComments, token }) {
 
+    const [replies, setReplies] = useState(comment.replies);
     const [isEdited, setIsEdited] = useState(false);
     const [error, setError] = useState('');
 
@@ -23,10 +24,13 @@ function Comment({ comment, currentUser, setComments, token }) {
                     ? <CommentEditor {...{ comment, token, setComments, setError, setIsEdited, updateComment }} />
                     : <div className={style.body}>{comment.text}</div>
             }
-            <ReplyEditor {...{ _id: comment._id, token, setComments, setError, currentUser }} />
+            <ReplyEditor {...{ _id: comment._id, token, setReplies, setError, currentUser }} />
             <div>{error}</div>
-            {comment.replies.map(rep => (
-                <Reply key={rep._id} {...{ comment: rep, currentUser, setComments, token, setError }} />
+            {replies.map(rep => (
+                <Reply
+                    key={rep._id}
+                    {...{ comment: rep, currentUser, setComments: setReplies, token, setError }}
+                />
             ))}
         </div>
     );

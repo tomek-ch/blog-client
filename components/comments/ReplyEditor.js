@@ -4,7 +4,7 @@ import { input } from '../../styles/Form.module.css';
 import { btn } from '../../styles/Btn.module.css';
 import { useRouter } from 'next/router';
 
-function ReplyEditor({ _id, token, setComments, setError, currentUser }) {
+function ReplyEditor({ _id, token, setReplies, setError, currentUser }) {
 
     const [isReplyOpen, setIsReplyOpen] = useState(false);
     const [replyText, setReplyText] = useState('');
@@ -30,10 +30,7 @@ function ReplyEditor({ _id, token, setComments, setError, currentUser }) {
 
             if (res.status === 200) {
                 const reply = await res.json();
-                setComments(prev => prev.map(com => com._id === _id ? {
-                    ...com,
-                    replies: [...com.replies, { ...reply, author: currentUser }],
-                } : com));
+                setReplies(prev => [...prev, { ...reply, author: currentUser }]);
 
                 setError('');
                 setIsReplyOpen(false);
