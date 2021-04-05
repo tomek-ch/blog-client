@@ -22,7 +22,7 @@ function CommentEditor({ comment, token, setComments, setError, setIsEdited, upd
                 value={editedText}
                 onChange={e => setEditedText(e.target.value)}
             />
-            <button className={btn} onClick={handleUpdate}>Save</button>
+            <button className={btn} onClick={handleUpdate} disabled={!editedText}>Save</button>
             <button className={btn} onClick={cancelEdit}>Cancel</button>
         </div>
     );
