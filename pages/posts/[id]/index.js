@@ -4,7 +4,7 @@ import Details from '../../../components/posts/Details';
 import Meta from '../../../components/Meta';
 import Tags from '../../../components/posts/Tags';
 import style from '../../../styles/Post.module.css';
-import Link from 'next/link';
+import commentStyle from '../../../styles/Comment.module.css';
 import { useState } from 'react';
 import Comment from '../../../components/comments/Comment';
 
@@ -21,32 +21,6 @@ function Post({ post, comments, error }) {
     const [currentComments, setCurrentComments] = useState(comments);
     const { currentUser, token } = useAppContext();
 
-    const addComment = async (text, handleError, handleSuccess) => {
-        try {
-            const res = await fetch('http://localhost:5000/comments', {
-                method: 'post',
-                body: JSON.stringify({
-                    post: post._id,
-                    text,
-                }),
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`,
-                },
-            });
-            const data = await res.json()
-
-            if (res.status === 200) {
-                setCurrentComments(prev => [{ ...data, author: currentUser }, ...prev]);
-                handleSuccess();
-            } else {
-                handleError(data[0]);
-            }
-        } catch (e) {
-            handleError('Error trying to submit');
-        }
-    };
-
     return (
         <div className={style.container}>
             <article>
@@ -61,20 +35,15 @@ function Post({ post, comments, error }) {
                 ))}
                 <Tags tags={post.tags} />
             </article>
-            {
-                currentUser
-                    ? <CommentForm
-                        uid={currentUser._id}
-                        postId={post._id}
-                        handleSubmit={addComment}
-                    />
-                    : <Link href="/log-in">
-                        <a>Sign in to comment</a>
-                    </Link>
-            }
+            <CommentForm
+                responseTo={{ post: post._id }}
+                setComments={setCurrentComments}
+                {...{ currentUser, token }}
+            />
             {currentComments.map(comment => <Comment
                 key={comment._id}
                 {...{ comment, token, currentUser }}
+                containerClass={commentStyle.comment}
                 setComments={setCurrentComments}
                 editable={currentUser?._id.toString() === comment.author._id}
             />)}
@@ -85,7 +54,7 @@ function Post({ post, comments, error }) {
 export async function getServerSideProps({ params: { id } }) {
     try {
         const res = await fetch(`http://localhost:5000/posts/${id}`);
-        
+
         if (res.status === 200) {
             return {
                 props: await res.json(),

@@ -3,7 +3,12 @@ import { btn } from '../../styles/Btn.module.css';
 import { useState } from 'react';
 import TextBox from '../TextBox';
 
-function CommentEditor({ comment, token, setComments, setError, setIsEdited, updateComment }) {
+function CommentEditor({ comment, token, setComments, setError, isEdited, setIsEdited, updateComment }) {
+
+    if (!isEdited)
+        return (
+            <div>{comment.text}</div>
+        );
 
     const [editedText, setEditedText] = useState(comment.text);
 

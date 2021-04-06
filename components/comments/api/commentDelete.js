@@ -1,4 +1,4 @@
-async function deleteComment(_id, token, setComments, setError) {
+async function deleteComment(_id, token, setComments, setError, replyRemoveCb) {
     try {    
         const res = await fetch(`http://localhost:5000/comments/${_id}`, {
             method: 'delete',
@@ -9,6 +9,7 @@ async function deleteComment(_id, token, setComments, setError) {
 
         if (res.status === 200) {
             setComments(prev => prev.filter(com => com._id !== _id));
+            replyRemoveCb();
         } else {
             setError('Error trying to delete comment');
         }
