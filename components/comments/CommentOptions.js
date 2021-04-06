@@ -1,14 +1,14 @@
 import Options from '../Options';
 import { options, option } from '../../styles/Options.module.css';
 
-function CommentOptions({ _id, token, setComments, setIsEdited, setError, deleteComment }) {
+function CommentOptions({ _id, token, setComments, setIsEdited, setError, deleteComment, replyRemoveCb }) {
 
     const edit = toggle => {
         setIsEdited(true);
         toggle();
     };
 
-    const handleRemove = () => deleteComment(_id, token, setComments, setError);
+    const handleRemove = () => deleteComment(_id, token, setComments, setError, replyRemoveCb );
 
     return (
         <Options

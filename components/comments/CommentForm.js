@@ -2,8 +2,18 @@ import { useState } from 'react';
 import { input } from '../../styles/Form.module.css';
 import { btn } from '../../styles/Btn.module.css';
 import { form } from '../../styles/CommentForm.module.css';
+import addComment from './api/commentCreate';
+import Link from 'next/link';
 
-function CommentForm({ handleSubmit }) {
+function CommentForm({ currentUser, responseTo, token, setComments, replyAddCb = () => {} }) {
+
+    if (!currentUser)
+        return (
+            <Link href="/log-in">
+                <a>Sign in to comment</a>
+            </Link>
+        );
+
 
     const [comment, setComment] = useState('');
     const [error, setError] = useState('');
@@ -11,6 +21,7 @@ function CommentForm({ handleSubmit }) {
     const successCb = () => {
         setComment('');
         setError('');
+        replyAddCb();
     };
 
     return (
@@ -19,7 +30,7 @@ function CommentForm({ handleSubmit }) {
                 className={form}
                 onSubmit={e => {
                     e.preventDefault();
-                    handleSubmit(comment, setError, successCb);
+                    addComment(responseTo, comment, setComments, setError, successCb, token, currentUser);
                 }}>
                 <input
                     placeholder="Write a comment"

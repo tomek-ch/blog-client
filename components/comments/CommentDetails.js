@@ -6,7 +6,7 @@ function CommentDetails({ comment: {
     _id,
     author,
     time
-}, editable, setComments, token, setIsEdited, setError, deleteComment }) {
+}, editable, setComments, token, setIsEdited, setError, deleteComment, replyRemoveCb }) {
     return (
         <div className={details}>
             <div>
@@ -16,7 +16,9 @@ function CommentDetails({ comment: {
             </div>
             {
                 editable
-                && <CommentOptions {...{ setComments, token, _id, setIsEdited, setError, deleteComment }} />
+                && <CommentOptions
+                    {...{ setComments, token, _id, setIsEdited, setError, deleteComment, replyRemoveCb }}
+                />
             }
         </div>
     );
