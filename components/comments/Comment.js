@@ -24,8 +24,15 @@ function Comment({ comment, currentUser, setComments, token, containerClass, rep
     const showReplies = async () => {
         setAreRepliesVisible(prev => !prev);
         if (replyCount > replies.length) {
-            const res = await fetch(`http://localhost:5000/comments?comment=${comment._id}`);
-            setReplies(await res.json());
+            try {
+                const res = await fetch(`http://localhost:5000/comments?comment=${comment._id}`);
+                if (res.status === 200)
+                    setReplies(await res.json());
+                else
+                    setError('Error trying to retrieve replies');
+            } catch {
+                setError('Error trying to retrieve replies');
+            }
         }
     };
 
