@@ -7,7 +7,13 @@ import { useAppContext } from '../../../components/Context';
 function NewPost({ error, post }) {
 
     const router = useRouter();
-    const { token } = useAppContext();
+    const { token, currentUser } = useAppContext();
+    
+    if (!currentUser._id)
+        router.push('/log-in');
+        
+    if (currentUser._id !== post.author._id)
+        router.push('/');
 
     const submitCb = async (data, handleError) => {
         try {
