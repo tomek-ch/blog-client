@@ -14,7 +14,8 @@ function LogIn() {
     const { signIn, currentUser } = useAppContext();
 
     const router = useRouter();
-    if (currentUser) router.push('/');
+    if (currentUser._id)
+        router.push('/');
 
     const handleChange = cb => e => {
         const { value } = e.target;

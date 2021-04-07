@@ -4,7 +4,7 @@ const Context = createContext();
 
 function ContextProvider({ children }) {
 
-    const [currentUser, setCurrentUser] = useState(null);
+    const [currentUser, setCurrentUser] = useState({});
     const [token, setToken] = useState('');
 
     const signOut = () => {
