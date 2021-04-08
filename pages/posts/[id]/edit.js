@@ -9,10 +9,12 @@ function NewPost({ error, post }) {
     const router = useRouter();
     const { token, currentUser } = useAppContext();
     
-    if (!currentUser._id)
+    console.log(currentUser)
+
+    if (!currentUser)
         router.push('/log-in');
         
-    if (currentUser._id !== post.author._id)
+    if (currentUser && currentUser._id && currentUser._id !== post.author._id)
         router.push('/');
 
     const submitCb = async (data, handleError) => {

@@ -14,8 +14,12 @@ function ContextProvider({ children }) {
     };
 
     useEffect(() => {
-        if (window)
-            setToken(localStorage.getItem('token'));
+        if (window) {
+            const token = (localStorage.getItem('token'));
+            if (!token)
+                setCurrentUser(null);
+            setToken(token); 
+        }
     }, []);
 
     useEffect(() => {
