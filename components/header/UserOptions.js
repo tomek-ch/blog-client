@@ -26,6 +26,9 @@ function UserOptions({ signOut, currentUser }) {
                     <Link href="/settings">
                         <a onClick={toggle} className={option} data-user>Settings</a>
                     </Link>
+                    <Link href="/your-posts">
+                        <a onClick={toggle} className={option} data-user>Your posts</a>
+                    </Link>
                     <button onClick={handleClick} className={option} data-user>Sign out</button>
                 </div>
             )}
