@@ -12,6 +12,12 @@ function TagEditor({ tags, setTags }) {
         }
     };
 
+    const handleChange = e => {
+        const { value } = e.target;
+        if (value.length < 20)
+            setTag(value);
+    }
+
     const removeTag = toRemove => {
         setTags(prev => prev.filter(tag => tag !== toRemove));
     };
@@ -22,7 +28,7 @@ function TagEditor({ tags, setTags }) {
                 <input
                     placeholder="Add a tag"
                     value={tag}
-                    onChange={e => setTag(e.target.value)}
+                    onChange={handleChange}
                     className={style.tagInput}
                 />
             </form>
