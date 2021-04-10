@@ -45,7 +45,7 @@ function Post({ post, comments, error }) {
                 {...{ comment, token, currentUser }}
                 containerClass={commentStyle.comment}
                 setComments={setCurrentComments}
-                editable={currentUser?._id.toString() === comment.author._id}
+                editable={currentUser?._id === comment.author._id}
             />)}
         </div>
     );
