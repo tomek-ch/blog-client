@@ -1,6 +1,7 @@
 import Meta from '../../../components/Meta';
 import { container } from '../../../styles/Post.module.css';
 import PostExcerpt from '../../../components/posts/PostExcerpt';
+import { useState } from 'react';
 
 function Post({ user, posts, error }) {
 
@@ -11,12 +12,14 @@ function Post({ user, posts, error }) {
         </div>
     );
 
+    const [currentPosts, setCurrentPosts] = useState(posts)
+
     return (
         <div className={container}>
             <Meta title={`${user.firstName} - Blogg`} description={user.description} />
             <h1>{user.firstName} {user.lastName}</h1>
             <p>{user.description}</p>
-            {posts.map(post => <PostExcerpt key={post._id} post={post} />)}
+            {currentPosts.map(post => <PostExcerpt key={post._id} post={post} setPosts={setCurrentPosts} />)}
         </div>
     );
 }

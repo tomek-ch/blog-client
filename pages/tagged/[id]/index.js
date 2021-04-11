@@ -1,6 +1,7 @@
 import Meta from '../../../components/Meta';
 import { container } from '../../../styles/Post.module.css';
 import PostExcerpt from '../../../components/posts/PostExcerpt';
+import { useState } from 'react';
 
 function PostsTagged({ posts, tag, error }) {
 
@@ -12,6 +13,8 @@ function PostsTagged({ posts, tag, error }) {
             </div>
         );
 
+    const [currentPosts, setCurrentPosts] = useState(posts);
+
     return (
         <div className={container}>
             <Meta
@@ -19,7 +22,7 @@ function PostsTagged({ posts, tag, error }) {
                 description={`Discover internet's best articles about ${tag} on Blogg.`}
             />
             <h1>Posts tagged {tag}</h1>
-            {posts.map(post => <PostExcerpt key={post._id} post={post} />)}
+            {currentPosts.map(post => <PostExcerpt key={post._id} post={post} setPosts={setCurrentPosts} />)}
         </div>
     );
 }

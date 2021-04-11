@@ -7,6 +7,7 @@ import style from '../../../styles/Post.module.css';
 import commentStyle from '../../../styles/Comment.module.css';
 import { useState } from 'react';
 import Comment from '../../../components/comments/Comment';
+import { useRouter } from 'next/router';
 
 function Post({ post, comments, error }) {
 
@@ -21,12 +22,15 @@ function Post({ post, comments, error }) {
     const [currentComments, setCurrentComments] = useState(comments);
     const { currentUser, token } = useAppContext();
 
+    const router = useRouter();
+    const handleDelete = () => router.replace('/');
+
     return (
         <div className={style.container}>
             <article>
                 <Meta title={post.title} description={post.excerpt} />
                 <h1 className={style.title}>{post.title}</h1>
-                <Details post={post} />
+                <Details {...{ handleDelete, post }} />
                 {post.paragraphs.map(p => (
                     <div key={p._id} className={style.paragraph}>
                         <h2 className={style.heading}>{p.heading}</h2>

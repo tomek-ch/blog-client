@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { useAppContext } from '../Context';
 import PostOptions from './PostOptions';
 
-function Details({ post }) {
+function Details({ post, handleDelete }) {
 
     const { currentUser } = useAppContext();
 
@@ -25,7 +25,7 @@ function Details({ post }) {
             <div>{post.time} • {authorName}{timeToRead}</div>
             {
                 currentUser && currentUser._id === post.author._id &&
-                <PostOptions id={post._id} />
+                <PostOptions id={post._id} handleDelete={handleDelete} />
             }
         </div>
     );
