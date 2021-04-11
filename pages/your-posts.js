@@ -1,6 +1,5 @@
 import Meta from '../components/Meta';
 import { container } from '../styles/Post.module.css';
-import PostExcerpt from '../components/posts/PostExcerpt';
 import { useEffect, useState } from 'react';
 import { useAppContext } from '../components/Context';
 import { useRouter } from 'next/router';
