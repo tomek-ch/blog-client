@@ -19,7 +19,7 @@ function SearchBar() {
                 } catch {
                     console.log('error');
                 }
-            }, 400);
+            }, 150);
             
             setCancelId(timeoutId);
         } else {
