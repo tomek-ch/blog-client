@@ -17,7 +17,7 @@ function SearchBar() {
                     if (res.status === 200)
                         setResults(await res.json());
                 } catch {
-                    console.log('error');
+                    setResults([]);
                 }
             }, 150);
             

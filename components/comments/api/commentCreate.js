@@ -23,8 +23,7 @@ async function addComment(responseTo, text, setComments, setError, handleSuccess
         } else {
             setError(data[0]);
         }
-    } catch (e) {
-        console.log(e)
+    } catch {
         setError('Error trying to submit');
     }
 };

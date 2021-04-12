@@ -8,8 +8,6 @@ function NewPost({ error, post }) {
 
     const router = useRouter();
     const { token, currentUser } = useAppContext();
-    
-    console.log(currentUser)
 
     if (!currentUser)
         router.push('/log-in');
