@@ -52,6 +52,7 @@ function LogIn() {
                     value={username}
                     onChange={handleChange(setUsername)}
                     className={input}
+                    maxLength={20}
                 />
             </label>
             <label>

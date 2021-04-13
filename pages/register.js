@@ -58,6 +58,7 @@ function LogIn() {
                     value={userData.username}
                     onChange={handleChange}
                     className={input}
+                    maxLength={20}
                 />
             </label>
             <label>
@@ -68,6 +69,7 @@ function LogIn() {
                     value={userData.firstName}
                     onChange={handleChange}
                     className={input}
+                    maxLength={20}
                 />
             </label>
             <label>
@@ -78,6 +80,7 @@ function LogIn() {
                     value={userData.lastName}
                     onChange={handleChange}
                     className={input}
+                    maxLength={20}
                 />
             </label>
             <label>

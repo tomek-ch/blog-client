@@ -54,8 +54,7 @@ function UserInfoForm({ currentUser, setCurrentUser, token }) {
             else if (response.status === 400)
                 setMessages((await response.json()));
 
-        } catch(e) {
-            console.log(e);
+        } catch {
             setMessages(['There was a network error']);
         }
     };
@@ -71,6 +70,7 @@ function UserInfoForm({ currentUser, setCurrentUser, token }) {
                     value={userData.username}
                     onChange={handleChange}
                     className={input}
+                    maxLength="20"
                 />
             </label>
             <label>
@@ -81,6 +81,7 @@ function UserInfoForm({ currentUser, setCurrentUser, token }) {
                     value={userData.firstName}
                     onChange={handleChange}
                     className={input}
+                    maxLength="20"
                 />
             </label>
             <label>
@@ -91,6 +92,7 @@ function UserInfoForm({ currentUser, setCurrentUser, token }) {
                     value={userData.lastName}
                     onChange={handleChange}
                     className={input}
+                    maxLength="20"
                 />
             </label>
             <label>
@@ -100,6 +102,7 @@ function UserInfoForm({ currentUser, setCurrentUser, token }) {
                     value={userData.description}
                     onChange={handleChange}
                     className={input}
+                    maxLength="100"
                 />
             </label>
             <button
