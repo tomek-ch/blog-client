@@ -67,6 +67,7 @@ function PostEditor({ submitCb, post }) {
                 value={title}
                 onChange={e => setTitle(e.target.value)}
                 placeholder="Your post's title"
+                maxLength="50"
             />
             {paragraphs.map((p, i) => (
                 <div key={`paragraph-${i}`} className={editor} >
