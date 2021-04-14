@@ -19,7 +19,7 @@ function UserInfoForm({ currentUser, setCurrentUser, token }) {
     const [messages, setMessages] = useState([]);
 
     useEffect(() => {
-        if (currentUser) {
+        if (currentUser._id) {
             const { username, firstName, lastName, description } = currentUser;
             setUserData({ username, firstName, lastName, description });
         }
