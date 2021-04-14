@@ -4,7 +4,7 @@ import { container } from '../../../styles/Post.module.css';
 import { useRouter } from 'next/router';
 import { useAppContext } from '../../../components/Context';
 
-function NewPost({ error, post }) {
+function EditPost({ error, post }) {
 
     const router = useRouter();
     const { token, currentUser } = useAppContext();
@@ -60,4 +60,4 @@ export async function getServerSideProps({ params: { id } }) {
     }
 }
 
-export default NewPost;
+export default EditPost;
