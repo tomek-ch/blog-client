@@ -12,7 +12,7 @@ function NewPost({ error, post }) {
     if (!currentUser)
         router.push('/log-in');
         
-    if (currentUser && currentUser._id && currentUser._id !== post.author._id)
+    else if (currentUser._id && currentUser._id !== post.author._id)
         router.push('/');
 
     const submitCb = async (data, handleError) => {
@@ -49,6 +49,8 @@ export async function getServerSideProps({ params: { id } }) {
     try {
         const res = await fetch(`http://localhost:5000/posts/${id}`);
         const data = await res.json();
+
+        console.log(data.post)
 
         if (res.status === 200) return { props: { post: data.post } };
         else return { props: { error: data[0] } };
