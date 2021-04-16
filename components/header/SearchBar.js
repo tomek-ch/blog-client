@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import style, { btn, bar, container, fullWidthContainer } from '../../styles/SearchBar.module.css';
 
 function SearchBar() {
 
@@ -20,7 +21,7 @@ function SearchBar() {
                     setResults([]);
                 }
             }, 150);
-            
+
             setCancelId(timeoutId);
         } else {
             setResults([]);
@@ -29,17 +30,34 @@ function SearchBar() {
         return () => clearTimeout(cancelId);
     }, [query]);
 
+
+    const input = useRef(null);
+    const [isBarFullWidth, setIsBarFullWidth] = useState(false);
+
+    const toggleBar = async () => {
+        await setIsBarFullWidth(prev => !prev);
+        input.current?.focus();
+    };
+
     return (
-        <form>
-            <input
-                placeholder="Search Blogg"
-                value={query}
-                onChange={e => setQuery(e.target.value)}
-            />
-            <div>
-                {results.map(user => <div key={user._id}>{user.username}</div>)}
+        <>
+            <div className={isBarFullWidth ? fullWidthContainer : container}>
+                <input
+                    placeholder="Search Blogg"
+                    value={query}
+                    onChange={e => setQuery(e.target.value)}
+                    className={bar}
+                    ref={input}
+                />
+                <button className={btn} onClick={toggleBar}>🔎</button>
+                {
+                    !!results.length &&
+                    <div className={style.results}>
+                        {results.map(user => <div key={user._id}>{user.username}</div>)}
+                    </div>
+                }
             </div>
-        </form>
+        </>
     );
 }
 
