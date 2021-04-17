@@ -2,14 +2,10 @@
   max-width: 1200px;
   margin: auto;
   padding: 1em;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2em;
+  display: grid;
+  grid-template-columns: 1fr 1fr 15% 15%;
+  gap: 5em;
 }
-
-/* .grid>*:not(:last-child) {
-  border-right: 1px solid lightgray;
-} */
 
 .grid > div {
   display: flex;
@@ -17,5 +13,13 @@
   gap: 1em;
   flex-basis: 1;
   flex-grow: 1;
-  max-width: 30%;
+  width: 100%;
+}
+
+@media (max-width: 900px) {
+  .grid {
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+  }
 }
