@@ -6,6 +6,8 @@ function SearchBar() {
 
     const [query, setQuery] = useState('');
     const [results, setResults] = useState([]);
+    const [postResults, setPostResults] = useState([]);
+
     const [areResultsVisible, setAreResultsVisible] = useState(false);
     const [cancelId, setCancelId] = useState(null);
 
@@ -37,19 +39,22 @@ function SearchBar() {
             clearTimeout(cancelId);
 
         if (query) {
-            const timeoutId = setTimeout(async () => {
-                try {
-                    const res = await fetch(`http://localhost:5000/users?username=${query}`);
-                    if (res.status === 200)
-                        setResults(await res.json());
-                } catch {
-                    setResults([]);
-                }
+            const timeoutId = setTimeout(() => {
+                fetch(`http://localhost:5000/users?username=${query}`)
+                    .then(res => res.json())
+                    .then(setResults)
+                    .catch(() => setResults([]));
+
+                fetch(`http://localhost:5000/posts?title=${query}`)
+                    .then(res => res.json())
+                    .then(setPostResults)
+                    .catch(() => setPostResults([]));
             }, 150);
 
             setCancelId(timeoutId);
         } else {
             setResults([]);
+            setPostResults([]);
         }
 
         return () => clearTimeout(cancelId);
@@ -69,15 +74,33 @@ function SearchBar() {
                 />
                 <button className={btn} onClick={toggleBar}>🔎</button>
                 {
-                    areResultsVisible && !!results.length &&
+                    areResultsVisible && (!!results.length || !!postResults.length) &&
                     <div className={style.results}>
-                        {results.map(user => (
-                            <Link key={user._id} href={`/users/${user._id}`}>
-                                <a onClick={handleResultClick} data-result>
-                                    {user.username}
-                                </a>
-                            </Link>
-                        ))}
+                        {!!results.length &&
+                            <>
+                                <h4>Users</h4>
+                                {results.map(user => (
+                                    <Link key={user._id} href={`/users/${user._id}`}>
+                                        <a onClick={handleResultClick} data-result>
+                                            {user.username}
+                                        </a>
+                                    </Link>
+                                ))}
+                            </>
+                        }
+                        {
+                            !!postResults.length &&
+                            <>
+                                <h4>Posts</h4>
+                                {postResults.map(post => (
+                                    <Link key={post._id} href={`/posts/${post._id}`}>
+                                        <a onClick={handleResultClick} data-result>
+                                            {post.title}
+                                        </a>
+                                    </Link>
+                                ))}
+                            </>
+                        }
                     </div>
                 }
             </div>
