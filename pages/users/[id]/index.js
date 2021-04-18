@@ -1,7 +1,7 @@
 import Meta from '../../../components/Meta';
 import { container } from '../../../styles/Post.module.css';
 import PostExcerpt from '../../../components/posts/PostExcerpt';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 function Post({ user, posts, error }) {
 
@@ -12,7 +12,12 @@ function Post({ user, posts, error }) {
         </div>
     );
 
-    const [currentPosts, setCurrentPosts] = useState(posts)
+    const [currentPosts, setCurrentPosts] = useState(posts);
+
+    // Sync component state with server side props
+    useEffect(() => {
+        setCurrentPosts(posts);
+    }, [posts]);
 
     return (
         <div className={container}>
@@ -27,7 +32,7 @@ function Post({ user, posts, error }) {
 export async function getServerSideProps({ params: { id } }) {
     try {
         const res = await fetch(`http://localhost:5000/users/${id}`);
-        
+
         if (res.status === 200) {
             return {
                 props: await res.json(),
