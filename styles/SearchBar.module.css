@@ -53,6 +53,10 @@
     flex-grow: 1;
   }
 
+  .fullWidthContainer .btn {
+    margin-right: 0;
+  }
+
   .bar input {
     flex-grow: 1;
   }
