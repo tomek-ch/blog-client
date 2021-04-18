@@ -6,7 +6,7 @@ import Link from 'next/link';
 
 function PostGrid({ posts }) {
 
-    // Get 3 different tags and authors
+    // Get unique tags and authors
     const tags = [...new Set(posts.reduce((arr, post) => [...arr, ...post.tags], []))].slice(0, 7);
 
     const authors = posts.reduce((authors, post) => (
@@ -18,10 +18,10 @@ function PostGrid({ posts }) {
     return (
         <div className={gridStyle.grid}>
             <div>
-                {posts.slice(0, 3).map(post => <PostExcerpt key={post._id} post={post} />)}
+                {posts.slice(0, 2).map(post => <PostExcerpt key={post._id} post={post} />)}
             </div>
             <div>
-                {posts.slice(3, 7).map(post => <PostTile key={post._id} post={post} />)}
+                {posts.slice(2, 5).map(post => <PostTile key={post._id} post={post} />)}
             </div>
             <div>
                 <h2>Writers</h2>

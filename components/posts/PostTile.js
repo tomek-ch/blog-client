@@ -1,7 +1,7 @@
 import { tile, details } from '../../styles/PostTile.module.css';
 import Link from 'next/link';
 
-function PostTile({ post: { _id, title, author, excerpt, readTime } }) {
+function PostTile({ post: { _id, title, author, excerpt, readTime, time } }) {
 
     const timeToRead = readTime === 0
         ? 'Less than a min'
@@ -14,7 +14,8 @@ function PostTile({ post: { _id, title, author, excerpt, readTime } }) {
             <a className={tile}>
                 <div className={details}>{author.firstName} {author.lastName}</div>
                 <h3>{title}</h3>
-                <div className={details}>{timeToRead}</div>
+                <p>{excerpt}</p>
+                <div className={details}>{time} • {timeToRead}</div>
             </a>
         </Link>
     );
