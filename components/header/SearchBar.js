@@ -5,7 +5,7 @@ import Link from 'next/link';
 function SearchBar() {
 
     const [query, setQuery] = useState('');
-    const [results, setResults] = useState([]);
+    const [userResults, setUserResults] = useState([]);
     const [postResults, setPostResults] = useState([]);
 
     const [areResultsVisible, setAreResultsVisible] = useState(false);
@@ -42,8 +42,8 @@ function SearchBar() {
             const timeoutId = setTimeout(() => {
                 fetch(`http://localhost:5000/users?username=${query}`)
                     .then(res => res.json())
-                    .then(setResults)
-                    .catch(() => setResults([]));
+                    .then(setUserResults)
+                    .catch(() => setUserResults([]));
 
                 fetch(`http://localhost:5000/posts?title=${query}`)
                     .then(res => res.json())
@@ -53,7 +53,7 @@ function SearchBar() {
 
             setCancelId(timeoutId);
         } else {
-            setResults([]);
+            setUserResults([]);
             setPostResults([]);
         }
 
@@ -74,12 +74,12 @@ function SearchBar() {
                 />
                 <button className={btn} onClick={toggleBar}>🔎</button>
                 {
-                    areResultsVisible && (!!results.length || !!postResults.length) &&
+                    areResultsVisible && (!!userResults.length || !!postResults.length) &&
                     <div className={style.results}>
-                        {!!results.length &&
+                        {!!userResults.length &&
                             <>
                                 <h4>Users</h4>
-                                {results.map(user => (
+                                {userResults.map(user => (
                                     <Link key={user._id} href={`/users/${user._id}`}>
                                         <a onClick={handleResultClick} data-result>
                                             {user.username}
