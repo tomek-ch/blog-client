@@ -114,6 +114,7 @@ function UserInfoForm({ currentUser, setCurrentUser, token }) {
                 type="reset"
                 onClick={resetData}
                 className={btn}
+                disabled={!changedFields?.length}
             >Reset</button>
             <ul>{messages.map(msg => <li key={msg}>{msg}</li>)}</ul>
         </form>
