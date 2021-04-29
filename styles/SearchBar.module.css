@@ -22,10 +22,10 @@
 .results {
   position: absolute;
   top: 80%;
-  background-color: white;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  background-color: var(--background);
+  box-shadow: var(--shadow);
   padding: 1em;
-  border-radius: 5px;
+  border-radius: var(--radius);
   z-index: 2;
   margin: auto;
   display: flex;
@@ -53,7 +53,7 @@
     display: flex;
     align-items: center;
     z-index: 1;
-    background-color: white;
+    background-color: var(--background);
     width: calc(100% - 2em);
     height: 100%;
   }

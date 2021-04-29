@@ -1,5 +1,5 @@
 .comment {
-    border-bottom: 1px solid lightgray;
+    border-bottom: var(--border);
     margin: 1em 0;
     padding: 1em 0;
 }

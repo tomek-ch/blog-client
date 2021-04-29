@@ -1,5 +1,5 @@
 .tagInput {
-  border-radius: 5px;
+  border-radius: var(--radius);
   background-color: lightgray;
   padding: 0.5em;
   margin-bottom: 0.5em;
@@ -15,7 +15,7 @@
 
 .tag {
   padding: 0.5em;
-  border-radius: 5px;
+  border-radius: var(--radius);
   background-color: lightgray;
   display: flex;
 }

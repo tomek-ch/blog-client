@@ -1,7 +1,7 @@
 .tile {
     padding: 1em;
-    border-radius: 5px;
-    border: 1px solid lightgray;
+    border-radius: var(--radius);
+    border: var(--border);
     /* width: 20%; */
     /* flex-grow: 1; */
     display: block;

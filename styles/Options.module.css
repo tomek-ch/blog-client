@@ -3,13 +3,13 @@
   flex-direction: column;
   gap: 0.5em;
   padding: 1em;
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
   width: fit-content;
   position: absolute;
   right: 0em;
   white-space: nowrap;
-  background-color: white;
+  background-color: var(--background);
 }
 
 .option {

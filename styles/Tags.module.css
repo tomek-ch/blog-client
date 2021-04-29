@@ -9,5 +9,5 @@
 .tag {
   padding: 0.2em 0.5em;
   background-color: lightgray;
-  border-radius: 5px;
+  border-radius: var(--radius);
 }

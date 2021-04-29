@@ -10,5 +10,5 @@
 }
 
 .header {
-  border-bottom: 1px solid lightgray;
+  border-bottom: var(--border);
 }
