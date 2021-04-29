@@ -7,6 +7,16 @@
   display: flex;
   align-items: center;
   justify-self: flex-end;
+  width: 15em;
+}
+
+.container input {
+  width: 100%;
+}
+
+.results {
+  width: 100%;
+  max-width: 15em;
 }
 
 .results {
@@ -55,6 +65,7 @@
 
   .fullWidthContainer .btn {
     margin-right: 0;
+    margin-left: 0.5em;
   }
 
   .bar input {
@@ -63,6 +74,7 @@
 
   .results {
     display: none;
+    max-width: 100%;
   }
 
   .fullWidthContainer .results {
