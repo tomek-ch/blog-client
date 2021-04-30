@@ -21,7 +21,7 @@ function Post({ user, posts, error }) {
 
     return (
         <div className={container}>
-            <Meta title={`${user.firstName} - Blogg`} description={user.description} />
+            <Meta title={`${user.firstName} ${user.lastName} - Blogg`} description={user.description} />
             <h1>{user.firstName} {user.lastName}</h1>
             <h2>{user.username}</h2>
             <p>{user.description}</p>
