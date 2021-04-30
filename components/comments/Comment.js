@@ -47,7 +47,10 @@ function Comment({ comment, currentUser, setComments, token, containerClass, rep
             />
             {
                 comment.post
-                && <button onClick={() => setIsReplyFormOpen(prev => !prev)}>Reply</button>
+                && <button onClick={() => setIsReplyFormOpen(prev => !prev)}>
+                    <i className="ri-reply-fill" />
+                    Reply
+                </button>
             }
             {
                 !!replyCount
