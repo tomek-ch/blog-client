@@ -5,6 +5,7 @@ function Meta({ title, description}) {
         <Head>
             <title>{title}</title>
             <meta name='description' content={description} />
+            <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet" />
         </Head>
     );
 }

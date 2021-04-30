@@ -72,7 +72,9 @@ function SearchBar() {
                     className={bar}
                     ref={input}
                 />
-                <button className={btn} onClick={toggleBar}>🔎</button>
+                <button className={btn} onClick={toggleBar}>
+                    <i className="ri-search-line" />
+                </button>
                 {
                     areResultsVisible && (!!userResults.length || !!postResults.length) &&
                     <div className={style.results}>
