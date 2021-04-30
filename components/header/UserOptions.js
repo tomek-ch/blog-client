@@ -18,18 +18,33 @@ function UserOptions({ signOut, currentUser }) {
             renderOptions={toggle => (
                 <div className={options}>
                     <Link href="/new">
-                        <a onClick={toggle} className={option} data-user>New post</a>
+                        <a onClick={toggle} className={option} data-user>
+                            <i className="ri-pencil-line"></i>
+                            New post
+                        </a>
                     </Link>
                     <Link href={`/users/${currentUser._id}`}>
-                        <a onClick={toggle} className={option} data-user>Profile</a>
+                        <a onClick={toggle} className={option} data-user>
+                            <i className="ri-user-3-line" style={{ borderRadius: '10px', border: '1px solid black' }} />
+                            Profile
+                        </a>
                     </Link>
                     <Link href="/settings">
-                        <a onClick={toggle} className={option} data-user>Settings</a>
+                        <a onClick={toggle} className={option} data-user>
+                            <i className="ri-settings-3-line"></i>
+                            Settings
+                        </a>
                     </Link>
                     <Link href="/your-posts">
-                        <a onClick={toggle} className={option} data-user>Your posts</a>
+                        <a onClick={toggle} className={option} data-user>
+                            <i className="ri-file-list-2-line"></i>
+                            Your posts
+                        </a>
                     </Link>
-                    <button onClick={handleClick} className={option} data-user>Sign out</button>
+                    <button onClick={handleClick} className={option} data-user>
+                        <i className="ri-logout-box-r-line"></i>
+                        Sign out
+                    </button>
                 </div>
             )}
         />
