@@ -1,5 +1,6 @@
 import { input } from '../../styles/Form.module.css';
 import { btn } from '../../styles/Btn.module.css';
+import { body } from '../../styles/Comment.module.css';
 import { useState } from 'react';
 import TextBox from '../TextBox';
 
@@ -7,7 +8,7 @@ function CommentEditor({ comment, token, setComments, setError, isEdited, setIsE
 
     if (!isEdited)
         return (
-            <div>{comment.text}</div>
+            <div className={body}>{comment.text}</div>
         );
 
     const [editedText, setEditedText] = useState(comment.text);

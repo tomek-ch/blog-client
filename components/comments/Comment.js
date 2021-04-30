@@ -50,19 +50,25 @@ function Comment({
             <CommentEditor
                 {...{ comment, token, setComments, setError, isEdited, setIsEdited, updateComment }}
             />
-            {
-                comment.post
-                && <button onClick={() => setIsReplyFormOpen(prev => !prev)}>
-                    <i className="ri-reply-fill" />
-                    Reply
-                </button>
-            }
-            {
-                !!replyCount
-                && <button onClick={showReplies}>
-                    {areRepliesVisible ? `Hide replies` : `Show replies (${replyCount})`}
-                </button>
-            }
+            <div className={commentStyle.btns}>
+                {
+                    comment.post
+                    &&
+                    <>
+                        <button onClick={() => setIsReplyFormOpen(prev => !prev)}>
+                            <i className="ri-reply-fill" />
+                            Reply
+                        </button>
+                        {' • '}
+                    </>
+                }
+                {
+                    !!replyCount
+                    && <button onClick={showReplies}>
+                        {areRepliesVisible ? `Hide replies` : `Show replies (${replyCount})`}
+                    </button>
+                }
+            </div>
             {
                 isReplyFormOpen
                 && <CommentForm

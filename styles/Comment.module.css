@@ -1,21 +1,32 @@
 .comment {
-    border-bottom: var(--border);
-    margin: 1em 0;
-    padding: 1em 0;
+  border-bottom: var(--border);
+  margin: 1em 0;
+  padding: 1em 0;
 }
 
 .details {
-    font-size: 0.9em;
-    color: #666;
-    display: flex;
-    justify-content: space-between;
+  font-size: 0.9em;
+  /* font-size: 12.96px; */
+  color: #666;
+  display: flex;
+  justify-content: space-between;
 }
 
 .details > div > a {
-    display: inline;
-    font-size: inherit;
+  display: inline;
+  font-size: inherit;
 }
 
 .body {
-    font-size: 1.1em;
+  font-size: 1.1em;
+  margin: 0.5em 0;
+}
+
+.btns {
+  font-size: 0.9em;
+}
+
+.btns,
+.btns > button {
+  color: #666;
 }
