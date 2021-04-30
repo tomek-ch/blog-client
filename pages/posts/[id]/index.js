@@ -4,7 +4,6 @@ import Details from '../../../components/posts/Details';
 import Meta from '../../../components/Meta';
 import Tags from '../../../components/posts/Tags';
 import style from '../../../styles/Post.module.css';
-import commentStyle from '../../../styles/Comment.module.css';
 import { useState, useEffect } from 'react';
 import Comment from '../../../components/comments/Comment';
 import { useRouter } from 'next/router';
@@ -53,7 +52,6 @@ function Post({ post, comments, error }) {
             {currentComments.map(comment => <Comment
                 key={comment._id}
                 {...{ comment, token, currentUser }}
-                containerClass={commentStyle.comment}
                 setComments={setCurrentComments}
                 editable={currentUser?._id === comment.author._id}
             />)}

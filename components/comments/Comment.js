@@ -5,8 +5,13 @@ import updateComment from './api/commentUpdate';
 import deleteComment from './api/commentDelete';
 import CommentForm from './CommentForm';
 import { reply } from '../../styles/Reply.module.css';
+import commentStyle from '../../styles/Comment.module.css';
 
-function Comment({ comment, currentUser, setComments, token, containerClass, replyRemoveCb = () => {} }) {
+function Comment({
+    comment, currentUser, setComments, token,
+    containerClass = commentStyle.comment,
+    replyRemoveCb = () => { },
+}) {
 
     const [isEdited, setIsEdited] = useState(false);
     const [error, setError] = useState('');
