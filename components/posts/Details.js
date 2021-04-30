@@ -15,7 +15,7 @@ function Details({ post, handleDelete }) {
             : `${readTime} min read`;
 
     const authorName = post.author.firstName && (
-        <><Link href={`/users/${post.author._id}`}>
+        <><Link href={`/users/${post.author.username}`}>
             <a>{post.author.firstName} {post.author.lastName}</a>
         </Link> • </>
     );

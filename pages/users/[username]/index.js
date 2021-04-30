@@ -29,9 +29,9 @@ function Post({ user, posts, error }) {
     );
 }
 
-export async function getServerSideProps({ params: { id } }) {
+export async function getServerSideProps({ params: { username } }) {
     try {
-        const res = await fetch(`http://localhost:5000/users/${id}`);
+        const res = await fetch(`http://localhost:5000/users/${username}`);
 
         if (res.status === 200) {
             return {

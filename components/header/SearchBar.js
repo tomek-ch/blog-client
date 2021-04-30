@@ -82,7 +82,7 @@ function SearchBar() {
                             <>
                                 <h4>Users</h4>
                                 {userResults.map(user => (
-                                    <Link key={user._id} href={`/users/${user._id}`}>
+                                    <Link key={user._id} href={`/users/${user.username}`}>
                                         <a onClick={handleResultClick} data-result>
                                             {user.username}
                                         </a>

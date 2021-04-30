@@ -10,7 +10,7 @@ function CommentDetails({ comment: {
     return (
         <div className={details}>
             <div>
-                <Link href={`/users/${author._id}`}>
+                <Link href={`/users/${author.username}`}>
                     <a className={details}>{author.firstName} {author.lastName}</a>
                 </Link> • {time}
             </div>

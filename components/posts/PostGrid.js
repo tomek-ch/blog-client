@@ -26,7 +26,7 @@ function PostGrid({ posts }) {
             <div>
                 <h2>Writers</h2>
                 {authors.map(author => (
-                    <Link key={author._id} href={`/users/${author._id}`}>
+                    <Link key={author._id} href={`/users/${author.username}`}>
                         <a>
                             <h3>{author.firstName} {author.lastName}</h3>
                             <p>{author.description}</p>
