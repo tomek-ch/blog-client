@@ -27,8 +27,8 @@ function PostOptions({ id, handleDelete }) {
                         <a className={option} data-post>Edit</a>
                     </Link>
                     <button onClick={deletePost} className={option} data-post>
-                        Delete post
-                </button>
+                        Delete
+                    </button>
                 </div>
             )}
         />
