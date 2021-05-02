@@ -2,7 +2,6 @@
   border-radius: var(--radius);
   background-color: lightgray;
   padding: 0.5em;
-  margin-bottom: 0.5em;
   width: 100%;
 }
 
@@ -24,4 +23,10 @@
   color: inherit;
   margin-left: 0.5em;
   cursor: pointer;
+}
+
+.tagForm {
+  display: flex;
+  gap: 0.5em;
+  margin-bottom: 0.5em;
 }

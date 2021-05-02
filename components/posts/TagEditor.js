@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import style from '../../styles/TagInput.module.css';
+import { btn } from '../../styles/Btn.module.css';
 
 function TagEditor({ tags, setTags }) {
     const [tag, setTag] = useState('');
@@ -22,7 +23,7 @@ function TagEditor({ tags, setTags }) {
 
     return (
         <div>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} className={style.tagForm}>
                 <input
                     placeholder="Add a tag"
                     value={tag}
@@ -30,6 +31,9 @@ function TagEditor({ tags, setTags }) {
                     className={style.tagInput}
                     maxLength="20"
                 />
+                <button className={btn}>
+                    Add
+                </button>
             </form>
             <div className={style.tagList}>
                 {tags.map(tag => (
