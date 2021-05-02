@@ -27,12 +27,12 @@ function PostsTagged({ posts, tag, error }) {
     );
 }
 
-export async function getServerSideProps({ params: { id } }) {
+export async function getServerSideProps({ params: { tag } }) {
     try {
-        const res = await fetch(`http://localhost:5000/posts?tags=${encodeURI(id)}`);
+        const res = await fetch(`http://localhost:5000/posts?tags=${encodeURI(tag)}`);
         const data = await res.json();
 
-        if (res.status === 200) return { props: { posts: data, tag: id } };
+        if (res.status === 200) return { props: { posts: data, tag } };
         else return { props: { error: data[0] } };
 
     } catch (error) {
