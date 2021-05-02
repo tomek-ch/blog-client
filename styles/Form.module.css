@@ -1,6 +1,6 @@
 .form {
   margin: 2em auto;
-  max-width: 350px;
+  max-width: 15em;
   display: flex;
   flex-direction: column;
   gap: 0.5em;
@@ -12,4 +12,5 @@
   border: none;
   background-color: lightgray;
   display: block;
+  width: 100%;
 }
