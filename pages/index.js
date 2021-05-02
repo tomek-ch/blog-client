@@ -2,6 +2,7 @@ import CtaSection from '../components/CtaSection';
 import { useAppContext } from '../components/Context';
 import Meta from '../components/Meta';
 import PostGrid from '../components/posts/PostGrid';
+import { grid } from '../styles/PostGrid.module.css';
 
 function MainPage({ posts, error }) {
 
@@ -11,7 +12,7 @@ function MainPage({ posts, error }) {
         <>
             <Meta title="Blogg" />
             {!currentUser ? <CtaSection /> : ''}
-            {posts ? <PostGrid posts={posts} /> : error}
+            {posts ? <PostGrid posts={posts} /> : <div className={grid}>{error}</div>}
         </>
     );
 }
