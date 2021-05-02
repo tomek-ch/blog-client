@@ -19,7 +19,7 @@ function PostOptions({ id, handleDelete }) {
 
     return (
         <Options
-            toggleText="..."
+            toggleText="⋯"
             optionId="post"
             renderOptions={() => (
                 <div className={options}>

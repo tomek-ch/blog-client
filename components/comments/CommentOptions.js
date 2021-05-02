@@ -13,7 +13,7 @@ function CommentOptions({ _id, token, setComments, setIsEdited, setError, delete
     return (
         <Options
             optionId="comment"
-            toggleText="..."
+            toggleText="⋯"
             renderOptions={toggle => (
                 <div className={options}>
                     <button
