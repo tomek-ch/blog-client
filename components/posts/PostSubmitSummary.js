@@ -40,7 +40,7 @@ function PostSubmitSummary({ post, goBack, tags, setTags, excerpt, setExcerpt, i
                 Publish post after saving
             </label>
             <div>{error}</div>
-            <button onClick={handleClick}>Save</button>
+            <button onClick={handleClick} disabled={!excerpt}>Save</button>
             <button onClick={goBack}>Cancel</button>
         </div>
     );
