@@ -35,7 +35,9 @@ function TagEditor({ tags, setTags }) {
                 {tags.map(tag => (
                     <div key={tag} className={style.tag}>
                         <div>{tag}</div>
-                        <button onClick={() => removeTag(tag)} className={style.removeBtn}>x</button>
+                        <button onClick={() => removeTag(tag)} className={style.removeBtn}>
+                            <i className="ri-close-fill" />
+                        </button>
                     </div>
                 ))}
             </div>
