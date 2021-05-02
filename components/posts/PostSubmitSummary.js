@@ -27,6 +27,7 @@ function PostSubmitSummary({ post, goBack, tags, setTags, excerpt, setExcerpt, i
                     value={excerpt}
                     onChange={e => setExcerpt(e.target.value)}
                     placeholder="Post excerpt"
+                    maxLength="200"
                 />
             </label>
             <TagEditor {...{ tags, setTags }} />
