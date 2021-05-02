@@ -13,7 +13,7 @@ function Header() {
         <header className={header}>
             <nav className={container}>
                 <Link href="/">
-                    <a><h1>Blogg</h1></a>
+                    <a><h1>Blogg<i className="ri-quill-pen-fill" /></h1></a>
                 </Link>
                 <SearchBar />
                     {currentUser ? <UserOptions {...{ currentUser, signOut }} /> : <AuthLinks />}
