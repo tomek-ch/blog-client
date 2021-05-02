@@ -4,5 +4,5 @@
     background-color: lightgray;
     padding: 0.5em;
     border-radius: var(--radius);
-    width: fit-content;
+    /* width: fit-content; */
 }
