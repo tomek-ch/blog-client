@@ -24,7 +24,7 @@ function Comment({
     const replyAddCb = () => {
         setIsReplyFormOpen(false);
         setReplyCount(prev => prev + 1);
-    }
+    };
 
     const showReplies = async () => {
         setAreRepliesVisible(prev => !prev);
