@@ -30,3 +30,11 @@
 .btns > button {
   color: #666;
 }
+
+.textBox {
+  display: block;
+  width: 100%;
+  background-color: inherit;
+  margin: 0.5em 0;
+  font-size: 1.1em;
+}

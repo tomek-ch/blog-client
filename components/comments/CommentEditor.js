@@ -1,6 +1,5 @@
-import { input } from '../../styles/Form.module.css';
 import { btn } from '../../styles/Btn.module.css';
-import { body } from '../../styles/Comment.module.css';
+import { body, textBox } from '../../styles/Comment.module.css';
 import { useState } from 'react';
 import TextBox from '../TextBox';
 
@@ -24,7 +23,7 @@ function CommentEditor({ comment, token, setComments, setError, isEdited, setIsE
     return (
         <div>
             <TextBox
-                className={input}
+                className={textBox}
                 value={editedText}
                 onChange={e => setEditedText(e.target.value)}
             />
