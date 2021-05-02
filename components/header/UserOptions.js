@@ -25,7 +25,7 @@ function UserOptions({ signOut, currentUser }) {
                     </Link>
                     <Link href={`/users/${currentUser.username}`}>
                         <a onClick={toggle} className={option} data-user>
-                            <i className="ri-user-3-line" style={{ borderRadius: '10px', border: '1px solid black' }} />
+                            <i className="ri-user-3-line" />
                             Profile
                         </a>
                     </Link>
