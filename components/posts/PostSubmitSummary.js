@@ -2,6 +2,7 @@ import { useState } from 'react';
 import TagEditor from './TagEditor';
 import TextBox from '../TextBox';
 import { editor } from '../../styles/PostEditor.module.css';
+import { input } from '../../styles/Form.module.css';
 
 function PostSubmitSummary({ post, goBack, tags, setTags, excerpt, setExcerpt, isPublished, setIsPublished, submitCb }) {
     const [error, setError] = useState('');
@@ -19,11 +20,15 @@ function PostSubmitSummary({ post, goBack, tags, setTags, excerpt, setExcerpt, i
     return (
         <div className={editor}>
             <h1>{post.title}</h1>
-            <TextBox
-                value={excerpt}
-                onChange={e => setExcerpt(e.target.value)}
-                placeholder="Post excerpt"
-            />
+            <label>
+                Post excerpt (how it will be displayed on your profile etc):
+                <TextBox
+                    className={input}
+                    value={excerpt}
+                    onChange={e => setExcerpt(e.target.value)}
+                    placeholder="Post excerpt"
+                />
+            </label>
             <TagEditor {...{ tags, setTags }} />
             <label>
                 <input
