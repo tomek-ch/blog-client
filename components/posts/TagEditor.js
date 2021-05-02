@@ -13,10 +13,8 @@ function TagEditor({ tags, setTags }) {
     };
 
     const handleChange = e => {
-        const { value } = e.target;
-        if (value.length < 20)
-            setTag(value);
-    }
+        setTag(e.target.value);
+    };
 
     const removeTag = toRemove => {
         setTags(prev => prev.filter(tag => tag !== toRemove));
@@ -30,6 +28,7 @@ function TagEditor({ tags, setTags }) {
                     value={tag}
                     onChange={handleChange}
                     className={style.tagInput}
+                    maxLength="20"
                 />
             </form>
             <div className={style.tagList}>
