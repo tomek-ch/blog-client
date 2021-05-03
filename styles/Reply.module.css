@@ -1,7 +1,7 @@
 .reply {
     margin-left: 1em;
     margin-top: 1em;
-    background-color: lightgray;
+    background-color: var(--foreground);
     padding: 0.5em;
     border-radius: var(--radius);
     /* width: fit-content; */

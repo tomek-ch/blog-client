@@ -1,6 +1,6 @@
 .tagInput {
   border-radius: var(--radius);
-  background-color: lightgray;
+  background-color: var(--foreground);
   padding: 0.5em;
   width: 100%;
 }
@@ -15,7 +15,7 @@
 .tag {
   padding: 0.5em;
   border-radius: var(--radius);
-  background-color: lightgray;
+  background-color: var(--foreground);
   display: flex;
 }
 

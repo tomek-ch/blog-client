@@ -8,6 +8,6 @@
 
 .tag {
   padding: 0.2em 0.5em;
-  background-color: lightgray;
+  background-color: var(--foreground);
   border-radius: var(--radius);
 }
