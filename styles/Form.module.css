@@ -14,3 +14,8 @@
   display: block;
   width: 100%;
 }
+
+.input:hover {
+  background-color: #ccc;
+  transition: all 150ms;
+}
