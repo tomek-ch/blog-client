@@ -1,12 +1,12 @@
 import Meta from '../../../components/Meta';
 import { container } from '../../../styles/Post.module.css';
-import { navBar, navItem, activeTab, listItem } from '../../../styles/YourPosts.module.css';
+import { navBar, navItem, activeTab } from '../../../styles/YourPosts.module.css';
 import { useEffect, useState } from 'react';
 import { useAppContext } from '../../../components/Context';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
-import PostDetails from '../../../components/posts/Details';
-import CommentDetails from '../../../components/comments/CommentDetails';
+import CommentList from '../../../components/your-posts/CommentList';
+import PostList from '../../../components/your-posts/PostList';
 
 function YourPosts() {
 
@@ -17,20 +17,33 @@ function YourPosts() {
     if (!currentUser)
         router.push('/log-in');
 
-    const [data, setData] = useState({});
+    const [data, setData] = useState({
+
+    });
     const [error, setError] = useState('');
 
     useEffect(() => {
-        if (currentUser._id)
-            fetch(`http://localhost:5000/list-unpublished`, {
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                },
-            })
+        if (currentUser._id) {
+
+            const url =
+                currentTab === 'comments'
+                    ? `http://localhost:5000/comments?author=${currentUser._id}`
+                    : `http://localhost:5000/posts?author=${currentUser._id}`;
+
+            const options =
+                currentTab === 'unpublished'
+                    ? {
+                        headers: {
+                            Authorization: `Bearer ${token}`,
+                        },
+                    } : {};
+
+            fetch(url, options)
                 .then(res => res.json())
                 .then(setData)
                 .catch(() => setError('Error retrieving posts'));
-    }, [currentUser]);
+        }
+    }, [currentUser, currentTab]);
 
     if (error)
         return (
@@ -48,19 +61,6 @@ function YourPosts() {
         </Link>
     );
 
-    const items = data?.[currentTab]?.map(item => (
-        <Link
-            key={item._id}
-            href={`/posts/${currentTab === 'comments'
-                ? item.post
-                    ? item.post
-                    : item.comment.post
-                : item._id}`}
-        >
-            <a><h3>{item.text ? item.text : item.title}</h3></a>
-        </Link>
-    ));
-
     return (
         <div className={container}>
             <Meta title="Your posts" />
@@ -70,39 +70,8 @@ function YourPosts() {
             </nav>
             {
                 currentTab === 'comments'
-                    ? data?.comments?.map(com => (
-                        <Link href={`/posts/${com.post ? com.post : com.comment.post}`} key={com._id}>
-                            <a className={listItem}>
-                                <h3>{com.text}</h3>
-                                <p>
-                                    In response to {com.post ? 'post' : 'comment'}: {
-                                        com.post || com.comment._id
-                                    }
-                                </p>
-                                <CommentDetails
-                                    comment={{ ...com, author: currentUser }}
-                                    editable={false}
-                                />
-                            </a>
-                        </Link>
-                    ))
-                    : data?.[currentTab]?.map(post => (
-                        <div key={post._id} className={listItem}>
-                            <Link href={`/posts/${post._id}`}>
-                                <a>
-                                    <h3>{post.title}</h3>
-                                    <p>{post.excerpt}</p>
-                                </a>
-                            </Link>
-                            <PostDetails
-                                post={{ ...post, author: currentUser }}
-                                handleDelete={() => setData(prev => ({
-                                    ...prev,
-                                    [currentTab]: prev[currentTab].filter(p => p._id !== post._id),
-                                }))}
-                            />
-                        </div>
-                    ))
+                    ? <CommentList {...{ currentUser }} />
+                    : <PostList {...{ currentUser, token, unpublished: currentTab === 'unpublished' }} />
             }
         </div>
     );
