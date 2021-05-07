@@ -1,0 +1,24 @@
+.navBar {
+    display: flex;
+    gap: 1.5em;
+    border-bottom: 1px solid var(--foreground);
+    margin: 1em 0;
+}
+
+.navItem {
+    padding: 1em 0;
+    color: #666;
+}
+
+.activeTab {
+    padding: 1em 0;
+    color: black;
+    font-weight: bold;
+    border-bottom: 1px solid black;
+}
+
+.listItem {
+    display: block;
+    border-bottom: 1px solid var(--foreground);
+    padding: 1em 0;
+}

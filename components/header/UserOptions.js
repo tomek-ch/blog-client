@@ -32,7 +32,7 @@ function UserOptions({ signOut, currentUser }) {
                             Settings
                         </a>
                     </Link>
-                    <Link href="/your-posts">
+                    <Link href="/your-posts/published">
                         <a onClick={toggle} className={option} data-user>
                             Your posts
                         </a>
