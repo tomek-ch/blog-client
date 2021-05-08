@@ -1,7 +1,7 @@
 import Meta from '../../../components/Meta';
 import { container } from '../../../styles/Post.module.css';
 import { navBar, navItem, activeTab } from '../../../styles/YourPosts.module.css';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useAppContext } from '../../../components/Context';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
@@ -16,42 +16,6 @@ function YourPosts() {
 
     if (!currentUser)
         router.push('/log-in');
-
-    const [data, setData] = useState({
-
-    });
-    const [error, setError] = useState('');
-
-    useEffect(() => {
-        if (currentUser._id) {
-
-            const url =
-                currentTab === 'comments'
-                    ? `http://localhost:5000/comments?author=${currentUser._id}`
-                    : `http://localhost:5000/posts?author=${currentUser._id}`;
-
-            const options =
-                currentTab === 'unpublished'
-                    ? {
-                        headers: {
-                            Authorization: `Bearer ${token}`,
-                        },
-                    } : {};
-
-            fetch(url, options)
-                .then(res => res.json())
-                .then(setData)
-                .catch(() => setError('Error retrieving posts'));
-        }
-    }, [currentUser, currentTab]);
-
-    if (error)
-        return (
-            <div className={container}>
-                <Meta title={error} />
-                {error}
-            </div>
-        );
 
     const links = ['published', 'unpublished', 'comments'].map(text =>
         <Link href={`/your-posts/${text}`} key={text}>
