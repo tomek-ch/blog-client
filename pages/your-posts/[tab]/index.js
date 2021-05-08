@@ -1,7 +1,6 @@
 import Meta from '../../../components/Meta';
 import { container } from '../../../styles/Post.module.css';
 import { navBar, navItem, activeTab } from '../../../styles/YourPosts.module.css';
-import { useState } from 'react';
 import { useAppContext } from '../../../components/Context';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
