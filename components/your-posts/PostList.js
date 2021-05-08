@@ -6,6 +6,7 @@ import { listItem } from '../../styles/YourPosts.module.css';
 function PostList({ currentUser, unpublished, token }) {
 
     const [posts, setPosts] = useState([]);
+    const [error, setError] = useState('');
 
     useEffect(() => {
         if (currentUser._id) {
@@ -25,7 +26,7 @@ function PostList({ currentUser, unpublished, token }) {
         }
     }, [currentUser, unpublished]);
 
-    return posts.map(post => (
+    return error || posts.map(post => (
         <div key={post._id} className={listItem}>
             <Link href={`/posts/${post._id}`}>
                 <a>

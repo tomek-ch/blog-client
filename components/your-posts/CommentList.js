@@ -6,17 +6,17 @@ import { listItem } from '../../styles/YourPosts.module.css';
 function CommentList({ currentUser }) {
 
     const [comments, setComments] = useState([]);
+    const [error, setError] = useState('');
 
     useEffect(() => {
-        if (currentUser._id) {
+        if (currentUser._id)
             fetch(`http://localhost:5000/comments?author=${currentUser._id}`)
                 .then(res => res.json())
                 .then(setComments)
-                .catch(() => setError('Error retrieving posts'));
-        }
+                .catch(() => setError('Error retrieving comments'));
     }, [currentUser]);
 
-    return comments.map(com => (
+    return error || comments.map(com => (
         <div key={com._id} className={listItem}>
             <Link href={`/posts/${com.post ? com.post : com.comment.post}`}>
                 <a>
