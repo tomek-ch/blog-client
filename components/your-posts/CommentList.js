@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import CommentDetails from '../comments/CommentDetails';
 import { listItem } from '../../styles/YourPosts.module.css';
+import api from '../apiServerUrl';
 
 function CommentList({ currentUser }) {
 
@@ -10,7 +11,7 @@ function CommentList({ currentUser }) {
 
     useEffect(() => {
         if (currentUser._id)
-            fetch(`http://localhost:5000/comments?author=${currentUser._id}`)
+            fetch(`${api}/comments?author=${currentUser._id}`)
                 .then(res => res.json())
                 .then(setComments)
                 .catch(() => setError('Error retrieving comments'));

@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import PostDetails from '../posts/Details';
 import { listItem } from '../../styles/YourPosts.module.css';
+import api from '../apiServerUrl';
 
 function PostList({ currentUser, unpublished, token }) {
 
@@ -19,7 +20,7 @@ function PostList({ currentUser, unpublished, token }) {
                         },
                     } : {};
 
-            fetch(`http://localhost:5000/posts?author=${currentUser._id}`, options)
+            fetch(`${api}/posts?author=${currentUser._id}`, options)
                 .then(res => res.json())
                 .then(setPosts)
                 .catch(() => setError('Error retrieving posts'));

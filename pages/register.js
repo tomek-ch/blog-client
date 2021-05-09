@@ -5,6 +5,7 @@ import { useAppContext } from '../components/Context';
 import { btn } from '../styles/Btn.module.css';
 import { form, input } from '../styles/Form.module.css';
 import Meta from '../components/Meta';
+import api from '../components/apiServerUrl';
 
 function LogIn() {
 
@@ -30,7 +31,7 @@ function LogIn() {
     const handleSubmit = async e => {
         e.preventDefault();
         try {
-            const response = await fetch('http://localhost:5000/users', {
+            const response = await fetch(`${api}/users`, {
                 method: 'post',
                 body: JSON.stringify(userData),
                 headers: { 'Content-Type': 'application/json' },

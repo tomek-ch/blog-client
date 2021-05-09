@@ -1,6 +1,8 @@
+import api from '../../apiServerUrl';
+
 async function updateComment(comment, editedText, token, setComments, setError, setIsEdited) {
     try {
-        const res = await fetch(`http://localhost:5000/comments/${comment._id}`, {
+        const res = await fetch(`${api}/comments/${comment._id}`, {
             method: 'put',
             body: JSON.stringify({ text: editedText }),
             headers: {

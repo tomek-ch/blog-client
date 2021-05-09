@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { form, input } from '../../styles/Form.module.css';
 import { btn } from '../../styles/Btn.module.css';
+import api from '../apiServerUrl';
 
 function UserInfoForm({ currentUser, setCurrentUser, token }) {
 
@@ -38,7 +39,7 @@ function UserInfoForm({ currentUser, setCurrentUser, token }) {
 
         const newData = changedFields.reduce((data, key) => ({ ...data, [key]: userData[key] }), {});
         try {
-            const response = await fetch(`http://localhost:5000/users/${currentUser._id}`, {
+            const response = await fetch(`${api}/users/${currentUser._id}`, {
                 method: 'put',
                 body: JSON.stringify(newData),
                 headers: {

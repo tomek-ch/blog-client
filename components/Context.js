@@ -1,4 +1,5 @@
 import { createContext, useState, useContext, useEffect } from 'react';
+import api from './apiServerUrl';
 
 const Context = createContext();
 
@@ -24,7 +25,7 @@ function ContextProvider({ children }) {
 
     useEffect(() => {
         if (token)
-            fetch('http://localhost:5000/verify-user', { headers: { 'Authorization': `Bearer ${token}` } })
+            fetch(`${api}/verify-user`, { headers: { 'Authorization': `Bearer ${token}` } })
                 .then(user => user.json())
                 .then(setCurrentUser)
                 .catch(signOut);

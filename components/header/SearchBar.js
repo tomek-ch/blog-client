@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import style, { btn, bar, container, fullWidthContainer } from '../../styles/SearchBar.module.css';
 import Link from 'next/link';
+import api from '../apiServerUrl';
 
 function SearchBar() {
 
@@ -40,12 +41,12 @@ function SearchBar() {
 
         if (query) {
             const timeoutId = setTimeout(() => {
-                fetch(`http://localhost:5000/users?username=${query}`)
+                fetch(`${api}/users?username=${query}`)
                     .then(res => res.json())
                     .then(setUserResults)
                     .catch(() => setUserResults([]));
 
-                fetch(`http://localhost:5000/posts?title=${query}`)
+                fetch(`${api}/posts?title=${query}`)
                     .then(res => res.json())
                     .then(setPostResults)
                     .catch(() => setPostResults([]));

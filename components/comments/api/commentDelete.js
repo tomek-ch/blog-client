@@ -1,6 +1,8 @@
+import api from '../../apiServerUrl';
+
 async function deleteComment(_id, token, setComments, setError, replyRemoveCb) {
     try {    
-        const res = await fetch(`http://localhost:5000/comments/${_id}`, {
+        const res = await fetch(`${api}/comments/${_id}`, {
             method: 'delete',
             headers: {
                 Authorization: `Bearer ${token}`,

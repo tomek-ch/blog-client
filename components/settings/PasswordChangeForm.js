@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { form, input } from '../../styles/Form.module.css';
 import { btn } from '../../styles/Btn.module.css';
+import api from '../apiServerUrl';
 
 function PasswordChangeForm({ token, currentUser }) {
 
@@ -11,7 +12,7 @@ function PasswordChangeForm({ token, currentUser }) {
     const changePassword = async e => {
         e.preventDefault();
         try {
-            const response = await fetch(`http://localhost:5000/users/${currentUser._id}`, {
+            const response = await fetch(`${api}/users/${currentUser._id}`, {
                 method: 'put',
                 body: JSON.stringify({ oldPassword, newPassword }),
                 headers: {

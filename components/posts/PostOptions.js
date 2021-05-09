@@ -2,13 +2,14 @@ import Link from 'next/link';
 import { option, options } from '../../styles/Options.module.css';
 import { useAppContext } from '../Context';
 import Options from '../Options';
+import api from '../apiServerUrl';
 
 function PostOptions({ id, handleDelete }) {
 
     const { token } = useAppContext();
 
     const deletePost = async () => {
-        await fetch(`http://localhost:5000/posts/${id}`, {
+        await fetch(`${api}/posts/${id}`, {
             method: 'delete',
             headers: {
                 Authorization: `Bearer ${token}`,

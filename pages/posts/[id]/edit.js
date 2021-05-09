@@ -3,6 +3,7 @@ import PostEditor from '../../../components/posts/PostEditor';
 import { container } from '../../../styles/Post.module.css';
 import { useRouter } from 'next/router';
 import { useAppContext } from '../../../components/Context';
+import api from '../../../components/apiServerUrl';
 
 function EditPost({ error, post }) {
 
@@ -17,7 +18,7 @@ function EditPost({ error, post }) {
 
     const submitCb = async (data, handleError) => {
         try {
-            const res = await fetch(`http://localhost:5000/posts/${post._id}`, {
+            const res = await fetch(`${api}/posts/${post._id}`, {
                 method: 'put',
                 body: JSON.stringify(data),
                 headers: {
@@ -47,7 +48,7 @@ function EditPost({ error, post }) {
 
 export async function getServerSideProps({ params: { id } }) {
     try {
-        const res = await fetch(`http://localhost:5000/posts/${id}`);
+        const res = await fetch(`${api}/posts/${id}`);
         const data = await res.json();
 
         if (res.status === 200) return { props: { post: data.post } };

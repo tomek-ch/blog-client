@@ -1,3 +1,5 @@
+import api from '../../apiServerUrl';
+
 async function addComment(responseTo, text, setComments, setError, handleSuccess, token, currentUser) {
     try {
         const comment = { text };
@@ -7,7 +9,7 @@ async function addComment(responseTo, text, setComments, setError, handleSuccess
         else
             comment.comment = responseTo.comment;
 
-        const res = await fetch('http://localhost:5000/comments', {
+        const res = await fetch(`${api}/comments`, {
             method: 'post',
             body: JSON.stringify(comment),
             headers: {

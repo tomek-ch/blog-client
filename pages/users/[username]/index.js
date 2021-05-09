@@ -2,6 +2,7 @@ import Meta from '../../../components/Meta';
 import { container } from '../../../styles/Post.module.css';
 import PostExcerpt from '../../../components/posts/PostExcerpt';
 import { useState, useEffect } from 'react';
+import api from '../../../components/apiServerUrl';
 
 function Post({ user, posts, error }) {
 
@@ -32,7 +33,7 @@ function Post({ user, posts, error }) {
 
 export async function getServerSideProps({ params: { username } }) {
     try {
-        const res = await fetch(`http://localhost:5000/users/${username}`);
+        const res = await fetch(`${api}/users/${username}`);
 
         if (res.status === 200) {
             return {

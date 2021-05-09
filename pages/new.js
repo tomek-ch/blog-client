@@ -3,6 +3,7 @@ import PostEditor from '../components/posts/PostEditor';
 import { container } from '../styles/Post.module.css';
 import { useRouter } from 'next/router';
 import { useAppContext } from '../components/Context';
+import api from '../components/apiServerUrl';
 
 function NewPost() {
 
@@ -14,7 +15,7 @@ function NewPost() {
 
     const submitCb = async (post, handleError) => {
         try {
-            const res = await fetch('http://localhost:5000/posts', {
+            const res = await fetch(`${api}/posts`, {
                 method: 'post',
                 body: JSON.stringify(post),
                 headers: {

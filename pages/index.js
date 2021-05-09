@@ -3,6 +3,7 @@ import { useAppContext } from '../components/Context';
 import Meta from '../components/Meta';
 import PostGrid from '../components/posts/PostGrid';
 import { grid } from '../styles/PostGrid.module.css';
+import api from '../components/apiServerUrl';
 
 function MainPage({ posts, error }) {
 
@@ -19,7 +20,7 @@ function MainPage({ posts, error }) {
 
 export async function getServerSideProps() {
     try {
-        const res = await fetch('http://localhost:5000/posts');
+        const res = await fetch(`${api}/posts`);
         const data = await res.json();
 
         if (res.status === 200) return { props: { posts: data } };

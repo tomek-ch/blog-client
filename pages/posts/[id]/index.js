@@ -7,6 +7,7 @@ import style from '../../../styles/Post.module.css';
 import { useState, useEffect } from 'react';
 import Comment from '../../../components/comments/Comment';
 import { useRouter } from 'next/router';
+import api from '../../../components/apiServerUrl';
 
 function Post({ post, comments, error }) {
 
@@ -61,7 +62,7 @@ function Post({ post, comments, error }) {
 
 export async function getServerSideProps({ params: { id } }) {
     try {
-        const res = await fetch(`http://localhost:5000/posts/${id}`);
+        const res = await fetch(`${api}/posts/${id}`);
 
         if (res.status === 200) {
             return {

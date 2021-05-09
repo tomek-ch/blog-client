@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { form, input } from '../../styles/Form.module.css';
 import { btn } from '../../styles/Btn.module.css';
 import { useRouter } from 'next/router';
+import api from '../apiServerUrl';
 
 function AccountDeleteForm({currentUser, token, signOut}) {
 
@@ -12,7 +13,7 @@ function AccountDeleteForm({currentUser, token, signOut}) {
     const deleteAccount = async e => {
         e.preventDefault();
         try {
-            const response = await fetch(`http://localhost:5000/users/${currentUser._id}`, {
+            const response = await fetch(`${api}/users/${currentUser._id}`, {
                 method: 'delete',
                 body: JSON.stringify({ password: deletePassword }),
                 headers: {

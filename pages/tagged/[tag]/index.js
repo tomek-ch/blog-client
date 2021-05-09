@@ -2,6 +2,7 @@ import Meta from '../../../components/Meta';
 import { container } from '../../../styles/Post.module.css';
 import PostExcerpt from '../../../components/posts/PostExcerpt';
 import { useState } from 'react';
+import api from '../../../components/apiServerUrl';
 
 function PostsTagged({ posts, tag, error }) {
 
@@ -29,7 +30,7 @@ function PostsTagged({ posts, tag, error }) {
 
 export async function getServerSideProps({ params: { tag } }) {
     try {
-        const res = await fetch(`http://localhost:5000/posts?tags=${encodeURI(tag)}`);
+        const res = await fetch(`${api}/posts?tags=${encodeURI(tag)}`);
         const data = await res.json();
 
         if (res.status === 200) return { props: { posts: data, tag } };

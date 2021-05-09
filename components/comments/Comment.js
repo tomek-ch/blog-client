@@ -6,6 +6,7 @@ import deleteComment from './api/commentDelete';
 import CommentForm from './CommentForm';
 import { reply } from '../../styles/Reply.module.css';
 import commentStyle from '../../styles/Comment.module.css';
+import api from '../apiServerUrl';
 
 function Comment({
     comment, currentUser, setComments, token,
@@ -30,7 +31,7 @@ function Comment({
         setAreRepliesVisible(prev => !prev);
         if (replyCount > replies.length) {
             try {
-                const res = await fetch(`http://localhost:5000/comments?comment=${comment._id}`);
+                const res = await fetch(`${api}/comments?comment=${comment._id}`);
                 if (res.status === 200)
                     setReplies(await res.json());
                 else
