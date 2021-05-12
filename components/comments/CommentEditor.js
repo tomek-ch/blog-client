@@ -1,4 +1,5 @@
 import { btn } from '../../styles/Btn.module.css';
+import { btnRow } from '../../styles/Form.module.css';
 import { body, textBox } from '../../styles/Comment.module.css';
 import { useState } from 'react';
 import TextBox from '../TextBox';
@@ -27,8 +28,10 @@ function CommentEditor({ comment, token, setComments, setError, isEdited, setIsE
                 value={editedText}
                 onChange={e => setEditedText(e.target.value)}
             />
-            <button className={btn} onClick={handleUpdate} disabled={!editedText}>Save</button>
-            <button className={btn} onClick={cancelEdit}>Cancel</button>
+            <div className={btnRow}>
+                <button className={btn} onClick={handleUpdate} disabled={!editedText}>Save</button>
+                <button className={btn} onClick={cancelEdit}>Cancel</button>
+            </div>
         </div>
     );
 }

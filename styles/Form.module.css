@@ -19,3 +19,8 @@
   background-color: #ccc;
   transition: all 150ms;
 }
+
+.btnRow {
+  display: flex;
+  gap: 0.5em;
+}

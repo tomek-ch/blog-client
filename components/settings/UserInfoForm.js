@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { form, input } from '../../styles/Form.module.css';
+import { form, input, btnRow } from '../../styles/Form.module.css';
 import { btn } from '../../styles/Btn.module.css';
 import api from '../apiServerUrl';
 
@@ -106,17 +106,23 @@ function UserInfoForm({ currentUser, setCurrentUser, token }) {
                     maxLength="100"
                 />
             </label>
-            <button
-                type="submit"
-                className={btn}
-                disabled={!userData.username || !userData.firstName || !changedFields?.length}
-            >Save</button>
-            <button
-                type="reset"
-                onClick={resetData}
-                className={btn}
-                disabled={!changedFields?.length}
-            >Reset</button>
+            <div className={btnRow}>
+                <button
+                    type="submit"
+                    className={btn}
+                    disabled={!userData.username || !userData.firstName || !changedFields?.length}
+                >
+                    Save
+                </button>
+                <button
+                    type="reset"
+                    onClick={resetData}
+                    className={btn}
+                    disabled={!changedFields?.length}
+                >
+                    Reset
+                </button>
+            </div>
             <ul>{messages.map(msg => <li key={msg}>{msg}</li>)}</ul>
         </form>
     );
