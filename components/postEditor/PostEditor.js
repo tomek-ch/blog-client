@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { editor } from '../../styles/PostEditor.module.css';
 import ParagraphEditor from './ParagraphEditor';
 import PostSubmitSummary from './PostSubmitSummary';
@@ -14,9 +14,10 @@ function PostEditor({ submitCb, post }) {
     const [excerpt, setExcerpt] = useState(post?.excerpt || '');
     const [isPublished, setIsPublished] = useState(post ? post.isPublished : true);
 
-    const lastParagraph = paragraphs[paragraphs.length - 1];
+    const indexOfLastParagraph = paragraphs.length - 1;
+    const lastParagraph = paragraphs[indexOfLastParagraph];
     const canAddParagraph = lastParagraph.body;
-    
+
     // Post must have a title and at least one valid paragraph
     // Paragraphs can't have empty bodies
     // If the last paragraph has only a heading you can't submit
@@ -24,9 +25,11 @@ function PostEditor({ submitCb, post }) {
         && paragraphs[0].body
         && !(lastParagraph.heading
             && !lastParagraph.body);
-
-    const addParagraph = () => {
-        setParagraphs(prev => [...prev, { heading: '', body: '' }]);
+    
+    const lastParagraphRef = useRef();
+    const addParagraph = async () => {
+        await setParagraphs(prev => [...prev, { heading: '', body: '' }]);
+        lastParagraphRef.current?.focus();
     };
 
     // Returns an event handler that changes either the heading or the body of a paragraph
@@ -65,9 +68,16 @@ function PostEditor({ submitCb, post }) {
     return (
         <div className={editor}>
             <TitleInput {...{ title, setTitle }} />
-            {paragraphs.map((p, i) => (
+            {paragraphs.slice(0, -1).map((p, i) => (
                 <ParagraphEditor key={`p-${i}`} paragraph={p} index={i} editParagraph={editParagraph} />
             ))}
+            <ParagraphEditor
+                key={`p-${indexOfLastParagraph}`}
+                paragraph={lastParagraph}
+                index={indexOfLastParagraph}
+                editParagraph={editParagraph}
+                ref={lastParagraphRef}
+            />
             <button
                 onClick={addParagraph}
                 disabled={!canAddParagraph}
