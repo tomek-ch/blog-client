@@ -24,8 +24,7 @@ function PostEditor({ submitCb, post }) {
             && !paragraphs[paragraphs.length - 1].body);
 
     const addParagraph = () => {
-        if (canAddParagraph)
-            setParagraphs(prev => [...prev, { heading: '', body: '' }]);
+        setParagraphs(prev => [...prev, { heading: '', body: '' }]);
     };
 
     // Returns an event handler that changes either the heading or the body of a paragraph
@@ -48,7 +47,7 @@ function PostEditor({ submitCb, post }) {
             const limitLength = (str, max) => str.length > max ? `${str.substring(0, max - 3)}...` : str;
             setExcerpt(limitLength(post.paragraphs[0].body, 200));
         }
-        
+
         setPostPreview(post);
         setIsSummaryOpen(true);
     };
