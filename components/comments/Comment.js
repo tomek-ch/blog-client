@@ -74,6 +74,7 @@ function Comment({
                 && <CommentForm
                     {...{ currentUser, setComments: setReplies, token, replyAddCb }}
                     responseTo={{ comment: comment._id }}
+                    focus={true}
                 />
             }
             <div>{error}</div>

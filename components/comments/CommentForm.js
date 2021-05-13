@@ -1,11 +1,11 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { input } from '../../styles/Form.module.css';
 import { btn } from '../../styles/Btn.module.css';
 import { form } from '../../styles/CommentForm.module.css';
 import addComment from './api/commentCreate';
 import Link from 'next/link';
 
-function CommentForm({ currentUser, responseTo, token, setComments, replyAddCb = () => {} }) {
+function CommentForm({ currentUser, responseTo, token, setComments, replyAddCb = () => {}, focus }) {
 
     if (!currentUser)
         return (
@@ -24,6 +24,12 @@ function CommentForm({ currentUser, responseTo, token, setComments, replyAddCb =
         replyAddCb();
     };
 
+    const inputRef = useRef();
+    useEffect(() => {
+        if (focus)
+            inputRef.current?.focus();
+    }, []);
+
     return (
         <>
             <form
@@ -37,6 +43,7 @@ function CommentForm({ currentUser, responseTo, token, setComments, replyAddCb =
                     onChange={e => setComment(e.target.value)}
                     value={comment}
                     className={input}
+                    ref={inputRef}
                 />
                 <button className={btn} disabled={!comment}>
                     Add
