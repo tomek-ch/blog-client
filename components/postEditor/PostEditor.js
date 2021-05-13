@@ -1,7 +1,8 @@
 import { useState } from 'react';
-import { editor, titleInput, headingInput, textBox } from '../../styles/PostEditor.module.css';
+import { editor, headingInput, textBox } from '../../styles/PostEditor.module.css';
 import TextBox from '../TextBox';
 import PostSubmitSummary from './PostSubmitSummary';
+import TitleInput from './TitleInput';
 
 function PostEditor({ submitCb, post }) {
     const [isSummaryOpen, setIsSummaryOpen] = useState(false);
@@ -62,13 +63,7 @@ function PostEditor({ submitCb, post }) {
 
     return (
         <div className={editor}>
-            <input
-                className={titleInput}
-                value={title}
-                onChange={e => setTitle(e.target.value)}
-                placeholder="Your post's title"
-                maxLength="50"
-            />
+            <TitleInput {...{ title, setTitle }} />
             {paragraphs.map((p, i) => (
                 <div key={`paragraph-${i}`} className={editor} >
                     <input
