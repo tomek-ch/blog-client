@@ -27,6 +27,7 @@ function CommentEditor({ comment, token, setComments, setError, isEdited, setIsE
                 className={textBox}
                 value={editedText}
                 onChange={e => setEditedText(e.target.value)}
+                autoFocus={true}
             />
             <div className={btnRow}>
                 <button className={btn} onClick={handleUpdate} disabled={!editedText}>Save</button>
