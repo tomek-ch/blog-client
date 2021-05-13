@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { editor, headingInput, textBox } from '../../styles/PostEditor.module.css';
-import TextBox from '../TextBox';
+import { editor } from '../../styles/PostEditor.module.css';
+import ParagraphEditor from './ParagraphEditor';
 import PostSubmitSummary from './PostSubmitSummary';
 import TitleInput from './TitleInput';
 
@@ -65,20 +65,7 @@ function PostEditor({ submitCb, post }) {
         <div className={editor}>
             <TitleInput {...{ title, setTitle }} />
             {paragraphs.map((p, i) => (
-                <div key={`paragraph-${i}`} className={editor} >
-                    <input
-                        value={p.heading}
-                        onChange={editParagraph('heading', i)}
-                        placeholder="Heading"
-                        className={headingInput}
-                    />
-                    <TextBox
-                        value={p.body}
-                        onChange={editParagraph('body', i)}
-                        placeholder="Body"
-                        className={textBox}
-                    />
-                </div>
+                <ParagraphEditor key={`p-${i}`} paragraph={p} index={i} editParagraph={editParagraph} />
             ))}
             <button
                 onClick={addParagraph}
