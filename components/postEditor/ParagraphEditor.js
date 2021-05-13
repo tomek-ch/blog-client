@@ -1,15 +1,7 @@
 import { editor, headingInput, textBox } from '../../styles/PostEditor.module.css';
 import TextBox from '../TextBox';
-import { useEffect, useRef } from 'react';
 
 function ParagraphEditor({ paragraph, editParagraph, index, focus }) {
-
-    const ref = useRef();
-    useEffect(() => {
-        if (focus)
-            ref.current?.focus();
-    }, []);
-
     return (
         <div className={editor} >
             <input
@@ -17,7 +9,7 @@ function ParagraphEditor({ paragraph, editParagraph, index, focus }) {
                 onChange={editParagraph('heading', index)}
                 placeholder="Heading"
                 className={headingInput}
-                ref={ref}
+                autoFocus={focus}
             />
             <TextBox
                 value={paragraph.body}
