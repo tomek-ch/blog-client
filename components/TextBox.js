@@ -8,7 +8,7 @@ function TextBox(props) {
     const handleChange = async e => {
         props.onChange(e);
         await setStyle({ height: 'auto' });
-        setStyle({ height: textBox.current.scrollHeight });
+        setStyle({ height: textBox.current?.scrollHeight });
     };
 
     useEffect(() => setStyle({ height: textBox.current.scrollHeight }), []);
