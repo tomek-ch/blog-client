@@ -14,14 +14,16 @@ function PostEditor({ submitCb, post }) {
     const [excerpt, setExcerpt] = useState(post?.excerpt || '');
     const [isPublished, setIsPublished] = useState(post ? post.isPublished : true);
 
-    const canAddParagraph = paragraphs[paragraphs.length - 1].body;
+    const lastParagraph = paragraphs[paragraphs.length - 1];
+    const canAddParagraph = lastParagraph.body;
+    
     // Post must have a title and at least one valid paragraph
     // Paragraphs can't have empty bodies
     // If the last paragraph has only a heading you can't submit
     const canSubmitPost = title
         && paragraphs[0].body
-        && !(paragraphs[paragraphs.length - 1].heading
-            && !paragraphs[paragraphs.length - 1].body);
+        && !(lastParagraph.heading
+            && !lastParagraph.body);
 
     const addParagraph = () => {
         setParagraphs(prev => [...prev, { heading: '', body: '' }]);
