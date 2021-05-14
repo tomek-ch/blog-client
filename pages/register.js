@@ -4,6 +4,7 @@ import { useRouter } from 'next/router';
 import { useAppContext } from '../components/Context';
 import { btn } from '../styles/Btn.module.css';
 import { form, input } from '../styles/Form.module.css';
+import { link } from '../styles/InlineLink.module.css';
 import Meta from '../components/Meta';
 import api from '../components/apiServerUrl';
 
@@ -100,7 +101,9 @@ function LogIn() {
                 disabled={!userData.username || !userData.password || !userData.firstName}
             >Sign up</button>
             <ul>{errors}</ul>
-            <p>Already have an account? <Link href="/log-in">Sign in</Link></p>
+            <p>Already have an account? <Link href="/log-in">
+                <a className={link}>Sign in</a>
+            </Link></p>
         </form>
     );
 }
