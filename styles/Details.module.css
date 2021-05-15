@@ -4,5 +4,5 @@
   display: flex;
   justify-content: space-between;
   position: relative;
-  color: #666;
+  color: var(--light-text);
 }

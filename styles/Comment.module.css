@@ -7,7 +7,7 @@
 .details {
   font-size: 0.9em;
   /* font-size: 12.96px; */
-  color: #666;
+  color: var(--light-text);
   display: flex;
   justify-content: space-between;
 }
@@ -28,7 +28,7 @@
 
 .btns,
 .btns > button {
-  color: #666;
+  color: var(--light-text);
 }
 
 .textBox {

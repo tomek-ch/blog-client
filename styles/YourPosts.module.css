@@ -7,7 +7,7 @@
 
 .navItem {
     padding: 1em 0;
-    color: #666;
+    color: var(--light-text);
 }
 
 .activeTab {
