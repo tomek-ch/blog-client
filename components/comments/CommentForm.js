@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState } from 'react';
 import { input } from '../../styles/Form.module.css';
 import { btn } from '../../styles/Btn.module.css';
 import { link } from '../../styles/InlineLink.module.css';
@@ -27,12 +27,6 @@ function CommentForm({ currentUser, responseTo, token, setComments, replyAddCb =
         replyAddCb();
     };
 
-    const inputRef = useRef();
-    useEffect(() => {
-        if (focus)
-            inputRef.current?.focus();
-    }, []);
-
     return (
         <>
             <form
@@ -46,7 +40,7 @@ function CommentForm({ currentUser, responseTo, token, setComments, replyAddCb =
                     onChange={e => setComment(e.target.value)}
                     value={comment}
                     className={input}
-                    ref={inputRef}
+                    autoFocus={focus}
                 />
                 <button className={btn} disabled={!comment}>
                     Add
