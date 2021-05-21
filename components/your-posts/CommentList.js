@@ -10,7 +10,7 @@ function CommentList({ currentUser }) {
     const [error, setError] = useState('');
 
     useEffect(() => {
-        if (currentUser._id)
+        if (currentUser?._id)
             fetch(`${api}/comments?author=${currentUser._id}&getPost=true`)
                 .then(res => res.json())
                 .then(setComments)

@@ -10,7 +10,7 @@ function PostList({ currentUser, unpublished, token }) {
     const [error, setError] = useState('');
 
     useEffect(() => {
-        if (currentUser._id) {
+        if (currentUser?._id) {
 
             const options =
                 unpublished
