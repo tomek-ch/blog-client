@@ -11,7 +11,7 @@ function CommentList({ currentUser }) {
 
     useEffect(() => {
         if (currentUser._id)
-            fetch(`${api}/comments?author=${currentUser._id}`)
+            fetch(`${api}/comments?author=${currentUser._id}&getPost=true`)
                 .then(res => res.json())
                 .then(setComments)
                 .catch(() => setError('Error retrieving comments'));
@@ -19,12 +19,12 @@ function CommentList({ currentUser }) {
 
     return error || comments.map(com => (
         <div key={com._id} className={listItem}>
-            <Link href={`/posts/${com.post ? com.post : com.comment.post}`}>
+            <Link href={`/posts/${com.post ? com.post._id : com.comment.post}`}>
                 <a>
                     <h3>{com.text}</h3>
                     <p>
                         In response to {com.post ? 'post' : 'comment'}: {
-                            com.post || com.comment._id
+                            com.post?.title || com.comment.text
                         }
                     </p>
                 </a>
