@@ -4,6 +4,12 @@
   margin: auto;
 }
 
+.post {
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+}
+
 .title {
   font-size: 3em;
 }

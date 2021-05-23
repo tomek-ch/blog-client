@@ -33,7 +33,7 @@ function Post({ post, comments, error }) {
 
     return (
         <div className={style.container}>
-            <article>
+            <article className={style.post}>
                 <Meta title={post.title} description={post.excerpt} />
                 <h1 className={style.title}>{post.title}</h1>
                 <Details {...{ handleDelete, post }} />
