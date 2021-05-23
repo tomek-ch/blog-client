@@ -12,5 +12,5 @@
 }
 
 .tag:hover {
-  background-color: #ccc;
+  background-color: var(--darker-foreground);
 }
