@@ -1,5 +1,5 @@
 import Meta from '../../../components/Meta';
-import { container, postFeed } from '../../../styles/Post.module.css';
+import { container } from '../../../styles/Post.module.css';
 import PostExcerpt from '../../../components/posts/PostExcerpt';
 import { useState } from 'react';
 import api from '../../../components/apiServerUrl';
@@ -23,7 +23,7 @@ function PostsTagged({ posts, tag, error }) {
                 description={`Discover internet's best articles about ${tag} on Blogg.`}
             />
             <h1>Posts tagged {tag}</h1>
-            <div className={postFeed}>
+            <div>
                 {currentPosts.map(post => (
                     <PostExcerpt key={post._id} post={post} setPosts={setCurrentPosts} />
                 ))}

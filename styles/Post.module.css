@@ -26,10 +26,3 @@
 .paragraphBody {
   white-space: pre-wrap;
 }
-
-.postFeed {
-  display: flex;
-  flex-direction: column;
-  gap: 2em;
-  margin: 2em 0;
-}

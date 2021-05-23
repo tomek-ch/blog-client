@@ -1,5 +1,5 @@
 import Meta from '../../../components/Meta';
-import { container, postFeed } from '../../../styles/Post.module.css';
+import { container } from '../../../styles/Post.module.css';
 import PostExcerpt from '../../../components/posts/PostExcerpt';
 import { useState, useEffect } from 'react';
 import api from '../../../components/apiServerUrl';
@@ -26,7 +26,7 @@ function Post({ user, posts, error }) {
             <h1>{user.firstName} {user.lastName}</h1>
             <h2>{user.username}</h2>
             <p>{user.description}</p>
-            <div className={postFeed}>
+            <div>
                 {currentPosts.map(post => (
                     <PostExcerpt key={post._id} post={post} setPosts={setCurrentPosts} />
                 ))}
