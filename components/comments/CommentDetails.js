@@ -1,4 +1,4 @@
-import { details } from '../../styles/Comment.module.css';
+import { details, authorLink } from '../../styles/Comment.module.css';
 import CommentOptions from './CommentOptions';
 import Link from 'next/link';
 
@@ -11,7 +11,7 @@ function CommentDetails({ comment: {
         <div className={details}>
             <div>
                 <Link href={`/users/${author.username}`}>
-                    <a className={details}>{author.firstName} {author.lastName}</a>
+                    <a className={authorLink}>{author.firstName} {author.lastName}</a>
                 </Link> • {time}
             </div>
             {

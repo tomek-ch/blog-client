@@ -1,4 +1,4 @@
-import { details } from '../../styles/Details.module.css';
+import { details, authorLink } from '../../styles/Details.module.css';
 import Link from 'next/link';
 import { useAppContext } from '../Context';
 import PostOptions from './PostOptions';
@@ -16,7 +16,7 @@ function Details({ post, handleDelete }) {
 
     const authorName = post.author.firstName && (
         <><Link href={`/users/${post.author.username}`}>
-            <a>{post.author.firstName} {post.author.lastName}</a>
+            <a className={authorLink}>{post.author.firstName} {post.author.lastName}</a>
         </Link> • </>
     );
 
