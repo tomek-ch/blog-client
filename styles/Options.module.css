@@ -18,6 +18,10 @@
   color: black;
 }
 
+.option:hover {
+  text-decoration: underline;
+}
+
 .toggle {
   font-weight: bold;
 }
