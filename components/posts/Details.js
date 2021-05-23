@@ -24,7 +24,7 @@ function Details({ post, handleDelete }) {
         <div className={details}>
             <div>{post.time} • {authorName}{timeToRead}</div>
             {
-                currentUser && currentUser._id === post.author._id &&
+                currentUser && currentUser._id === (post.author?._id || post.author) &&
                 <PostOptions id={post._id} handleDelete={handleDelete} />
             }
         </div>
