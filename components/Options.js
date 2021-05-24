@@ -32,7 +32,7 @@ function Options({ toggleText, renderOptions, optionId, bold, square }) {
             >
                 {toggleText}
             </button>
-            {optionsOpen ? renderOptions(toggle) : ''}
+            {optionsOpen ? renderOptions(hideOptions) : ''}
         </div>
     );
 }

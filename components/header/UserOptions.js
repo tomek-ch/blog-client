@@ -18,22 +18,22 @@ function UserOptions({ signOut, currentUser }) {
             renderOptions={toggle => (
                 <div className={options}>
                     <Link href="/new">
-                        <a onClick={toggle} className={option} data-user>
+                        <a onClick={toggle} onBlur={toggle} className={option} data-user>
                             New post
                         </a>
                     </Link>
                     <Link href={`/users/${currentUser.username}`}>
-                        <a onClick={toggle} className={option} data-user>
+                        <a onClick={toggle} onBlur={toggle} className={option} data-user>
                             Profile
                         </a>
                     </Link>
                     <Link href="/settings">
-                        <a onClick={toggle} className={option} data-user>
+                        <a onClick={toggle} onBlur={toggle} className={option} data-user>
                             Settings
                         </a>
                     </Link>
                     <Link href="/your-posts/published">
-                        <a onClick={toggle} className={option} data-user>
+                        <a onClick={toggle} onBlur={toggle} className={option} data-user>
                             Your posts
                         </a>
                     </Link>
