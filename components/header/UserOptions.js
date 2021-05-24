@@ -15,29 +15,29 @@ function UserOptions({ signOut, currentUser }) {
         <Options
             toggleText={currentUser.username}
             optionId="user"
-            renderOptions={toggle => (
+            renderOptions={(toggle, hide) => (
                 <div className={options}>
                     <Link href="/new">
-                        <a onClick={toggle} onBlur={toggle} className={option} data-user>
+                        <a onClick={toggle} onBlur={hide} className={option} data-user>
                             New post
                         </a>
                     </Link>
                     <Link href={`/users/${currentUser.username}`}>
-                        <a onClick={toggle} onBlur={toggle} className={option} data-user>
+                        <a onClick={toggle} onBlur={hide} className={option} data-user>
                             Profile
                         </a>
                     </Link>
                     <Link href="/settings">
-                        <a onClick={toggle} onBlur={toggle} className={option} data-user>
+                        <a onClick={toggle} onBlur={hide} className={option} data-user>
                             Settings
                         </a>
                     </Link>
                     <Link href="/your-posts/published">
-                        <a onClick={toggle} onBlur={toggle} className={option} data-user>
+                        <a onClick={toggle} onBlur={hide} className={option} data-user>
                             Your posts
                         </a>
                     </Link>
-                    <button onClick={handleClick} className={option} data-user>
+                    <button onClick={handleClick} onBlur={hide} className={option} data-user>
                         Sign out
                     </button>
                 </div>

@@ -22,10 +22,10 @@ function PostOptions({ id, handleDelete }) {
         <Options
             toggleText="⋯"
             optionId="post"
-            renderOptions={toggle => (
+            renderOptions={(_toggle, hide) => (
                 <div className={options}>
                     <Link href={`/posts/${id}/edit`}>
-                        <a className={option} data-post onBlur={toggle}>Edit</a>
+                        <a className={option} data-post onBlur={hide}>Edit</a>
                     </Link>
                     <button onClick={deletePost} className={option} data-post>
                         Delete
