@@ -5,7 +5,7 @@ import PostExcerpt from '../../../components/posts/PostExcerpt';
 import { useState, useEffect } from 'react';
 import api from '../../../components/apiServerUrl';
 
-function Post({ user, posts, error }) {
+function Post({ user, posts, comments, error }) {
 
     if (error) return (
         <div className={container}>
@@ -28,6 +28,14 @@ function Post({ user, posts, error }) {
                 <h1>{user.firstName} {user.lastName}</h1>
                 <h2>{user.username}</h2>
                 <p>{user.description}</p>
+                <div>
+                    <h2>Latest Comments:</h2>
+                    {comments.slice(0, 5).map(comment => (
+                        <div key={comment._id} style={{ margin: '0.5em 0' }}>
+                            {comment.text}
+                        </div>)
+                    )}
+                </div>
             </div>
             <div className={container}>
                 {currentPosts.map(post => (
@@ -43,9 +51,14 @@ export async function getServerSideProps({ params: { username } }) {
         const res = await fetch(`${api}/users/${username}`);
 
         if (res.status === 200) {
-            return {
-                props: await res.json(),
-            };
+            const props = await res.json();
+            try {
+                const comments = await (await fetch(`${api}/comments?author=${props.user._id}`)).json();
+                return { props: { ...props, comments } }
+            } catch {
+                props.comments = [];
+                return { props };
+            }
         } else if (res.status === 404) {
             return { props: { error: 'User not found' } };
         } else {
