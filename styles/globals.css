@@ -17,6 +17,11 @@
   --border: 1px solid var(--foreground);
 }
 
+::selection {
+  background-color: var(--highlight);
+  color: white;
+}
+
 a {
   color: inherit;
   text-decoration: none;
