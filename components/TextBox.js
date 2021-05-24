@@ -5,20 +5,18 @@ function TextBox(props) {
     const [style, setStyle] = useState({});
     const textBox = useRef(null);
 
-    const handleChange = async e => {
-        props.onChange(e);
+    useEffect(async () => {
         await setStyle({ height: 'auto' });
-        setStyle({ height: textBox.current?.scrollHeight });
-    };
-
-    useEffect(() => setStyle({ height: textBox.current.scrollHeight }), []);
+        setStyle({
+            height: parseInt(textBox.current?.scrollHeight) + 1,
+        });
+    }, [props.value]);
 
     return (
         <textarea
             {...props}
             ref={textBox}
             style={style}
-            onChange={handleChange}
         />
     );
 }
