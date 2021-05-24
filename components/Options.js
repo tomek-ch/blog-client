@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import style, { container } from '../styles/Options.module.css';
 
-function Options({ toggleText, renderOptions, optionId, bold, square }) {
+function Options({ toggleText, renderOptions, optionId }) {
 
     const [optionsOpen, setOptionsOpen] = useState(false);
     const toggle = () => setOptionsOpen(prev => !prev);
