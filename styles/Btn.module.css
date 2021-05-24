@@ -6,6 +6,10 @@
   white-space: nowrap;
 }
 
+.btn:hover {
+  border-color: var(--light-text)
+}
+
 .btn:disabled {
   border-color: var(--foreground);
 }
