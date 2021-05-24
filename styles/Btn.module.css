@@ -3,6 +3,7 @@
   border: 1px solid var(--foreground);
   border-radius: var(--radius);
   width: fit-content;
+  white-space: nowrap;
 }
 
 .btn:disabled {
