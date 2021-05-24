@@ -17,24 +17,30 @@ function CommentList({ currentUser }) {
                 .catch(() => setError('Error retrieving comments'));
     }, [currentUser]);
 
-    return error || comments.map(com => (
-        <div key={com._id} className={listItem}>
-            <Link href={`/posts/${com.post ? com.post._id : com.comment.post}`}>
-                <a>
-                    <h3>{com.text}</h3>
-                    <p>
-                        In response to {com.post ? 'post' : 'comment'}: {
-                            com.post?.title || com.comment.text
-                        }
-                    </p>
-                </a>
-            </Link>
-            <CommentDetails
-                comment={{ ...com, author: currentUser }}
-                editable={false}
-            />
-        </div>
-    ));
+    if (error)
+        return error;
+
+    if (currentUser)
+        return comments.map(com => (
+            <div key={com._id} className={listItem}>
+                <Link href={`/posts/${com.post ? com.post._id : com.comment.post}`}>
+                    <a>
+                        <h3>{com.text}</h3>
+                        <p>
+                            In response to {com.post ? 'post' : 'comment'}: {
+                                com.post?.title || com.comment.text
+                            }
+                        </p>
+                    </a>
+                </Link>
+                <CommentDetails
+                    comment={{ ...com, author: currentUser }}
+                    editable={false}
+                />
+            </div>
+        ));
+
+    return null;
 }
 
 export default CommentList;
