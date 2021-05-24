@@ -37,10 +37,7 @@ function PostList({ currentUser, unpublished, token }) {
             </Link>
             <PostDetails
                 post={{ ...post, author: currentUser }}
-                handleDelete={() => setData(prev => ({
-                    ...prev,
-                    [currentTab]: prev[currentTab].filter(p => p._id !== post._id),
-                }))}
+                handleDelete={() => setPosts(prev => prev.filter(p => p._id !== post._id))}
             />
         </div>
     ));
