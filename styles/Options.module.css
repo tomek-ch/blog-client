@@ -1,8 +1,7 @@
 .options {
   display: flex;
   flex-direction: column;
-  gap: 0.5em;
-  padding: 1em;
+  padding: 0.5em 0;
   border-radius: var(--radius);
   box-shadow: var(--shadow);
   width: fit-content;
@@ -10,16 +9,19 @@
   right: 0em;
   white-space: nowrap;
   background-color: var(--background);
+  overflow: hidden;
 }
 
 .option {
   cursor: pointer;
   text-align: left;
   color: black;
+  padding: 0.5em 1em;
 }
 
 .option:hover {
-  text-decoration: underline;
+  background-color: var(--highlight);
+  color: white;
 }
 
 .toggle {
