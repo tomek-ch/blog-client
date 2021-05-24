@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { form, input, btnRow } from '../../styles/Form.module.css';
 import { btn } from '../../styles/Btn.module.css';
 import api from '../apiServerUrl';
+import TextBox from '../TextBox';
 
 function UserInfoForm({ currentUser, setCurrentUser, token }) {
 
@@ -98,7 +99,7 @@ function UserInfoForm({ currentUser, setCurrentUser, token }) {
             </label>
             <label>
                 Description:
-                <textarea
+                <TextBox
                     name="description"
                     value={userData.description}
                     onChange={handleChange}
