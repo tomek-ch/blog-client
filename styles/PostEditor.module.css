@@ -5,18 +5,15 @@
 }
 
 .headingInput {
-  outline: none;
   font-size: 1.5em;
   font-weight: 500;
 }
 
 .titleInput {
-  outline: none;
   font-size: 2em;
   font-weight: bold;
 }
 
 .textBox {
-  outline: none;
   font-size: 1.1em;
 }
