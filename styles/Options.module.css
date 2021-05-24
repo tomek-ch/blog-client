@@ -25,7 +25,11 @@
 }
 
 .toggle {
-  font-weight: bold;
+  border-radius: 100px;
+}
+
+.toggle:hover {
+  background-color: #efefef;
 }
 
 .container {
