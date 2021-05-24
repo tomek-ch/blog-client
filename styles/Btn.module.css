@@ -1,6 +1,6 @@
 .btn {
   padding: 0.5em 1em;
-  border: 1px solid black;
+  border: 1px solid var(--foreground);
   border-radius: var(--radius);
   width: fit-content;
 }
