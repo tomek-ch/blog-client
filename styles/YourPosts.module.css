@@ -10,6 +10,10 @@
     color: var(--light-text);
 }
 
+.navItem:hover {
+    color: black;
+}
+
 .activeTab {
     padding: 1em 0;
     color: black;
