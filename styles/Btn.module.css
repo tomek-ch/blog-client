@@ -7,7 +7,8 @@
 }
 
 .btn:hover {
-  border-color: var(--light-text)
+  border-color: var(--light-text);
+  transition: all 150ms;
 }
 
 .btn:disabled {

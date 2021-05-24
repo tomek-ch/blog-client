@@ -30,6 +30,7 @@
 
 .toggle:hover {
   background-color: var(--light-foreground);
+  transition: all 150ms;
 }
 
 .container {

@@ -12,6 +12,7 @@
 
 .navItem:hover {
     color: black;
+    transition: all 150ms;
 }
 
 .activeTab {

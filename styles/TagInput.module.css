@@ -28,6 +28,7 @@
 
 .removeBtn:hover {
   background-color: var(--darker-foreground);
+  transition: all 150ms;
 }
 
 .tagForm {
