@@ -10,6 +10,7 @@
   border-radius: var(--radius);
   background-color: var(--foreground);
   display: flex;
+  align-items: center;
 }
 
 .removeBtn {
@@ -17,6 +18,16 @@
   margin-left: 0.5em;
   cursor: pointer;
   font-weight: bold;
+  width: 1.5em;
+  height: 1.5em;
+  border-radius: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.removeBtn:hover {
+  background-color: var(--darker-foreground);
 }
 
 .tagForm {
