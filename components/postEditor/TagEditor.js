@@ -30,7 +30,7 @@ function TagEditor({ tags, setTags }) {
                     className={input}
                     maxLength="20"
                 />
-                <button className={btn} disabled={tags.length >= 5 || tags.includes(tag)}>
+                <button className={btn} disabled={tags.length >= 5 || tags.includes(tag) || !tag}>
                     Add
                 </button>
             </form>
