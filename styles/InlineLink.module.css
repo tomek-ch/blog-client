@@ -1,5 +1,6 @@
 .link {
   font-weight: bold;
+  color: var(--highlight);
 }
 
 .link:hover {
