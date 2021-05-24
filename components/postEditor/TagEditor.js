@@ -8,10 +8,8 @@ function TagEditor({ tags, setTags }) {
 
     const handleSubmit = e => {
         e.preventDefault();
-        if (tags.length < 5 && !tags.includes(tag)) {
-            setTags(prev => [...prev, tag]);
-            setTag('');
-        }
+        setTags(prev => [...prev, tag]);
+        setTag('');
     };
 
     const handleChange = e => {
@@ -32,7 +30,7 @@ function TagEditor({ tags, setTags }) {
                     className={input}
                     maxLength="20"
                 />
-                <button className={btn}>
+                <button className={btn} disabled={tags.length >= 5 || tags.includes(tag)}>
                     Add
                 </button>
             </form>
