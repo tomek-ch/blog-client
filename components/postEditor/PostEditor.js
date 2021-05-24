@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { editor } from '../../styles/PostEditor.module.css';
+import { editor, btn } from '../../styles/PostEditor.module.css';
 import ParagraphEditor from './ParagraphEditor';
 import PostSubmitSummary from './PostSubmitSummary';
 import TitleInput from './TitleInput';
@@ -79,12 +79,14 @@ function PostEditor({ submitCb, post }) {
             <button
                 onClick={addParagraph}
                 disabled={!canAddParagraph}
+                className={btn}
             >
                 Add paragraph
             </button>
             <button
                 onClick={submitPost}
                 disabled={!canSubmitPost}
+                className={btn}
             >
                 Submit post
             </button>

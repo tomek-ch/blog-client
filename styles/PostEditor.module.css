@@ -17,3 +17,14 @@
 .textBox {
   font-size: 1.1em;
 }
+
+.btn {
+  padding: 0.5em 1em;
+  border-radius: 100px;
+  width: fit-content;
+  margin: auto;
+}
+
+.btn:hover {
+  background-color: #efefef;
+}
