@@ -1,5 +1,4 @@
 import Meta from '../../../components/Meta';
-import { container } from '../../../styles/Post.module.css';
 import style from '../../../styles/UserProfile.module.css';
 import PostExcerpt from '../../../components/posts/PostExcerpt';
 import { useState, useEffect } from 'react';
@@ -37,7 +36,7 @@ function Post({ user, posts, comments, error }) {
                     )}
                 </div>
             </div>
-            <div className={container}>
+            <div className={style.posts}>
                 {currentPosts.map(post => (
                     <PostExcerpt key={post._id} post={post} setPosts={setCurrentPosts} />
                 ))}

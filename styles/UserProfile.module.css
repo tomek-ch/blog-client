@@ -7,11 +7,18 @@
   padding-top: 2.5em;
 }
 
+.posts {
+  padding: 1em;
+  max-width: 750px;
+}
+
 .container {
   display: flex;
   width: fit-content;
   margin: auto;
   justify-content: space-between;
+  width: 100%;
+  max-width: 1200px;
 }
 
 @media (max-width: 500px) {
