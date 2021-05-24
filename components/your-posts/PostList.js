@@ -27,6 +27,9 @@ function PostList({ currentUser, unpublished, token }) {
         }
     }, [currentUser, unpublished]);
 
+    if (!currentUser)
+        return null;
+
     return error || posts.map(post => (
         <div key={post._id} className={listItem}>
             <Link href={`/posts/${post._id}`}>
