@@ -1,5 +1,6 @@
 import Meta from '../../../components/Meta';
 import { container } from '../../../styles/Post.module.css';
+import style from '../../../styles/UserProfile.module.css';
 import PostExcerpt from '../../../components/posts/PostExcerpt';
 import { useState, useEffect } from 'react';
 import api from '../../../components/apiServerUrl';
@@ -21,12 +22,14 @@ function Post({ user, posts, error }) {
     }, [posts]);
 
     return (
-        <div className={container}>
-            <Meta title={`${user.firstName} ${user.lastName} - Blogg`} description={user.description} />
-            <h1>{user.firstName} {user.lastName}</h1>
-            <h2>{user.username}</h2>
-            <p>{user.description}</p>
-            <div>
+        <div className={style.container}>
+            <div className={style.userInfo}>
+                <Meta title={`${user.firstName} ${user.lastName} - Blogg`} description={user.description} />
+                <h1>{user.firstName} {user.lastName}</h1>
+                <h2>{user.username}</h2>
+                <p>{user.description}</p>
+            </div>
+            <div className={container}>
                 {currentPosts.map(post => (
                     <PostExcerpt key={post._id} post={post} setPosts={setCurrentPosts} />
                 ))}

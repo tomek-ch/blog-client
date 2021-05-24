@@ -1,0 +1,26 @@
+.userInfo {
+  width: 20em;
+  position: sticky;
+  top: 0;
+  align-self: flex-start;
+  padding: 1em;
+  padding-top: 2.5em;
+}
+
+.container {
+  display: flex;
+  width: fit-content;
+  margin: auto;
+  justify-content: space-between;
+}
+
+@media (max-width: 500px) {
+  .container {
+    flex-direction: column;
+    gap: 0; 
+  }
+
+  .userInfo {
+    position: static;
+  }
+}
