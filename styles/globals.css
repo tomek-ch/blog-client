@@ -6,7 +6,7 @@
 
 :root {
   --background: white;
-  --foreground: lightgray;
+  --foreground: #ddd;
   --darker-foreground: #ccc;
   --light-text: #666;
   --highlight: dodgerblue;
