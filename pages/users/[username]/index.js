@@ -65,7 +65,7 @@ export async function getServerSideProps({ params: { username } }) {
             const props = await res.json();
             try {
                 const comments = await (await fetch(
-                    `${api}/comments?author=${props.user._id}&getPost=true`
+                    `${api}/comments?author=${props.user._id}&getPost=true&newest=true`
                 )).json();
                 return { props: { ...props, comments } }
             } catch {
