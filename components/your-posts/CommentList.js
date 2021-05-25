@@ -3,6 +3,7 @@ import Link from 'next/link';
 import CommentDetails from '../comments/CommentDetails';
 import { listItem } from '../../styles/YourPosts.module.css';
 import api from '../apiServerUrl';
+import CommentOverview from '../comments/CommentOverview';
 
 function CommentList({ currentUser }) {
 
@@ -19,24 +20,9 @@ function CommentList({ currentUser }) {
 
     if (!currentUser)
         return null;
-        
+
     return error || comments.map(com => (
-        <div key={com._id} className={listItem}>
-            <Link href={`/posts/${com.post ? com.post._id : com.comment.post}`}>
-                <a>
-                    <h3>{com.text}</h3>
-                    <p>
-                        In response to {com.post ? 'post' : 'comment'}: {
-                            com.post?.title || com.comment.text
-                        }
-                    </p>
-                </a>
-            </Link>
-            <CommentDetails
-                comment={{ ...com, author: currentUser }}
-                editable={false}
-            />
-        </div>
+        <CommentOverview key={com._id} com={{ ...com, author: currentUser }} />
     ));
 }
 
