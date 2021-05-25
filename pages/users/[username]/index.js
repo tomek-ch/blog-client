@@ -3,6 +3,7 @@ import style from '../../../styles/UserProfile.module.css';
 import PostExcerpt from '../../../components/posts/PostExcerpt';
 import { useState, useEffect } from 'react';
 import api from '../../../components/apiServerUrl';
+import CommentOverview from '../../../components/comments/CommentOverview';
 
 function Post({ user, posts, comments, error }) {
 
@@ -23,17 +24,17 @@ function Post({ user, posts, comments, error }) {
     return (
         <div className={style.container}>
             <div className={style.userInfo}>
-                <Meta title={`${user.firstName} ${user.lastName} - Blogg`} description={user.description} />
-                <h1>{user.firstName} {user.lastName}</h1>
-                <h2>{user.username}</h2>
-                <p>{user.description}</p>
                 <div>
-                    <h2>Latest Comments:</h2>
-                    {comments.slice(0, 5).map(comment => (
-                        <div key={comment._id} style={{ margin: '0.5em 0' }}>
-                            {comment.text}
-                        </div>)
-                    )}
+                    <Meta title={`${user.firstName} ${user.lastName} - Blogg`} description={user.description} />
+                    <h1>{user.firstName} {user.lastName}</h1>
+                    <h2>{user.username}</h2>
+                    <p>{user.description}</p>
+                </div>
+                <div>
+                    {!!comments.length && <h2>Latest Comments:</h2>}
+                    {comments.slice(0, 3).map(comment => (
+                        <CommentOverview key={comment._id} com={{ ...comment, author: user }} />
+                    ))}
                 </div>
             </div>
             <div className={style.posts}>
@@ -52,7 +53,9 @@ export async function getServerSideProps({ params: { username } }) {
         if (res.status === 200) {
             const props = await res.json();
             try {
-                const comments = await (await fetch(`${api}/comments?author=${props.user._id}`)).json();
+                const comments = await (await fetch(
+                    `${api}/comments?author=${props.user._id}&getPost=true`
+                )).json();
                 return { props: { ...props, comments } }
             } catch {
                 props.comments = [];

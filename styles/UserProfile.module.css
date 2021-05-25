@@ -5,6 +5,9 @@
   align-self: flex-start;
   padding: 1em;
   padding-top: 2.5em;
+  display: flex;
+  flex-direction: column;
+  gap: 4em;
 }
 
 .posts {
