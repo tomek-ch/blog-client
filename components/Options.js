@@ -30,7 +30,7 @@ function Options({ toggleText, renderOptions, optionId }) {
                 className={style.toggle}
                 style={toggleStyle}
             >
-                {toggleText}
+                {typeof toggleText === 'function' ? toggleText(optionsOpen) : toggleText}
             </button>
             {optionsOpen ? renderOptions(toggle, hideOptions) : ''}
         </div>
