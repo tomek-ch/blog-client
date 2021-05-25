@@ -25,7 +25,11 @@ function Post({ user, posts, comments, error }) {
         <div className={style.container}>
             <div className={style.userInfo}>
                 <div>
-                    <Meta title={`${user.firstName} ${user.lastName} - Blogg`} description={user.description} />
+                    <Meta
+                        title={`${user.firstName}
+                        ${user.lastName} - Blogg`}
+                        description={user.description}
+                    />
                     <h1>{user.firstName} {user.lastName}</h1>
                     <h2>{user.username}</h2>
                     <p>{user.description}</p>
@@ -33,13 +37,20 @@ function Post({ user, posts, comments, error }) {
                 <div>
                     {!!comments.length && <h2>Latest Comments:</h2>}
                     {comments.slice(0, 3).map(comment => (
-                        <CommentOverview key={comment._id} com={{ ...comment, author: user }} />
+                        <CommentOverview
+                            key={comment._id}
+                            com={{ ...comment, author: user }}
+                        />
                     ))}
                 </div>
             </div>
             <div className={style.posts}>
                 {currentPosts.map(post => (
-                    <PostExcerpt key={post._id} post={post} setPosts={setCurrentPosts} />
+                    <PostExcerpt
+                        key={post._id}
+                        post={post}
+                        setPosts={setCurrentPosts}
+                    />
                 ))}
             </div>
         </div>
