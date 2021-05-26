@@ -34,7 +34,14 @@ function Options({ toggleText, renderOptions, optionId }) {
                     ? toggleText
                     : (
                         <>
-                            {toggleText}<i className={`ri-arrow-${optionsOpen ? 'up' : 'down'}-s-line`} />
+                            {toggleText}
+                            <i
+                                style={{
+                                    transform: `rotate(${optionsOpen ? '180deg': '0deg'})`,
+                                    transition: 'transform 150ms',
+                                }}
+                                className="ri-arrow-down-s-line"
+                            />
                         </>
                     )}
             </button>
