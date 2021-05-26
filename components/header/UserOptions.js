@@ -13,12 +13,7 @@ function UserOptions({ signOut, currentUser }) {
 
     return (
         <Options
-            toggleText={isOn => (
-                <>
-                    {currentUser.username}
-                    <i className={`ri-arrow-${isOn ? 'up' : 'down'}-s-fill`} />
-                </>
-            )}
+            toggleText={currentUser.username}
             optionId="user"
             renderOptions={(toggle, hide) => (
                 <div className={options}>

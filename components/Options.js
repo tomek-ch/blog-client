@@ -30,7 +30,13 @@ function Options({ toggleText, renderOptions, optionId }) {
                 className={style.toggle}
                 style={toggleStyle}
             >
-                {typeof toggleText === 'function' ? toggleText(optionsOpen) : toggleText}
+                {toggleText === '⋯'
+                    ? toggleText
+                    : (
+                        <>
+                            {toggleText}<i className={`ri-arrow-${optionsOpen ? 'up' : 'down'}-s-line`} />
+                        </>
+                    )}
             </button>
             {optionsOpen ? renderOptions(toggle, hideOptions) : ''}
         </div>
