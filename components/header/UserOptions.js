@@ -1,16 +1,8 @@
 import Link from 'next/link';
-import { useRouter } from 'next/router';
 import { options, option } from '../../styles/Options.module.css';
 import Options from '../Options';
 
 function UserOptions({ signOut, currentUser }) {
-
-    const router = useRouter()
-    const handleClick = () => {
-        signOut();
-        router.push('/');
-    };
-
     return (
         <Options
             toggleText={currentUser.username}
@@ -37,7 +29,7 @@ function UserOptions({ signOut, currentUser }) {
                             Your posts
                         </a>
                     </Link>
-                    <button onClick={handleClick} onBlur={hide} className={option} data-user>
+                    <button onClick={signOut} onBlur={hide} className={option} data-user>
                         Sign out
                     </button>
                 </div>
