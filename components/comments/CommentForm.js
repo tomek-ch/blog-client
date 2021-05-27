@@ -11,8 +11,8 @@ function CommentForm({ currentUser, responseTo, token, setComments, replyAddCb =
     if (!currentUser)
         return (
             <div className={container}>
-                <Link href="/log-in">
-                    <a className={link}>Sign in</a>
+                <Link href="/register">
+                    <a className={link}>Sign up</a>
                 </Link> to comment
             </div>
         );
