@@ -7,3 +7,7 @@
 .form input {
   flex-grow: 1;
 }
+
+.container {
+  margin-top: 1em;
+}

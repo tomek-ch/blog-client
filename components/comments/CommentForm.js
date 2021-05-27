@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { input } from '../../styles/Form.module.css';
 import { btn } from '../../styles/Btn.module.css';
 import { link } from '../../styles/InlineLink.module.css';
-import { form } from '../../styles/CommentForm.module.css';
+import { form, container } from '../../styles/CommentForm.module.css';
 import addComment from './api/commentCreate';
 import Link from 'next/link';
 
@@ -10,11 +10,11 @@ function CommentForm({ currentUser, responseTo, token, setComments, replyAddCb =
 
     if (!currentUser)
         return (
-            <>
+            <div className={container}>
                 <Link href="/log-in">
                     <a className={link}>Sign in</a>
                 </Link> to comment
-            </>
+            </div>
         );
 
 
