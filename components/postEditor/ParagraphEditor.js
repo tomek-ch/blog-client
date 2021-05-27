@@ -1,7 +1,7 @@
 import { editor, headingInput, textBox } from '../../styles/PostEditor.module.css';
 import TextBox from '../TextBox';
 
-function ParagraphEditor({ paragraph, editParagraph, index, focus }) {
+function ParagraphEditor({ paragraph, editParagraph, index }) {
     return (
         <div className={editor} >
             <input
@@ -9,7 +9,6 @@ function ParagraphEditor({ paragraph, editParagraph, index, focus }) {
                 onChange={editParagraph('heading', index)}
                 placeholder="Heading"
                 className={headingInput}
-                autoFocus={focus}
             />
             <TextBox
                 value={paragraph.body}

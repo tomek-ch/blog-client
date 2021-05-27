@@ -66,16 +66,9 @@ function PostEditor({ submitCb, post }) {
     return (
         <div className={editor}>
             <TitleInput {...{ title, setTitle }} />
-            {paragraphs.slice(0, -1).map((p, i) => (
+            {paragraphs.map((p, i) => (
                 <ParagraphEditor key={`p-${i}`} paragraph={p} index={i} editParagraph={editParagraph} />
             ))}
-            <ParagraphEditor
-                key={`p-${indexOfLastParagraph}`}
-                paragraph={lastParagraph}
-                index={indexOfLastParagraph}
-                editParagraph={editParagraph}
-                focus={true}
-            />
             <button
                 onClick={addParagraph}
                 disabled={!canAddParagraph}

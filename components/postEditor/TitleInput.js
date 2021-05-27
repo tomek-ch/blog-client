@@ -8,6 +8,7 @@ function TitleInput({ title, setTitle }) {
             onChange={e => setTitle(e.target.value)}
             placeholder="Your post's title"
             maxLength="50"
+            autoFocus
         />
     );
 }
