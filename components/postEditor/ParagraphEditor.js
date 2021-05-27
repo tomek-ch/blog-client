@@ -9,6 +9,7 @@ function ParagraphEditor({ paragraph, editParagraph, index }) {
                 onChange={editParagraph('heading', index)}
                 placeholder="Heading"
                 className={headingInput}
+                maxLength="50"
             />
             <TextBox
                 value={paragraph.body}
