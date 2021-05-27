@@ -22,12 +22,16 @@
   margin: 0.5em 0;
 }
 
-.btns {
-  font-size: 0.9em;
+.btn {
+  color: var(--light-text);
 }
 
-.btns,
-.btns > button {
+.btn:hover {
+  color: black;
+}
+
+.btns {
+  font-size: 0.9em;
   color: var(--light-text);
 }
 

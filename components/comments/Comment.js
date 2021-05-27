@@ -54,17 +54,22 @@ function Comment({
             <div className={commentStyle.btns}>
                 {
                     comment.post
-                    && <button onClick={() => setIsReplyFormOpen(prev => !prev)}>
-                        <i className="ri-reply-fill" />
-                        Reply
-                    </button>
+                    && (
+                        <button
+                            onClick={() => setIsReplyFormOpen(prev => !prev)}
+                            className={commentStyle.btn}
+                        >
+                            <i className="ri-reply-fill" />
+                            Reply
+                        </button>
+                    )
                 }
                 {
                     !!replyCount && comment.post && ' • '
                 }
                 {
                     !!replyCount
-                    && <button onClick={showReplies}>
+                    && <button onClick={showReplies} className={commentStyle.btn}>
                         {areRepliesVisible ? `Hide replies` : `Show replies (${replyCount})`}
                     </button>
                 }
