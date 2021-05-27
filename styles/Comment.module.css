@@ -28,6 +28,7 @@
 
 .btn:hover {
   color: black;
+  transition: all 150ms;
 }
 
 .btns {
