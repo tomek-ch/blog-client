@@ -12,7 +12,7 @@ function MainPage({ posts, error }) {
     return (
         <>
             <Meta title="Blogg" />
-            {!currentUser ? <CtaSection /> : ''}
+            {!currentUser && <CtaSection />}
             {posts ? <PostsFeed posts={posts} /> : <div className={container}>{error}</div>}
         </>
     );
