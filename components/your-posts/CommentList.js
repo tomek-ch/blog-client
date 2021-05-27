@@ -12,7 +12,7 @@ function CommentList({ currentUser }) {
 
     useEffect(() => {
         if (currentUser?._id)
-            fetch(`${api}/comments?author=${currentUser._id}&getPost=true`)
+            fetch(`${api}/comments?author=${currentUser._id}&getPost=true&newest=true`)
                 .then(res => res.json())
                 .then(setComments)
                 .catch(() => setError('Error retrieving comments'));
