@@ -1,5 +1,5 @@
-.userInfo {
-  width: 20em;
+.sidePanel {
+  width: 30%;
   position: sticky;
   top: 0;
   align-self: flex-start;
@@ -10,27 +10,39 @@
   gap: 4em;
 }
 
-.posts {
-  padding: 1em;
-  max-width: 750px;
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
 }
-
+  
+.mainColumn {
+  padding: 1em;
+  width: 70%;
+  padding-top: 2.5em;
+}
+  
 .container {
   display: flex;
-  width: fit-content;
   margin: auto;
-  justify-content: space-between;
+  gap: 4em;
   width: 100%;
   max-width: 1200px;
 }
-
-@media (max-width: 500px) {
+  
+@media (max-width: 900px) {
   .container {
     flex-direction: column;
-    gap: 0; 
+    gap: 0;
   }
 
-  .userInfo {
+  .mainColumn {
+    width: 100%;
+  }
+
+  .sidePanel {
     position: static;
+    width: 100%;
   }
 }
+  

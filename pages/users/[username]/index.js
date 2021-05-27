@@ -1,5 +1,5 @@
 import Meta from '../../../components/Meta';
-import style from '../../../styles/UserProfile.module.css';
+import style from '../../../styles/FeedLayout.module.css';
 import PostExcerpt from '../../../components/posts/PostExcerpt';
 import { useState, useEffect } from 'react';
 import api from '../../../components/apiServerUrl';
@@ -23,7 +23,7 @@ function Post({ user, posts, comments, error }) {
 
     return (
         <div className={style.container}>
-            <div className={style.userInfo}>
+            <div className={style.sidePanel}>
                 <div>
                     <Meta
                         title={`${user.firstName}
@@ -35,7 +35,7 @@ function Post({ user, posts, comments, error }) {
                     <p>{user.description}</p>
                 </div>
                 <div>
-                    {!!comments.length && <h2>Latest Comments:</h2>}
+                    {!!comments.length && <h2>Latest Comments</h2>}
                     {comments.slice(0, 3).map(comment => (
                         <CommentOverview
                             key={comment._id}
@@ -44,7 +44,8 @@ function Post({ user, posts, comments, error }) {
                     ))}
                 </div>
             </div>
-            <div className={style.posts}>
+            <div className={style.mainColumn}>
+                {!!posts.length && <h2>Posts</h2>}
                 {currentPosts.map(post => (
                     <PostExcerpt
                         key={post._id}
