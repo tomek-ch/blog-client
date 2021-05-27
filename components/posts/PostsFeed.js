@@ -1,8 +1,8 @@
 import PostExcerpt from './PostExcerpt';
 import style from '../../styles/FeedLayout.module.css';
-
 import tagStyle from '../../styles/Tags.module.css';
 import Link from 'next/link';
+import { useState } from 'react';
 
 function PostGrid({ posts }) {
 
@@ -15,15 +15,17 @@ function PostGrid({ posts }) {
             : authors
     ), []).slice(0, 3);
 
+    const [currentPosts, setCurrentPosts] = useState(posts);
+
     return (
         <div className={style.container}>
             <div className={style.mainColumn}>
                 <h2>Explore posts</h2>
-                {posts.map(post => (
+                {currentPosts.map(post => (
                     <PostExcerpt
                         key={post._id}
                         post={post}
-                    // setPosts={setCurrentPosts}
+                        setPosts={setCurrentPosts}
                     />
                 ))}
             </div>
@@ -43,7 +45,7 @@ function PostGrid({ posts }) {
                     <h2>Topics</h2>
                     {tags.map(tag => (
                         <Link key={tag} href={`/tagged/${tag}`}>
-                            <a className={tagStyle.tag} style={{display: 'block'}}>{tag}</a>
+                            <a className={tagStyle.tag} style={{ display: 'block' }}>{tag}</a>
                         </Link>
                     ))}
                 </div>
