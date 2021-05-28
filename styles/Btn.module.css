@@ -5,11 +5,11 @@
   width: fit-content;
   white-space: nowrap;
   background-color: white;
+  transition: all 150ms;
 }
 
 .btn:hover {
   border-color: var(--light-text);
-  transition: all 150ms;
 }
 
 .btn:disabled {
