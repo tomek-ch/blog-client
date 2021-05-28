@@ -23,7 +23,13 @@
 }
 
 .listItem {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
     border-bottom: 1px solid var(--foreground);
     padding: 1em 0;
+}
+
+.listItem h3 {
+    margin-bottom: 0.5em;
 }
