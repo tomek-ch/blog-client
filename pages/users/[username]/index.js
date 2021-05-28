@@ -45,7 +45,9 @@ function Post({ user, posts, comments, error }) {
                 </div>
             </div>
             <div className={style.mainColumn}>
-                {!!posts.length && <h2 className={style.sectionHeading}>Posts</h2>}
+                {!!posts.length
+                    ? <h2 className={style.sectionHeading}>Posts</h2>
+                    : "This user hasn't written any posts yet"}
                 {currentPosts.map(post => (
                     <PostExcerpt
                         key={post._id}
