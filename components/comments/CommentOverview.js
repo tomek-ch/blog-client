@@ -6,6 +6,7 @@ function CommentOverview({ com }) {
     
     const limitLength = (str, max) => str.length > max ? `${str.substring(0, max - 3)}...` : str;
     const text = limitLength(com.text, 100);
+    const responseTo = limitLength(com.post?.title || com.comment.text, 50);
 
     return (
         <div className={listItem}>
@@ -13,9 +14,7 @@ function CommentOverview({ com }) {
                 <a>
                     <h3>{text}</h3>
                     <p>
-                        In response to {com.post ? 'post' : 'comment'}: {
-                            com.post?.title || com.comment.text
-                        }
+                        In response to {com.post ? 'post' : 'comment'}: {responseTo}
                     </p>
                 </a>
             </Link>
