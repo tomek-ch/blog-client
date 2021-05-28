@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Details from './Details';
-import { container, moreBtn, title } from '../../styles/PostExcerpt.module.css';
+import { container, moreBtn, moreBtnContainer, title } from '../../styles/PostExcerpt.module.css';
 
 function PostExcerpt({ post, setPosts }) {
 
@@ -13,9 +13,12 @@ function PostExcerpt({ post, setPosts }) {
                 <a><h2 className={title}>{post.title}</h2></a>
             </Link>
             <p>{post.excerpt}</p>
-            <Link href={`/posts/${post._id}`}>
-                <a className={moreBtn}>Read more →</a>
-            </Link>
+            <div className={moreBtnContainer}>
+                <Link href={`/posts/${post._id}`}>
+                    <a className={moreBtn}>Read more</a>
+                </Link>
+                <i className="ri-arrow-right-s-line" />
+            </div>
         </div>
     );
 }

@@ -9,6 +9,13 @@
 .moreBtn {
   font-size: 0.9em;
   text-transform: uppercase;
+  font-weight: bold;
+}
+
+.moreBtnContainer {
+  color: var(--highlight);
+  display: flex;
+  align-items: center;
 }
 
 .moreBtn:hover {
