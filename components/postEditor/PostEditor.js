@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { editor, btn } from '../../styles/PostEditor.module.css';
 import ParagraphEditor from './ParagraphEditor';
 import PostSubmitSummary from './PostSubmitSummary';
@@ -26,8 +26,10 @@ function PostEditor({ submitCb, post }) {
         && !(lastParagraph.heading
             && !lastParagraph.body);
 
-    const addParagraph = async () => {
-        await setParagraphs(prev => [...prev, { heading: '', body: '' }]);
+    const inputRef = useRef();
+    const addParagraph = () => {
+        setParagraphs(prev => [...prev, { heading: '', body: '' }]);
+        inputRef.current?.focus();
     };
 
     // Returns an event handler that changes either the heading or the body of a paragraph
@@ -66,9 +68,15 @@ function PostEditor({ submitCb, post }) {
     return (
         <div className={editor}>
             <TitleInput {...{ title, setTitle }} />
-            {paragraphs.map((p, i) => (
+            {paragraphs.slice(0, -1).map((p, i) => (
                 <ParagraphEditor key={`p-${i}`} paragraph={p} index={i} editParagraph={editParagraph} />
             ))}
+            <ParagraphEditor
+                paragraph={lastParagraph}
+                index={indexOfLastParagraph}
+                editParagraph={editParagraph}
+                ref={inputRef}
+            />
             <button
                 onClick={addParagraph}
                 disabled={!canAddParagraph}
