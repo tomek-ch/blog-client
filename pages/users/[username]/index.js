@@ -31,11 +31,11 @@ function Post({ user, posts, comments, error }) {
                         description={user.description}
                     />
                     <h1>{user.firstName} {user.lastName}</h1>
-                    <h2>{user.username}</h2>
+                    <h2 className={style.username}>{user.username}</h2>
                     <p>{user.description}</p>
                 </div>
                 <div>
-                    {!!comments.length && <h2>Latest Comments</h2>}
+                    {!!comments.length && <h2 className={style.sectionHeading}>Latest Comments</h2>}
                     {comments.slice(0, 3).map(comment => (
                         <CommentOverview
                             key={comment._id}
@@ -45,7 +45,7 @@ function Post({ user, posts, comments, error }) {
                 </div>
             </div>
             <div className={style.mainColumn}>
-                {!!posts.length && <h2>Posts</h2>}
+                {!!posts.length && <h2 className={style.sectionHeading}>Posts</h2>}
                 {currentPosts.map(post => (
                     <PostExcerpt
                         key={post._id}

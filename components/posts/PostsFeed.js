@@ -20,7 +20,7 @@ function PostGrid({ posts }) {
     return (
         <div className={style.container}>
             <div className={style.mainColumn}>
-                <h2>Explore posts</h2>
+                <h2 className={style.sectionHeading}>Explore posts</h2>
                 {currentPosts.map(post => (
                     <PostExcerpt
                         key={post._id}
@@ -31,7 +31,7 @@ function PostGrid({ posts }) {
             </div>
             <div className={style.sidePanel}>
                 <div className={style.column}>
-                    <h2>Authors</h2>
+                    <h2 className={style.sectionHeading}>Authors</h2>
                     {authors.map(author => (
                         <Link key={author._id} href={`/users/${author.username}`}>
                             <a>
@@ -42,7 +42,7 @@ function PostGrid({ posts }) {
                     ))}
                 </div>
                 <div className={style.column}>
-                    <h2>Topics</h2>
+                    <h2 className={style.sectionHeading}>Topics</h2>
                     {tags.map(tag => (
                         <Link key={tag} href={`/tagged/${tag}`}>
                             <a className={tagStyle.tag} style={{ display: 'block' }}>{tag}</a>

@@ -29,6 +29,19 @@
   width: 100%;
   max-width: 1200px;
 }
+
+.sectionHeading {
+  text-transform: uppercase;
+  font-size: 0.9em;
+  color: var(--light-text);
+}
+
+.username {
+  font-size: 1.1em;
+  margin: 0.5em 0;
+  color: var(--light-text);
+  font-weight: normal;
+}
   
 @media (max-width: 900px) {
   .container {
