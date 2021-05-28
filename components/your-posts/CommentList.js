@@ -1,7 +1,4 @@
 import { useState, useEffect } from 'react';
-import Link from 'next/link';
-import CommentDetails from '../comments/CommentDetails';
-import { listItem } from '../../styles/YourPosts.module.css';
 import api from '../apiServerUrl';
 import CommentOverview from '../comments/CommentOverview';
 
