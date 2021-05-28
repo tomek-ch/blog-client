@@ -1,8 +1,10 @@
 .link {
   font-weight: bold;
   color: var(--highlight);
+  transition: all 150ms;
 }
 
 .link:hover {
   text-decoration: underline;
+  color: var(--dark-highlight);
 }

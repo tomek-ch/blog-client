@@ -16,6 +16,11 @@
   color: var(--highlight);
   display: flex;
   align-items: center;
+  transition: all 150ms;
+}
+
+.moreBtnContainer:hover {
+  color: var(--dark-highlight);
 }
 
 .moreBtn:hover {
