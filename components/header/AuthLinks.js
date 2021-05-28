@@ -1,15 +1,16 @@
 import Link from 'next/link';
-import { btn } from '../../styles/Btn.module.css';
+import { ctaBtn } from '../../styles/CtaBtn.module.css';
+import { link } from '../../styles/InlineLink.module.css';
 import { authLinks } from '../../styles/AuthLinks.module.css';
 
 function AuthLinks() {
     return (
         <div className={authLinks}>
             <Link href="/log-in">
-                <a className={btn}>Log in</a>
+                <a className={link}>Log in</a>
             </Link>
             <Link href="/register">
-                <a className={btn}>Register</a>
+                <a className={ctaBtn}>Register</a>
             </Link>
         </div>
     );

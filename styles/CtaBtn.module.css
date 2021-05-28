@@ -1,0 +1,17 @@
+.ctaBtn {
+  border-radius: var(--radius);
+  background-color: var(--highlight);
+  padding: 0.5em 1em;
+  color: white;
+  width: fit-content;
+  font-weight: bold;
+  transition: all 150ms;
+}
+
+.ctaBtn:hover {
+  background-color: var(--dark-highlight);
+}
+
+.ctaBtn:disabled {
+  background-color: var(--light-highlight);
+}

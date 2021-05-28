@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useAppContext } from '../components/Context';
-import { btn } from '../styles/Btn.module.css';
+import { ctaBtn } from '../styles/CtaBtn.module.css';
 import { form, input } from '../styles/Form.module.css';
 import { link } from '../styles/InlineLink.module.css';
 import Meta from '../components/Meta';
@@ -97,7 +97,7 @@ function LogIn() {
             </label>
             <button
                 type="submit"
-                className={btn}
+                className={ctaBtn}
                 disabled={!userData.username || !userData.password || !userData.firstName}
             >Sign up</button>
             <ul>{errors}</ul>
