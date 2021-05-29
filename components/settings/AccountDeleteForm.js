@@ -40,7 +40,7 @@ function AccountDeleteForm({currentUser, token, signOut}) {
         <form onSubmit={deleteAccount} className={form}>
             <h2>Delete account</h2>
             <label>
-                Your password:
+                Your password
                 <input
                     type="password"
                     value={deletePassword}

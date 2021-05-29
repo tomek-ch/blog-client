@@ -37,7 +37,7 @@ function PasswordChangeForm({ token, currentUser }) {
         <form className={form} onSubmit={changePassword}>
             <h2>Change password</h2>
             <label>
-                Old password:
+                Old password
             <input
                     type="password"
                     value={oldPassword}
@@ -46,7 +46,7 @@ function PasswordChangeForm({ token, currentUser }) {
                 />
             </label>
             <label>
-                New password:
+                New password
             <input
                     type="password"
                     value={newPassword}

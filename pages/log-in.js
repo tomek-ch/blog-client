@@ -48,7 +48,7 @@ function LogIn() {
             <Meta title="Sign in to blogg" />
             <h2>Sign in</h2>
             <label>
-                Username:
+                Username
                 <input
                     type="text"
                     value={username}
@@ -58,7 +58,7 @@ function LogIn() {
                 />
             </label>
             <label>
-                Password:
+                Password
                 <input
                     type="password"
                     value={password}

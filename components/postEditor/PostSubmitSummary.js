@@ -21,7 +21,7 @@ function PostSubmitSummary({ post, goBack, tags, setTags, excerpt, setExcerpt, i
         <div className={editor}>
             <h1>{post.title}</h1>
             <label>
-                Post excerpt (how it will be displayed on your profile etc):
+                Post excerpt (how it will be displayed on your profile etc)
                 <TextBox
                     className={input}
                     value={excerpt}
