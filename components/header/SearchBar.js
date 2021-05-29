@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import style, { btn, bar, container, fullWidthContainer } from '../../styles/SearchBar.module.css';
+import { sectionHeading } from '../../styles/FeedLayout.module.css';
 import Link from 'next/link';
 import api from '../apiServerUrl';
 
@@ -81,7 +82,7 @@ function SearchBar() {
                     <div className={style.results}>
                         {!!userResults.length &&
                             <>
-                                <h4>Users</h4>
+                                <h4 className={sectionHeading}>Users</h4>
                                 {userResults.map(user => (
                                     <Link key={user._id} href={`/users/${user.username}`}>
                                         <a onClick={handleResultClick} onBlur={handleBlur} data-result>
@@ -94,7 +95,7 @@ function SearchBar() {
                         {
                             !!postResults.length &&
                             <>
-                                <h4>Posts</h4>
+                                <h4 className={sectionHeading}>Posts</h4>
                                 {postResults.map(post => (
                                     <Link key={post._id} href={`/posts/${post._id}`}>
                                         <a onClick={handleResultClick} onBlur={handleBlur} data-result>
