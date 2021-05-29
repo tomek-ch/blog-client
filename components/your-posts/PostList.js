@@ -6,8 +6,12 @@ import api from '../apiServerUrl';
 
 function PostList({ currentUser, unpublished, token }) {
 
+    if (!currentUser)
+        return null;
+
     const [posts, setPosts] = useState([]);
     const [error, setError] = useState('');
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         if (currentUser?._id) {
@@ -22,15 +26,27 @@ function PostList({ currentUser, unpublished, token }) {
 
             fetch(`${api}/posts?author=${currentUser._id}`, options)
                 .then(res => res.json())
-                .then(setPosts)
-                .catch(() => setError('Error retrieving posts'));
+                .then(data => {
+                    setIsLoading(false);
+                    setPosts(data);
+                })
+                .catch(() => {
+                    setIsLoading(false);
+                    setError('Error retrieving posts');
+                });
         }
     }, [currentUser, unpublished]);
 
-    if (!currentUser)
-        return null;
+    if (error)
+        return error;
 
-    return error || posts.map(post => (
+    if (isLoading)
+        return 'Loading...';
+
+    if (!posts.length)
+        return 'Nothing here yet';
+
+    return posts.map(post => (
         <div key={post._id} className={listItem}>
             <Link href={`/posts/${post._id}`}>
                 <a>
