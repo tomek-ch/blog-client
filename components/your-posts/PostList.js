@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import PostDetails from '../posts/Details';
-import { listItem } from '../../styles/YourPosts.module.css';
+import style from '../../styles/YourPosts.module.css';
 import api from '../apiServerUrl';
 import { link } from '../../styles/InlineLink.module.css';
 
@@ -54,9 +54,9 @@ function PostList({ currentUser, unpublished, token }) {
         );
 
     return posts.map(post => (
-        <div key={post._id} className={listItem}>
+        <div key={post._id} className={style.listItem}>
             <Link href={`/posts/${post._id}`}>
-                <a>
+                <a className={style.link}>
                     <h3>{post.title}</h3>
                     <p>{post.excerpt}</p>
                 </a>

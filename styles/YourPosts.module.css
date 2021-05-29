@@ -50,3 +50,7 @@
 .responseTo {
     font-weight: bold;
 }
+
+.link:hover .comment:first-line, .link:hover h3 {
+    text-decoration: underline;
+}

@@ -12,7 +12,7 @@ function CommentOverview({ com }) {
     return (
         <div className={style.listItem}>
             <Link href={`/posts/${com.post ? com.post._id : com.comment.post}#${commentId}`}>
-                <a>
+                <a className={style.link}>
                     <p className={style.comment}>{text}</p>
                     <p className={style.details}>
                         In response to {com.post ? 'post' : 'comment'}: <span className={style.responseTo}>
