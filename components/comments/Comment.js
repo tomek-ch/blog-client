@@ -43,7 +43,7 @@ function Comment({
     };
 
     return (
-        <div className={containerClass}>
+        <div className={containerClass} id={comment._id}>
             <CommentDetails
                 editable={currentUser?._id === comment.author._id}
                 {...{ comment, setComments, token, setIsEdited, setError, deleteComment, replyRemoveCb }}
