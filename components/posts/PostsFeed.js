@@ -30,11 +30,11 @@ function PostsFeed({ posts }) {
                 ))}
             </div>
             <div className={style.sidePanel}>
-                <div className={style.column}>
+                <div>
                     <h2 className={style.sectionHeading}>Authors</h2>
                     {authors.map(author => (
                         <Link key={author._id} href={`/users/${author.username}`}>
-                            <a>
+                            <a className={style.listItem}>
                                 <h3>{author.firstName} {author.lastName}</h3>
                                 <p>{author.description}</p>
                             </a>

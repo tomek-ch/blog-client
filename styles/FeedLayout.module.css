@@ -42,6 +42,16 @@
   color: var(--light-text);
   font-weight: normal;
 }
+
+.listItem {
+  display: block;
+  padding: 2em 0;
+  border-bottom: 1px solid var(--foreground);
+}
+
+.listItem:hover h3 {
+  text-decoration: underline;
+}
   
 @media (max-width: 900px) {
   .container {
