@@ -1,6 +1,8 @@
 .authLinks {
   display: flex;
-  gap: 0.5em;
   align-items: center;
-  gap: 1.5em;
+}
+
+.authLinks > a {
+  margin: 0 0.5em;
 }
