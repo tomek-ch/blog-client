@@ -33,3 +33,20 @@
 .listItem h3 {
     margin-bottom: 0.5em;
 }
+
+.comment:first-line {
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+.comment {
+    margin-bottom: 0.5em;
+}
+
+.details {
+    color: var(--light-text);
+}
+
+.responseTo {
+    font-weight: bold;
+}
