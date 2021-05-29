@@ -17,6 +17,10 @@
   transition: all 150ms;
 }
 
+.bar:hover {
+  background-color: var(--light-foreground);
+}
+
 .bar:focus {
   box-shadow: var(--outline);
 }
