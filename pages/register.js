@@ -61,6 +61,7 @@ function LogIn() {
                     onChange={handleChange}
                     className={input}
                     maxLength={20}
+                    autoFocus
                 />
             </label>
             <label>
