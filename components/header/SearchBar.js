@@ -62,6 +62,15 @@ function SearchBar() {
         return () => clearTimeout(cancelId);
     }, [query]);
 
+    const getSearchText = str => (
+        <>
+            {str.substring(0, query.length)}
+            <span className={style.autocompleted}>
+                {str.substring(query.length, str.length)}
+            </span>
+        </>
+    );
+
     return (
         <>
             <div className={isBarFullWidth ? fullWidthContainer : container}>
@@ -86,7 +95,7 @@ function SearchBar() {
                                 {userResults.map(user => (
                                     <Link key={user._id} href={`/users/${user.username}`}>
                                         <a onClick={handleResultClick} onBlur={handleBlur} data-result>
-                                            {user.username}
+                                            {getSearchText(user.username)}
                                         </a>
                                     </Link>
                                 ))}
@@ -99,7 +108,7 @@ function SearchBar() {
                                 {postResults.map(post => (
                                     <Link key={post._id} href={`/posts/${post._id}`}>
                                         <a onClick={handleResultClick} onBlur={handleBlur} data-result>
-                                            {post.title}
+                                            {getSearchText(post.title)}
                                         </a>
                                     </Link>
                                 ))}

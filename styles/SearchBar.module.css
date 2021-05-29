@@ -55,6 +55,10 @@
   overflow: hidden;
 }
 
+.autocompleted {
+  font-weight: bold;
+}
+
 @media (max-width: 500px) {
   .btn {
     display: block;
