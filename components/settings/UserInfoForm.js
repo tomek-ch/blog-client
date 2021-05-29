@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { form, input, btnRow } from '../../styles/Form.module.css';
+import { form, input, btnRow, asterisk } from '../../styles/Form.module.css';
 import { btn } from '../../styles/Btn.module.css';
 import api from '../apiServerUrl';
 import TextBox from '../TextBox';
@@ -65,7 +65,7 @@ function UserInfoForm({ currentUser, setCurrentUser, token }) {
         <form onSubmit={handleSubmit} className={form}>
             <h2>Edit profile</h2>
             <label>
-                Username:
+                Username<span className={asterisk}>*</span>
                 <input
                     type="text"
                     name="username"
@@ -76,7 +76,7 @@ function UserInfoForm({ currentUser, setCurrentUser, token }) {
                 />
             </label>
             <label>
-                First name:
+                First name<span className={asterisk}>*</span>
                 <input
                     type="text"
                     name="firstName"
@@ -87,7 +87,7 @@ function UserInfoForm({ currentUser, setCurrentUser, token }) {
                 />
             </label>
             <label>
-                Last name:
+                Last name
                 <input
                     type="text"
                     name="lastName"
@@ -98,7 +98,7 @@ function UserInfoForm({ currentUser, setCurrentUser, token }) {
                 />
             </label>
             <label>
-                Description:
+                Description
                 <TextBox
                     name="description"
                     value={userData.description}

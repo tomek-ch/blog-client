@@ -28,3 +28,8 @@
   display: flex;
   gap: 0.5em;
 }
+
+.asterisk {
+  color: var(--accent);
+  margin-left: 0.2em;
+}

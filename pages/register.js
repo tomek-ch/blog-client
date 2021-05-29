@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useAppContext } from '../components/Context';
 import { ctaBtn } from '../styles/CtaBtn.module.css';
-import { form, input } from '../styles/Form.module.css';
+import { form, input, asterisk } from '../styles/Form.module.css';
 import { link } from '../styles/InlineLink.module.css';
 import Meta from '../components/Meta';
 import api from '../components/apiServerUrl';
@@ -53,7 +53,7 @@ function LogIn() {
             <Meta title="Sign up to blogg" />
             <h2>Sign up</h2>
             <label>
-                Username:
+                Username<span className={asterisk}>*</span>
                 <input
                     type="text"
                     name="username"
@@ -64,7 +64,7 @@ function LogIn() {
                 />
             </label>
             <label>
-                First name:
+                First name<span className={asterisk}>*</span>
                 <input
                     type="text"
                     name="firstName"
@@ -75,7 +75,7 @@ function LogIn() {
                 />
             </label>
             <label>
-                Last name:
+                Last name
                 <input
                     type="text"
                     name="lastName"
@@ -86,7 +86,7 @@ function LogIn() {
                 />
             </label>
             <label>
-                Password:
+                Password<span className={asterisk}>*</span>
                 <input
                     type="password"
                     name="password"
