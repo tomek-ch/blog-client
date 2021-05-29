@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { form, input, btnRow, asterisk } from '../../styles/Form.module.css';
 import { btn } from '../../styles/Btn.module.css';
+import { ctaBtn } from '../../styles/CtaBtn.module.css';
 import api from '../apiServerUrl';
 import TextBox from '../TextBox';
 
@@ -110,7 +111,7 @@ function UserInfoForm({ currentUser, setCurrentUser, token }) {
             <div className={btnRow}>
                 <button
                     type="submit"
-                    className={btn}
+                    className={ctaBtn}
                     disabled={!userData.username || !userData.firstName || !changedFields?.length}
                 >
                     Save
