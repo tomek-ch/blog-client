@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import TagEditor from './TagEditor';
 import TextBox from '../TextBox';
-import { editor, btn } from '../../styles/PostEditor.module.css';
+import { editor, btn, checkbox } from '../../styles/PostEditor.module.css';
 import { input } from '../../styles/Form.module.css';
 
 function PostSubmitSummary({ post, goBack, tags, setTags, excerpt, setExcerpt, isPublished, setIsPublished, submitCb }) {
@@ -36,6 +36,7 @@ function PostSubmitSummary({ post, goBack, tags, setTags, excerpt, setExcerpt, i
                     type="checkbox"
                     checked={isPublished}
                     onChange={() => setIsPublished(prev => !prev)}
+                    className={checkbox}
                 />
                 Publish post after saving
             </label>

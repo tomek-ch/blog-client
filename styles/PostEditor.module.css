@@ -29,3 +29,7 @@
   background-color: var(--light-foreground);
   transition: all 150ms;
 }
+
+.checkbox {
+  margin-right: 0.3em;
+}
