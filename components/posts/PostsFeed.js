@@ -31,6 +31,16 @@ function PostsFeed({ posts }) {
             </div>
             <div className={style.sidePanel}>
                 <div>
+                    <h2 className={style.sectionHeading}>Topics</h2>
+                    <div className={style.topics}>
+                        {tags.map(tag => (
+                            <Link key={tag} href={`/tagged/${tag}`}>
+                                <a className={tagStyle.tag} style={{ display: 'block' }}>{tag}</a>
+                            </Link>
+                        ))}
+                    </div>
+                </div>
+                <div>
                     <h2 className={style.sectionHeading}>Authors</h2>
                     {authors.map(author => (
                         <Link key={author._id} href={`/users/${author.username}`}>
@@ -40,16 +50,6 @@ function PostsFeed({ posts }) {
                             </a>
                         </Link>
                     ))}
-                </div>
-                <div>
-                    <h2 className={style.sectionHeading}>Topics</h2>
-                    <div className={style.topics}>
-                        {tags.map(tag => (
-                            <Link key={tag} href={`/tagged/${tag}`}>
-                                <a className={tagStyle.tag} style={{ display: 'block' }}>{tag}</a>
-                            </Link>
-                        ))}
-                    </div>
                 </div>
             </div>
         </div >
