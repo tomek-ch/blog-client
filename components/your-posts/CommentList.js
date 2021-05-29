@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import api from '../apiServerUrl';
 import CommentOverview from '../comments/CommentOverview';
+import Link from 'next/link';
+import { link } from '../../styles/InlineLink.module.css';
 
 function CommentList({ currentUser }) {
 
@@ -27,13 +29,19 @@ function CommentList({ currentUser }) {
 
     if (error)
         return error;
-    
+
     if (isLoading)
         return 'Loading...';
-    
+
     if (!comments.length)
-        return 'Nothing here yet';
-    
+        return (
+            <>
+                Nothing here yet. <Link href="/">
+                    <a className={link}>Explore posts</a>
+                </Link>
+            </>
+        );
+
     return comments.map(com => (
         <CommentOverview key={com._id} com={{ ...com, author: currentUser }} />
     ));

@@ -3,6 +3,7 @@ import Link from 'next/link';
 import PostDetails from '../posts/Details';
 import { listItem } from '../../styles/YourPosts.module.css';
 import api from '../apiServerUrl';
+import { link } from '../../styles/InlineLink.module.css';
 
 function PostList({ currentUser, unpublished, token }) {
 
@@ -44,7 +45,13 @@ function PostList({ currentUser, unpublished, token }) {
         return 'Loading...';
 
     if (!posts.length)
-        return 'Nothing here yet';
+        return (
+            <>
+                Nothing here yet. <Link href="/new">
+                    <a className={link}>Write a post</a>
+                </Link>
+            </>
+        );
 
     return posts.map(post => (
         <div key={post._id} className={listItem}>
