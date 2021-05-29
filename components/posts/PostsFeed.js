@@ -4,7 +4,7 @@ import tagStyle from '../../styles/Tags.module.css';
 import Link from 'next/link';
 import { useState } from 'react';
 
-function PostGrid({ posts }) {
+function PostsFeed({ posts }) {
 
     // Get unique tags and authors
     const tags = [...new Set(posts.reduce((arr, post) => [...arr, ...post.tags], []))].slice(0, 4);
@@ -54,4 +54,4 @@ function PostGrid({ posts }) {
     );
 }
 
-export default PostGrid;
+export default PostsFeed;
