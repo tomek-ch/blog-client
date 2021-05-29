@@ -3,6 +3,7 @@ import { form, input } from '../../styles/Form.module.css';
 import { btn } from '../../styles/Btn.module.css';
 import { useRouter } from 'next/router';
 import api from '../apiServerUrl';
+import { dangerBtn } from '../../styles/DangerBtn.module.css';
 
 function AccountDeleteForm({currentUser, token, signOut}) {
 
@@ -49,7 +50,7 @@ function AccountDeleteForm({currentUser, token, signOut}) {
                 />
             </label>
             <button
-                className={btn}
+                className={dangerBtn}
                 disabled={!deletePassword}
             >Delete account</button>
             <ul>

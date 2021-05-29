@@ -1,0 +1,17 @@
+.dangerBtn {
+  border-radius: var(--radius);
+  background-color: tomato;
+  padding: 0.5em 1em;
+  color: white;
+  width: fit-content;
+  font-weight: bold;
+  transition: all 150ms;
+}
+
+.dangerBtn:hover {
+  background-color: rgb(255, 38, 0);
+}
+
+.dangerBtn:disabled {
+  background-color: rgb(255, 163, 147);
+}
