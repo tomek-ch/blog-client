@@ -7,7 +7,7 @@ import { useState } from 'react';
 function PostsFeed({ posts }) {
 
     // Get unique tags and authors
-    const tags = [...new Set(posts.reduce((arr, post) => [...arr, ...post.tags], []))].slice(0, 4);
+    const tags = [...new Set(posts.reduce((arr, post) => [...arr, ...post.tags], []))].slice(0, 11);
 
     const authors = posts.reduce((authors, post) => (
         !authors.find(author => author._id.toString() === post.author._id.toString())
@@ -41,16 +41,18 @@ function PostsFeed({ posts }) {
                         </Link>
                     ))}
                 </div>
-                <div className={style.column}>
+                <div>
                     <h2 className={style.sectionHeading}>Topics</h2>
-                    {tags.map(tag => (
-                        <Link key={tag} href={`/tagged/${tag}`}>
-                            <a className={tagStyle.tag} style={{ display: 'block' }}>{tag}</a>
-                        </Link>
-                    ))}
+                    <div className={style.topics}>
+                        {tags.map(tag => (
+                            <Link key={tag} href={`/tagged/${tag}`}>
+                                <a className={tagStyle.tag} style={{ display: 'block' }}>{tag}</a>
+                            </Link>
+                        ))}
+                    </div>
                 </div>
             </div>
-        </div>
+        </div >
     );
 }
 

@@ -10,12 +10,6 @@
   gap: 4em;
 }
 
-.column {
-  display: flex;
-  flex-direction: column;
-  gap: 1em;
-}
-  
 .mainColumn {
   padding: 1em;
   width: 70%;
@@ -51,6 +45,18 @@
 
 .listItem:hover h3 {
   text-decoration: underline;
+}
+
+.topics {
+  display: flex;
+  gap: 0.5em;
+  margin-top: 1em;
+  flex-wrap: wrap;
+}
+
+.topics a {
+  flex-grow: 1;
+  text-align: center;
 }
   
 @media (max-width: 900px) {
