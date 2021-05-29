@@ -14,7 +14,10 @@
   --highlight: dodgerblue;
   --dark-highlight: rgb(0, 128, 255);
   --light-highlight: rgb(154, 205, 255);
+  
   --accent: orangered;
+  --accent-light: rgb(253, 144, 105);
+  --accent-dark: rgb(221, 60, 1);
 
   --shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   --radius: 5px;

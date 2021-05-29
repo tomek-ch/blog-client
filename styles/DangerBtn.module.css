@@ -1,6 +1,6 @@
 .dangerBtn {
   border-radius: var(--radius);
-  background-color: tomato;
+  background-color: var(--accent);
   padding: 0.5em 1em;
   color: white;
   width: fit-content;
@@ -9,9 +9,9 @@
 }
 
 .dangerBtn:hover {
-  background-color: rgb(255, 38, 0);
+  background-color: var(--accent-dark);
 }
 
 .dangerBtn:disabled {
-  background-color: rgb(255, 163, 147);
+  background-color: var(--accent-light);
 }
