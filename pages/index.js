@@ -2,7 +2,7 @@ import CtaSection from '../components/CtaSection';
 import { useAppContext } from '../components/Context';
 import Meta from '../components/Meta';
 import PostsFeed from '../components/posts/PostsFeed';
-import { container } from '../styles/Post.module.css';
+import { container } from '../styles/CtaSection.module.css';
 import api from '../components/apiServerUrl';
 
 function MainPage({ posts, error }) {
