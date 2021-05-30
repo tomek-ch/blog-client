@@ -1,5 +1,1 @@
-const url = process.env.NODE_ENV === 'development'
-    ? 'http://localhost:5000'
-    : 'https://lit-chamber-89885.herokuapp.com';
-
-export default url;
+export default process.env.NEXT_PUBLIC_API_URL;
