@@ -23,10 +23,8 @@ function AccountDeleteForm({currentUser, token, signOut}) {
                 },
             });
 
-            if (response.status === 200) {
-                router.replace('/');
+            if (response.status === 200)
                 signOut();
-            }
             else if (response.status === 400)
                 setDelMsgs((await response.json()));
             else
