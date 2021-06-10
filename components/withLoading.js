@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
+import Spinner from './Spinner';
 
 function withLoading(component) {
     const [isLoading, setIsLoading] = useState(false);
@@ -11,7 +12,7 @@ function withLoading(component) {
         router.events.on('routeChangeError', () => setIsLoading(false));
     }, []);
 
-    return isLoading ? 'Loading...' : component;
+    return isLoading ? <Spinner /> : component;
 }
 
 export default withLoading;
