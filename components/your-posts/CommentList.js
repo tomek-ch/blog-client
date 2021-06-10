@@ -3,6 +3,7 @@ import api from '../apiServerUrl';
 import CommentOverview from '../comments/CommentOverview';
 import Link from 'next/link';
 import { link } from '../../styles/InlineLink.module.css';
+import Spinner from '../Spinner';
 
 function CommentList({ currentUser }) {
 
@@ -31,7 +32,7 @@ function CommentList({ currentUser }) {
         return error;
 
     if (isLoading)
-        return 'Loading...';
+        return <Spinner />;
 
     if (!comments.length)
         return (

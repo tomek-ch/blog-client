@@ -4,6 +4,7 @@ import PostDetails from '../posts/Details';
 import style from '../../styles/YourPosts.module.css';
 import api from '../apiServerUrl';
 import { link } from '../../styles/InlineLink.module.css';
+import Spinner from '../Spinner';
 
 function PostList({ currentUser, unpublished, token }) {
 
@@ -42,7 +43,7 @@ function PostList({ currentUser, unpublished, token }) {
         return error;
 
     if (isLoading)
-        return 'Loading...';
+        return <Spinner />;
 
     if (!posts.length)
         return (
