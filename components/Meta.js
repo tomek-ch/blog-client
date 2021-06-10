@@ -1,6 +1,6 @@
 import Head from 'next/head';
 
-function Meta({ title, description}) {
+function Meta({ title = 'Blogg', description = "Join internet's best blog platform and start writing!"}) {
     return (
         <Head>
             <title>{title}</title>
