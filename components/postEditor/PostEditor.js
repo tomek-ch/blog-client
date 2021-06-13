@@ -3,6 +3,7 @@ import { editor, btn } from '../../styles/PostEditor.module.css';
 import ParagraphEditor from './ParagraphEditor';
 import PostSubmitSummary from './PostSubmitSummary';
 import TitleInput from './TitleInput';
+import limitLength from '../limitLength';
 
 function PostEditor({ submitCb, post }) {
     const [isSummaryOpen, setIsSummaryOpen] = useState(false);
@@ -48,10 +49,8 @@ function PostEditor({ submitCb, post }) {
             }] : []),
         };
 
-        if (!excerpt) {
-            const limitLength = (str, max) => str.length > max ? `${str.substring(0, max - 3)}...` : str;
+        if (!excerpt)
             setExcerpt(limitLength(post.paragraphs[0].body, 200));
-        }
 
         setPostPreview(post);
         setIsSummaryOpen(true);
