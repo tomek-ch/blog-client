@@ -1,8 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import style, { btn, bar, container, fullWidthContainer } from '../../styles/SearchBar.module.css';
-import { sectionHeading } from '../../styles/FeedLayout.module.css';
-import Link from 'next/link';
 import api from '../apiServerUrl';
+import SearchResults from './SearchResults';
 
 function SearchBar() {
 
@@ -76,15 +75,6 @@ function SearchBar() {
         return () => clearTimeout(cancelId);
     }, [query]);
 
-    const getSearchText = str => (
-        <>
-            {str.substring(0, query.length)}
-            <span className={style.autocompleted}>
-                {str.substring(query.length, str.length)}
-            </span>
-        </>
-    );
-
     return (
         <>
             <div className={isBarFullWidth ? fullWidthContainer : container}>
@@ -103,31 +93,24 @@ function SearchBar() {
                 {
                     areResultsVisible && (!!userResults.length || !!postResults.length) &&
                     <div className={style.results}>
-                        {!!userResults.length &&
-                            <>
-                                <h4 className={sectionHeading}>Users</h4>
-                                {userResults.map(user => (
-                                    <Link key={user._id} href={`/users/${user.username}`}>
-                                        <a onClick={handleResultClick} onBlur={handleBlur} data-result>
-                                            {getSearchText(user.username)}
-                                        </a>
-                                    </Link>
-                                ))}
-                            </>
-                        }
-                        {
-                            !!postResults.length &&
-                            <>
-                                <h4 className={sectionHeading}>Posts</h4>
-                                {postResults.map(post => (
-                                    <Link key={post._id} href={`/posts/${post._id}`}>
-                                        <a onClick={handleResultClick} onBlur={handleBlur} data-result>
-                                            {getSearchText(post.title)}
-                                        </a>
-                                    </Link>
-                                ))}
-                            </>
-                        }
+                        <SearchResults
+                            results={userResults}
+                            title="Users"
+                            getPath={user => `/users/${user.username}`}
+                            handleClick={handleResultClick}
+                            handleBlur={handleBlur}
+                            field="username"
+                            query={query}
+                        />
+                        <SearchResults
+                            results={postResults}
+                            title="Posts"
+                            getPath={post => `/posts/${post._id}`}
+                            handleClick={handleResultClick}
+                            handleBlur={handleBlur}
+                            field="title"
+                            query={query}
+                        />
                     </div>
                 }
             </div>
