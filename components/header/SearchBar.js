@@ -41,34 +41,27 @@ function SearchBar() {
     const lastUsersReq = useRef();
     const lastPostsReq = useRef();
 
+    const fetchResults = (url, done, lastReq) => {
+        const currentReq = fetch(url)
+            .then(res => res.json())
+            .catch(() => done([]));
+
+        lastReq.current = currentReq;
+        currentReq
+            .then(data => {
+                if (currentReq === lastReq.current && Array.isArray(data))
+                    done(data);
+            });
+    };
+
     useEffect(() => {
         if (cancelId !== null)
             clearTimeout(cancelId);
 
         if (query) {
             const timeoutId = setTimeout(() => {
-
-                const currentUsersReq = fetch(`${api}/users?username=${query}`)
-                    .then(res => res.json())
-                    .catch(() => setUserResults([]));
-
-                lastUsersReq.current = currentUsersReq;
-                currentUsersReq
-                    .then(data => {
-                        if (currentUsersReq === lastUsersReq.current && Array.isArray(data))
-                            setUserResults(data);
-                    });
-
-                const currentPostsReq = fetch(`${api}/posts?title=${query}`)
-                    .then(res => res.json())
-                    .catch(() => setPostResults([]));
-
-                lastPostsReq.current = currentPostsReq;
-                currentPostsReq
-                    .then(data => {
-                        if (currentPostsReq === lastPostsReq.current && Array.isArray(data))
-                            setPostResults(data);
-                    });
+                fetchResults(`${api}/users?username=${query}`, setUserResults, lastUsersReq);
+                fetchResults(`${api}/posts?title=${query}`, setPostResults, lastPostsReq);
             }, 150);
 
             setCancelId(timeoutId);
