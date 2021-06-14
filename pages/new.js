@@ -1,5 +1,5 @@
 import Meta from '../components/Meta';
-import PostEditor from '../components/postEditor/PostEditor';
+import PostEditor from '../components/post-editor/PostEditor';
 import { container } from '../styles/Post.module.css';
 import { useRouter } from 'next/router';
 import { useAppContext } from '../components/Context';
