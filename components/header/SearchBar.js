@@ -36,25 +36,46 @@ function SearchBar() {
         setIsBarFullWidth(false);
     };
 
+    // Keep track of latest requests to make sure
+    // responses to only those requests are displayed
+    const lastUsersReq = useRef();
+    const lastPostsReq = useRef();
+
     useEffect(() => {
         if (cancelId !== null)
             clearTimeout(cancelId);
 
         if (query) {
             const timeoutId = setTimeout(() => {
-                fetch(`${api}/users?username=${query}`)
+
+                const currentUsersReq = fetch(`${api}/users?username=${query}`)
                     .then(res => res.json())
-                    .then(setUserResults)
                     .catch(() => setUserResults([]));
 
-                fetch(`${api}/posts?title=${query}`)
+                lastUsersReq.current = currentUsersReq;
+                currentUsersReq
+                    .then(data => {
+                        if (currentUsersReq === lastUsersReq.current && Array.isArray(data))
+                            setUserResults(data);
+                    });
+
+                const currentPostsReq = fetch(`${api}/posts?title=${query}`)
                     .then(res => res.json())
-                    .then(setPostResults)
                     .catch(() => setPostResults([]));
+
+                lastPostsReq.current = currentPostsReq;
+                currentPostsReq
+                    .then(data => {
+                        if (currentPostsReq === lastPostsReq.current && Array.isArray(data))
+                            setPostResults(data);
+                    });
             }, 150);
 
             setCancelId(timeoutId);
         } else {
+            lastUsersReq.current = null;
+            lastPostsReq.current = null;
+
             setUserResults([]);
             setPostResults([]);
         }
