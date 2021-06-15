@@ -14,6 +14,11 @@
   font-weight: bold;
 }
 
+.headingInput::placeholder,
+.titleInput::placeholder {
+  font-weight: normal;
+}
+
 .textBox {
   font-size: 1.1em;
   line-height: inherit;
