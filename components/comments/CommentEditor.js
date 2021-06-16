@@ -1,4 +1,5 @@
 import { btn } from '../../styles/Btn.module.css';
+import { ctaBtn } from '../../styles/CtaBtn.module.css';
 import { btnRow } from '../../styles/Form.module.css';
 import { body, textBox } from '../../styles/Comment.module.css';
 import { useState } from 'react';
@@ -30,7 +31,7 @@ function CommentEditor({ comment, token, setComments, setError, isEdited, setIsE
                 autoFocus={true}
             />
             <div className={btnRow}>
-                <button className={btn} onClick={handleUpdate} disabled={!editedText}>Save</button>
+                <button className={ctaBtn} onClick={handleUpdate} disabled={!editedText}>Save</button>
                 <button className={btn} onClick={cancelEdit}>Cancel</button>
             </div>
         </div>
