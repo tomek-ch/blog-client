@@ -22,7 +22,7 @@ export async function getServerSideProps() {
         const data = await res.json();
 
         if (res.status === 200) return { props: { posts: data } };
-        else return { props: { error: data[0] } };
+        return { props: { error: data[0] } };
 
     } catch (error) {
         return { props: { error: 'Failed to connect to the server' } };
