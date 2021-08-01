@@ -11,10 +11,10 @@
   --darker-foreground: #ccc;
   --light-text: #666;
 
-  --highlight: dodgerblue;
-  --dark-highlight: rgb(0, 128, 255);
+  --highlight: #1b7eff;
+  --dark-highlight: #1a73e8;
   --light-highlight: rgb(154, 205, 255);
-  
+
   --accent: orangered;
   --accent-light: rgb(253, 144, 105);
   --accent-dark: rgb(221, 60, 1);
@@ -35,7 +35,8 @@ a {
   text-decoration: none;
 }
 
-input, textarea {
+input,
+textarea {
   border: none;
   font-family: inherit;
   font-size: inherit;
@@ -54,7 +55,7 @@ button {
 }
 
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   line-height: 1.5;
   overflow-y: scroll;
 }
